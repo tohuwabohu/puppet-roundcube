@@ -20,4 +20,12 @@ class roundcube::package($version, $md5, $package_dir, $install_dir) {
     timeout       => 600,
     require       => [File[$install_dir], File[$package_dir]],
   }
+
+  file { "${install_dir}/roundcubemail-current":
+    ensure  => link,
+    target  => "${install_dir}/${archive}",
+    owner   => 'root',
+    group   => 'root',
+    require => Archive[$archive],
+  }
 }

@@ -32,4 +32,10 @@ describe 'roundcube' do
 
     it { should contain_class('roundcube::package').with_install_dir('/somewhere/else') }
   end
+
+  describe 'creates symbolic link to current version' do
+    let(:params) { {} }
+
+    it { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.9.5') }
+  end
 end
