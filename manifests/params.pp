@@ -3,8 +3,8 @@
 # Default parameters for the roundcube class.
 #
 class roundcube::params {
-  $version = '0.9.5'
-  $md5 = '757f6ab3306d4abf8da6664ae65138d7'
+  $version = '0.8.5'
+  $md5 = '10bbe9bbf5e4ff50109d200c0484728b'
   $process = $::operatingsystem ? {
     default => 'www-data',
   }
