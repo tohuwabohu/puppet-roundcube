@@ -7,5 +7,5 @@ summary 'Install and manage the Roundcube webmail application'
 description ''
 project_page 'https://bitbucket.org/MartinMeinhold/puppet-module-roundcube'
 
-## Add dependencies, if any:
-# dependency 'username/name', '>= 1.2.0'
+dependency 'example42/puppi', '2.x'
+dependency 'puppetlabs/stdlib', '4.x'
