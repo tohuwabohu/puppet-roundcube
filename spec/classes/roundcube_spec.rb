@@ -45,4 +45,19 @@ describe 'roundcube' do
 
     it { should contain_class('roundcube::database') }
   end
+
+  describe 'creates a database configuration file' do
+    let(:params) { {} }
+
+    it { should contain_file('/opt/roundcubemail-0.9.5/config/db.inc.php') }
+  end
+
+  describe 'creates database configuration file with proper database url' do
+    let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_user => 'user', :db_password => 'foo<bar'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/db.inc.php').send(:parameters)[:content]
+      content.should match('pgsql://user:foo%3Cbar@example.com/name')
+    end
+  end
 end

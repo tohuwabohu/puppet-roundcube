@@ -5,6 +5,9 @@
 class roundcube::params {
   $version = '0.9.5'
   $md5 = '757f6ab3306d4abf8da6664ae65138d7'
+  $process = $::operatingsystem ? {
+    default => 'www-data',
+  }
 
   # default configuration values
   $db_type = 'postgresql'
@@ -16,7 +19,6 @@ class roundcube::params {
   $package_dir = $::operatingsystem ? {
     default => '/var/cache/puppet/archives',
   }
-
   $install_dir = $::operatingsystem ? {
     default => '/opt',
   }
