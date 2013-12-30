@@ -9,3 +9,4 @@ project_page 'https://bitbucket.org/MartinMeinhold/puppet-module-roundcube'
 
 dependency 'example42/puppi', '2.x'
 dependency 'puppetlabs/stdlib', '4.x'
+dependency 'gini/archive', '0.2.x'

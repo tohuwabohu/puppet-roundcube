@@ -5,10 +5,16 @@
 # === Parameters
 #
 # [*version*]
-#   The version of the web application to be installed.
+#   Set the version of the web application to be installed.
 #
 # [*md5*]
-#   The MD5 hash sum of the web application archive.
+#   Set the MD5 hash sum of the web application's archive file.
+#
+# [*package_dir*]
+#   Set the directory where to keep the downloaded software packages.
+#
+# [*install_dir*]
+#   Set the directory where to install the web application.
 #
 # === Authors
 #
@@ -20,13 +26,20 @@
 #
 class roundcube (
   $version = params_lookup('version'),
-  $md5 = params_lookup('md5')
+  $md5 = params_lookup('md5'),
+
+  $package_dir = params_lookup('package_dir'),
+  $install_dir = params_lookup('install_dir')
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
+  validate_absolute_path($package_dir)
+  validate_absolute_path($install_dir)
 
   class { 'roundcube::package':
-    version => $version,
-    md5     => $md5,
+    version     => $version,
+    md5         => $md5,
+    package_dir => $package_dir,
+    install_dir => $install_dir,
   }
 }
