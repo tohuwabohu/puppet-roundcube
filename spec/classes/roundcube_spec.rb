@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe 'roundcube' do
-    let(:title) { 'roundcube' }
+  let(:title) { 'roundcube' }
+  let(:facts) { {:postgres_default_version => '9.2', :operatingsystem => 'Debian', :osfamily => 'Debian'} }
 
   describe 'installs default version' do
     let(:params) { {} }
@@ -37,5 +38,11 @@ describe 'roundcube' do
     let(:params) { {} }
 
     it { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.9.5') }
+  end
+
+  describe 'manages a database' do
+    let(:params) { {} }
+
+    it { should contain_class('roundcube::database') }
   end
 end
