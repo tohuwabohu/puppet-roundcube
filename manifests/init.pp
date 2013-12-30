@@ -24,4 +24,9 @@ class roundcube (
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
+
+  class { 'roundcube::package':
+    version => $version,
+    md5     => $md5,
+  }
 }
