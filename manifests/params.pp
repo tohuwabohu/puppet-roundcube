@@ -27,5 +27,6 @@ class roundcube::params {
   $imap_port = 143
   $des_key = 'rcmail-!24ByteDESkey*Str'
   $plugins = []
+  $mime_param_folding = 0
   $support_url = ''
 }
