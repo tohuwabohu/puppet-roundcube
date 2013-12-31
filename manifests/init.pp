@@ -84,6 +84,8 @@ class roundcube (
   validate_string($db_user)
   validate_string($db_password)
   validate_string($imap_host)
+  validate_string($des_key)
+  validate_string($support_url)
 
   $application_dir = "${install_dir}/roundcubemail-${version}"
 
