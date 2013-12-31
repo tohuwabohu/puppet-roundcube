@@ -66,7 +66,7 @@ describe 'roundcube' do
 
     it do
       content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
-      content.should match("\\$rcmail_config\\['default_host'\\] = 'ssl://localhost'")
+      content.should match("\\$rcmail_config\\['default_host'\\] = 'ssl://localhost';")
     end
   end
 
@@ -75,7 +75,7 @@ describe 'roundcube' do
 
     it do
       content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
-      content.should match("\\$rcmail_config\\['default_port'\\] = 993")
+      content.should match("\\$rcmail_config\\['default_port'\\] = 993;")
     end
   end
 
@@ -84,7 +84,7 @@ describe 'roundcube' do
 
     it do
       content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
-      content.should match("\\$rcmail_config\\['des_key'\\] = 'some-salt'")
+      content.should match("\\$rcmail_config\\['des_key'\\] = 'some-salt';")
     end
   end
 
@@ -102,7 +102,7 @@ describe 'roundcube' do
 
     it do
       content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
-      content.should match("\\$rcmail_config\\['support_url'\\] = 'http://example.com'")
+      content.should match("\\$rcmail_config\\['support_url'\\] = 'http://example.com';")
     end
   end
 end
