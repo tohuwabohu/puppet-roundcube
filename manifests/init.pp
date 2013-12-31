@@ -40,6 +40,9 @@
 # [*imap_port*]
 #   Set the TCP port used for IMAP connections. Defaults to 143.
 #
+# [*des_key*]
+#   Set key used to encrypt the users imap password which is stored.
+#
 # [*support_url*]
 #   Set an URL where a user can get support for this Roundcube installation.
 #
@@ -67,6 +70,7 @@ class roundcube (
 
   $imap_host = params_lookup('imap_host'),
   $imap_port = params_lookup('imap_port'),
+  $des_key = params_lookup('des_key'),
   $support_url = params_lookup('support_url')
 ) inherits roundcube::params {
   validate_string($version)
