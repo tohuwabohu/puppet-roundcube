@@ -79,6 +79,24 @@ describe 'roundcube' do
     end
   end
 
+  describe 'creates configuration file with salt' do
+    let(:params) { {:des_key => 'some-salt'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['des_key'\\] = 'some-salt'")
+    end
+  end
+
+  describe 'creates configuration file with enabled plugins' do
+    let(:params) { {:plugins => ['plugin1', 'plugin2']} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['plugins'\\] = array\\('plugin1', 'plugin2'\\);")
+    end
+  end
+
   describe 'creates configuration file with support url' do
     let(:params) { {:support_url => 'http://example.com'} }
 

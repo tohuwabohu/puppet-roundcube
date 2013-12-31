@@ -43,6 +43,9 @@
 # [*des_key*]
 #   Set key used to encrypt the users imap password which is stored.
 #
+# [*plugins*]
+#   List of active plugins (in plugins/ directory).
+#
 # [*support_url*]
 #   Set an URL where a user can get support for this Roundcube installation.
 #
@@ -71,6 +74,7 @@ class roundcube (
   $imap_host = params_lookup('imap_host'),
   $imap_port = params_lookup('imap_port'),
   $des_key = params_lookup('des_key'),
+  $plugins = params_lookup('plugins'),
   $support_url = params_lookup('support_url')
 ) inherits roundcube::params {
   validate_string($version)
@@ -85,6 +89,7 @@ class roundcube (
   validate_string($db_password)
   validate_string($imap_host)
   validate_string($des_key)
+  validate_array($plugins)
   validate_string($support_url)
 
   $application_dir = "${install_dir}/roundcubemail-${version}"
