@@ -9,13 +9,6 @@ class roundcube::params {
     default => 'www-data',
   }
 
-  # default configuration values
-  $db_type = 'postgresql'
-  $db_name = 'roundcubemail'
-  $db_host = 'localhost'
-  $db_user = 'roundcube'
-  $db_password = 'pass'
-
   $package_dir = $::operatingsystem ? {
     default => '/var/cache/puppet/archives',
   }
@@ -24,6 +17,12 @@ class roundcube::params {
   }
 
   # default configuration values
+  $db_type = 'postgresql'
+  $db_name = 'roundcubemail'
+  $db_host = 'localhost'
+  $db_user = 'roundcube'
+  $db_password = 'pass'
+
   $imap_host = ''
   $imap_port = 143
   $support_url = ''
