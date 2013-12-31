@@ -26,4 +26,5 @@ class roundcube::params {
   # default configuration values
   $imap_host = ''
   $imap_port = 143
+  $support_url = ''
 }

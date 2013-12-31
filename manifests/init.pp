@@ -40,6 +40,9 @@
 # [*imap_port*]
 #   Set the TCP port used for IMAP connections. Defaults to 143.
 #
+# [*support_url*]
+#   Set an URL where a user can get support for this Roundcube installation.
+#
 # === Authors
 #
 # Martin Meinhold <martin.meinhold@gmx.de>
@@ -63,7 +66,8 @@ class roundcube (
   $db_password = params_lookup('db_password'),
 
   $imap_host = params_lookup('imap_host'),
-  $imap_port = params_lookup('imap_port')
+  $imap_port = params_lookup('imap_port'),
+  $support_url = params_lookup('support_url')
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
