@@ -105,4 +105,22 @@ describe 'roundcube' do
       content.should match("\\$rcmail_config\\['support_url'\\] = 'http://example.com';")
     end
   end
+
+  describe 'create configuration file with language auto-detection' do
+    let(:params) { {} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['language'\\] = null;")
+    end
+  end
+
+  describe 'create configuration file with custom language' do
+    let(:params) { {:language => 'en_US'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['language'\\] = 'en_US';")
+    end
+  end
 end

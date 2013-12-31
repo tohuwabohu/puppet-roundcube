@@ -394,7 +394,10 @@ $rcmail_config['list_cols'] = array('subject', 'status', 'fromto', 'date', 'size
 
 // the default locale setting (leave empty for auto-detection)
 // RFC1766 formatted language name like en_US, de_DE, de_CH, fr_FR, pt_BR
-$rcmail_config['language'] = null;
+$rcmail_config['language'] = <%= 
+    language = scope.lookupvar('roundcube::language')
+    language.empty? ? 'null' : "'#{language}'"
+%>;
 
 // use this format for date display (date or strftime format)
 $rcmail_config['date_format'] = 'Y-m-d';

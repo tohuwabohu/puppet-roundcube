@@ -28,5 +28,6 @@ class roundcube::params {
   $des_key = 'rcmail-!24ByteDESkey*Str'
   $plugins = []
   $mime_param_folding = 0
+  $language = ''
   $support_url = ''
 }

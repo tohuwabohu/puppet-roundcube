@@ -49,6 +49,9 @@
 # [*mime_param_folding*]
 #   Set the encoding of long/non-ascii attachment names (see main.inc.php for possible values).
 #
+# [*language*]
+#   Set the default locale setting (leave undef / empty for auto-detection).
+#
 # [*support_url*]
 #   Set an URL where a user can get support for this Roundcube installation.
 #
@@ -79,6 +82,7 @@ class roundcube (
   $des_key = params_lookup('des_key'),
   $plugins = params_lookup('plugins'),
   $mime_param_folding = params_lookup('mime_param_folding'),
+  $language = params_lookup('language'),
   $support_url = params_lookup('support_url')
 ) inherits roundcube::params {
   validate_string($version)
