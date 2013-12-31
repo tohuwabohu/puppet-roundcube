@@ -34,6 +34,12 @@
 # [*db_password*]
 #   Set the password used to authenticate the db_user.
 #
+# [*imap_host*]
+#   Set the IMAP mail host chosen to perform the log-in (default_host configuration parameter).
+#
+# [*imap_port*]
+#   Set the TCP port used for IMAP connections. Defaults to 143.
+#
 # === Authors
 #
 # Martin Meinhold <martin.meinhold@gmx.de>
@@ -54,7 +60,10 @@ class roundcube (
   $db_name = params_lookup('db_name'),
   $db_host = params_lookup('db_host'),
   $db_user = params_lookup('db_user'),
-  $db_password = params_lookup('db_password')
+  $db_password = params_lookup('db_password'),
+
+  $imap_host = params_lookup('imap_host'),
+  $imap_port = params_lookup('imap_port')
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
@@ -66,6 +75,7 @@ class roundcube (
   validate_string($db_host)
   validate_string($db_user)
   validate_string($db_password)
+  validate_string($imap_host)
 
   $application_dir = "${install_dir}/roundcubemail-${version}"
 

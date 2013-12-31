@@ -60,4 +60,22 @@ describe 'roundcube' do
       content.should match('pgsql://user:foo%3Cbar@example.com/name')
     end
   end
+
+  describe 'creates configuration file with proper imap host' do
+    let(:params) { {:imap_host => 'ssl://localhost'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['default_host'\\] = 'ssl://localhost'")
+    end
+  end
+
+  describe 'creates configuration file with proper imap port' do
+    let(:params) { {:imap_port => 993} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['default_port'\\] = 993")
+    end
+  end
 end

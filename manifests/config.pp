@@ -12,4 +12,11 @@ class roundcube::config($application_dir, $process) {
     group   => $process,
     mode    => '0440',
   }
+
+  file { "${application_dir}/config/main.inc.php":
+    content => template('roundcube/main.inc.php.erb'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+  }
 }

@@ -22,4 +22,8 @@ class roundcube::params {
   $install_dir = $::operatingsystem ? {
     default => '/opt',
   }
+
+  # default configuration values
+  $imap_host = ''
+  $imap_port = 143
 }
