@@ -7,7 +7,7 @@ describe 'roundcube' do
   describe 'installs default version' do
     let(:params) { {} }
 
-    it { should contain_class('roundcube::package').with_version('0.8.5') }
+    it { should contain_class('roundcube::package').with_version('0.9.5') }
   end
 
   describe 'installs custom version' do
@@ -37,7 +37,7 @@ describe 'roundcube' do
   describe 'creates symbolic link to current version' do
     let(:params) { {} }
 
-    it { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.8.5') }
+    it { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.9.5') }
   end
 
   describe 'manages a database' do
@@ -49,14 +49,14 @@ describe 'roundcube' do
   describe 'creates a database configuration file' do
     let(:params) { {} }
 
-    it { should contain_file('/opt/roundcubemail-0.8.5/config/db.inc.php') }
+    it { should contain_file('/opt/roundcubemail-0.9.5/config/db.inc.php') }
   end
 
   describe 'creates database configuration file with proper database url' do
     let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_user => 'user', :db_password => 'foo<bar'} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/db.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/db.inc.php').send(:parameters)[:content]
       content.should match('pgsql://user:foo%3Cbar@example.com/name')
     end
   end
@@ -65,7 +65,7 @@ describe 'roundcube' do
     let(:params) { {:imap_host => 'ssl://localhost'} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['default_host'\\] = 'ssl://localhost';")
     end
   end
@@ -74,7 +74,7 @@ describe 'roundcube' do
     let(:params) { {:imap_port => 993} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['default_port'\\] = 993;")
     end
   end
@@ -83,7 +83,7 @@ describe 'roundcube' do
     let(:params) { {:des_key => 'some-salt'} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['des_key'\\] = 'some-salt';")
     end
   end
@@ -92,7 +92,7 @@ describe 'roundcube' do
     let(:params) { {:plugins => ['plugin1', 'plugin2']} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['plugins'\\] = array\\('plugin1', 'plugin2'\\);")
     end
   end
@@ -101,7 +101,7 @@ describe 'roundcube' do
     let(:params) { {:support_url => 'http://example.com'} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['support_url'\\] = 'http://example.com';")
     end
   end
@@ -110,7 +110,7 @@ describe 'roundcube' do
     let(:params) { {} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['language'\\] = null;")
     end
   end
@@ -119,7 +119,7 @@ describe 'roundcube' do
     let(:params) { {:language => 'en_US'} }
 
     it do
-      content = catalogue.resource('file', '/opt/roundcubemail-0.8.5/config/main.inc.php').send(:parameters)[:content]
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/main.inc.php').send(:parameters)[:content]
       content.should match("\\$rcmail_config\\['language'\\] = 'en_US';")
     end
   end
