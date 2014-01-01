@@ -109,6 +109,12 @@ class roundcube (
     install_dir => $install_dir,
   }
 
+  class { 'roundcube::plugins':
+    package_dir => $package_dir,
+    install_dir => $application_dir,
+    require     => Class['roundcube::package'],
+  }
+
   class { 'roundcube::database':
     db_type     => $db_type,
     db_name     => $db_name,
