@@ -1,5 +1,5 @@
 name    'MartinMeinhold-roundcube'
-version '1.1.0'
+version '1.1.1'
 source 'git@bitbucket.org:MartinMeinhold/puppet-module-roundcube.git'
 author 'MartinMeinhold'
 license 'Apache License, Version 2.0'
