@@ -3,27 +3,17 @@
 # Manage Roundcube plugins.
 #
 class roundcube::plugins($package_dir, $install_dir) {
+  validate_absolute_path($package_dir)
+  validate_absolute_path($install_dir)
 
-  $plugin_name = 'markasjunk2'
-  $original_name = 'Roundcube-Plugin-Mark-as-Junk-2-0.8.5'
-  $plugin_dir = "${install_dir}/plugins"
-  $download_url = 'https://github.com/JohnDoh/Roundcube-Plugin-Mark-as-Junk-2/archive/v0.8.5.tar.gz'
-
-  archive { $plugin_name:
+  # plugin version 1.6, 22nd October 2013
+  archive { 'markasjunk2':
     ensure        => present,
-    digest_string => 'a341c4aaeec4af6e21e70387e541b526',
-    url           => $download_url,
-    root_dir      => $original_name,
-    target        => $plugin_dir,
+    digest_string => '96d6ded230ca1aaf9900036e67446bd3',
+    url           => 'http://www.tehinterweb.co.uk/roundcube/plugins/markasjunk2.tar.gz',
+    target        => "${install_dir}/plugins",
     src_target    => $package_dir,
     timeout       => 600,
     require       => File[$package_dir],
-    notify        => Exec["rename-roundcube-plugin-${plugin_name}"],
-  }
-
-  exec { "rename-roundcube-plugin-${plugin_name}":
-    cwd     => $plugin_dir,
-    command => "/bin/mv ${original_name} ${plugin_name}",
-    creates => "${plugin_dir}/${plugin_name}",
   }
 }
