@@ -19,4 +19,11 @@ class roundcube::config($application_dir, $process) {
     group   => 'root',
     mode    => '0644',
   }
+
+  file { "${application_dir}/plugins/password/config.inc.php":
+    content => template('roundcube/plugins/password/config.inc.php.erb'),
+    owner   => $process,
+    group   => $process,
+    mode    => '0440',
+  }
 }

@@ -30,4 +30,9 @@ class roundcube::params {
   $mime_param_folding = 1
   $language = ''
   $support_url = ''
+
+  $password_minimum_length = 0
+  $password_require_nonalpha = false
+  $password_db_dsn = ''
+  $password_query = 'SELECT update_passwd(%c, %u)'
 }

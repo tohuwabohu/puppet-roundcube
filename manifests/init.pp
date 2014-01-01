@@ -55,6 +55,18 @@
 # [*support_url*]
 #   Set an URL where a user can get support for this Roundcube installation.
 #
+# [*password_minimum_length*]
+#   Set minimum lenght a new password must have.
+#
+# [*password_require_nonalpha*]
+#   Set to true to require the new password to contain a letter and punctuation character
+#
+# [*password_db_dsn*]
+#   Set PEAR database DSN for performing the query. By default the Roundcube DB settings are used.
+#
+# [*password_query*]
+#   Set the SQL query used to change the password.
+#
 # === Authors
 #
 # Martin Meinhold <martin.meinhold@gmx.de>
@@ -83,7 +95,12 @@ class roundcube (
   $plugins = params_lookup('plugins'),
   $mime_param_folding = params_lookup('mime_param_folding'),
   $language = params_lookup('language'),
-  $support_url = params_lookup('support_url')
+  $support_url = params_lookup('support_url'),
+
+  $password_minimum_length = params_lookup('password_minimum_length'),
+  $password_require_nonalpha = params_lookup('password_require_nonalpha'),
+  $password_db_dsn = params_lookup('password_db_dsn'),
+  $password_query = params_lookup('password_query')
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
@@ -99,6 +116,8 @@ class roundcube (
   validate_string($des_key)
   validate_array($plugins)
   validate_string($support_url)
+  validate_string($password_db_dsn)
+  validate_string($password_query)
 
   $application_dir = "${install_dir}/roundcubemail-${version}"
 

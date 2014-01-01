@@ -123,4 +123,40 @@ describe 'roundcube' do
       content.should match("\\$rcmail_config\\['language'\\] = 'en_US';")
     end
   end
+
+  describe 'create password plugin configuration file with different minimal length' do
+    let(:params) { {:password_minimum_length => 16} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/plugins/password/config.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['password_minimum_length'\\] = 16;")
+    end
+  end
+
+  describe 'create password plugin configuration file with non-alpha characters required' do
+    let(:params) { {:password_require_nonalpha => true} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/plugins/password/config.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['password_require_nonalpha'\\] = true;")
+    end
+  end
+
+  describe 'create password plugin configuration file with custom database connection' do
+    let(:params) { {:password_db_dsn => 'psql://somewhere/else'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/plugins/password/config.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['password_db_dsn'\\] = 'psql://somewhere/else';")
+    end
+  end
+
+  describe 'create password plugin configuration file with custom password query' do
+    let(:params) { {:password_query => 'SELECT foobar'} }
+
+    it do
+      content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/plugins/password/config.inc.php').send(:parameters)[:content]
+      content.should match("\\$rcmail_config\\['password_query'\\] = 'SELECT foobar';")
+    end
+  end
 end
