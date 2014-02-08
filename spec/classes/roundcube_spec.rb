@@ -40,12 +40,6 @@ describe 'roundcube' do
     it { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.9.5') }
   end
 
-  describe 'manages a database' do
-    let(:params) { {} }
-
-    it { should contain_class('roundcube::database') }
-  end
-
   describe 'creates a database configuration file' do
     let(:params) { {} }
 
