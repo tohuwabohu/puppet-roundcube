@@ -47,7 +47,7 @@ describe 'roundcube' do
   end
 
   describe 'creates database configuration file with proper database url' do
-    let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_user => 'user', :db_password => 'foo<bar'} }
+    let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_username => 'user', :db_password => 'foo<bar'} }
 
     it do
       content = catalogue.resource('file', '/opt/roundcubemail-0.9.5/config/db.inc.php').send(:parameters)[:content]

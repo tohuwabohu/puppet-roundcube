@@ -8,10 +8,10 @@
     end
     db_name = scope.lookupvar('roundcube::db_name').to_s
     db_host = scope.lookupvar('roundcube::db_host').to_s
-    db_user = scope.lookupvar('roundcube::db_user').to_s
+    db_username = scope.lookupvar('roundcube::db_username').to_s
     db_password =  scope.lookupvar('roundcube::db_password').to_s
 
-    dsn = db_type + '://' + db_user + ':' + ERB::Util.url_encode(db_password) + '@' + db_host + '/' + db_name
+    dsn = db_type + '://' + db_username + ':' + ERB::Util.url_encode(db_password) + '@' + db_host + '/' + db_name
 -%>
 <?php /* This file is managed by Puppet. */ ?>
 <?php

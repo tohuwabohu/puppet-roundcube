@@ -28,11 +28,11 @@
 # [*db_host*]
 #   Set the hostname where the database is running. Puppet can only manage databases on the local host.
 #
-# [*db_user*]
+# [*db_username*]
 #   Set the username used to connect to the database.
 #
 # [*db_password*]
-#   Set the password used to authenticate the db_user.
+#   Set the password used to authenticate the database user.
 #
 # [*imap_host*]
 #   Set the IMAP mail host chosen to perform the log-in (default_host configuration parameter).
@@ -86,7 +86,7 @@ class roundcube (
   $db_type = params_lookup('db_type'),
   $db_name = params_lookup('db_name'),
   $db_host = params_lookup('db_host'),
-  $db_user = params_lookup('db_user'),
+  $db_username = params_lookup('db_username'),
   $db_password = params_lookup('db_password'),
 
   $imap_host = params_lookup('imap_host'),
@@ -110,7 +110,7 @@ class roundcube (
   validate_string($db_type)
   validate_string($db_name)
   validate_string($db_host)
-  validate_string($db_user)
+  validate_string($db_username)
   validate_string($db_password)
   validate_string($imap_host)
   validate_string($des_key)

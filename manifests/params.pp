@@ -20,7 +20,7 @@ class roundcube::params {
   $db_type = 'postgresql'
   $db_name = 'roundcubemail'
   $db_host = 'localhost'
-  $db_user = 'roundcube'
+  $db_username = 'roundcube'
   $db_password = 'pass'
 
   $imap_host = ''
