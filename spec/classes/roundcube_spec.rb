@@ -153,4 +153,28 @@ describe 'roundcube' do
       content.should match("\\$rcmail_config\\['password_query'\\] = 'SELECT foobar';")
     end
   end
+
+  describe 'ensures the logs directory is writable by the webserver' do
+    let(:params) { {:version => '1.0.0', :process => 'webserver'} }
+
+    it { should contain_file('/opt/roundcubemail-1.0.0/logs').with({
+        'ensure' => 'directory',
+        'owner'  => 'webserver',
+        'group'  => 'webserver',
+        'mode'   => '0644',
+      })
+    }
+  end
+
+  describe 'ensures the temp directory is writable by the webserver' do
+    let(:params) { {:version => '1.0.0', :process => 'webserver'} }
+
+    it { should contain_file('/opt/roundcubemail-1.0.0/temp').with({
+        'ensure' => 'directory',
+        'owner'  => 'webserver',
+        'group'  => 'webserver',
+        'mode'   => '0644',
+      })
+    }
+  end
 end

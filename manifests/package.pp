@@ -2,13 +2,15 @@
 #
 # The Roundcube software package.
 #
-class roundcube::package($version, $md5, $package_dir, $install_dir) {
+class roundcube::package($version, $md5, $package_dir, $install_dir, $process) {
   validate_string($version)
   validate_string($md5)
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
+  validate_string($process)
 
   $archive = "roundcubemail-${version}"
+  $target = "${install_dir}/${archive}"
   $download_url = "http://netcologne.dl.sourceforge.net/project/roundcubemail/roundcubemail/${version}/${archive}.tar.gz"
 
   archive { $archive:
@@ -23,9 +25,17 @@ class roundcube::package($version, $md5, $package_dir, $install_dir) {
 
   file { "${install_dir}/roundcubemail-current":
     ensure  => link,
-    target  => "${install_dir}/${archive}",
+    target  => $target,
     owner   => 'root',
     group   => 'root',
+    require => Archive[$archive],
+  }
+
+  file { ["${target}/logs", "${target}/temp"]:
+    ensure  => directory,
+    owner   => $process,
+    group   => $process,
+    mode    => '0644',
     require => Archive[$archive],
   }
 }
