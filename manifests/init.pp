@@ -76,31 +76,31 @@
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
 #
 class roundcube (
-  $version = params_lookup('version'),
-  $md5 = params_lookup('md5'),
-  $process = params_lookup('process'),
+  $version                   = $roundcube::params::version,
+  $md5                       = $roundcube::params::md5,
+  $process                   = $roundcube::params::process,
 
-  $package_dir = params_lookup('package_dir'),
-  $install_dir = params_lookup('install_dir'),
+  $package_dir               = $roundcube::params::package_dir,
+  $install_dir               = $roundcube::params::install_dir,
 
-  $db_type = params_lookup('db_type'),
-  $db_name = params_lookup('db_name'),
-  $db_host = params_lookup('db_host'),
-  $db_username = params_lookup('db_username'),
-  $db_password = params_lookup('db_password'),
+  $db_type                   = $roundcube::params::db_type,
+  $db_name                   = $roundcube::params::db_name,
+  $db_host                   = $roundcube::params::db_host,
+  $db_username               = $roundcube::params::db_username,
+  $db_password               = $roundcube::params::db_password,
 
-  $imap_host = params_lookup('imap_host'),
-  $imap_port = params_lookup('imap_port'),
-  $des_key = params_lookup('des_key'),
-  $plugins = params_lookup('plugins'),
-  $mime_param_folding = params_lookup('mime_param_folding'),
-  $language = params_lookup('language'),
-  $support_url = params_lookup('support_url'),
+  $imap_host                 = $roundcube::params::imap_host,
+  $imap_port                 = $roundcube::params::imap_port,
+  $des_key                   = $roundcube::params::des_key,
+  $plugins                   = $roundcube::params::plugins,
+  $mime_param_folding        = $roundcube::params::mime_param_folding,
+  $language                  = $roundcube::params::language,
+  $support_url               = $roundcube::params::support_url,
 
-  $password_minimum_length = params_lookup('password_minimum_length'),
-  $password_require_nonalpha = params_lookup('password_require_nonalpha'),
-  $password_db_dsn = params_lookup('password_db_dsn'),
-  $password_query = params_lookup('password_query')
+  $password_minimum_length   = $roundcube::params::password_minimum_length,
+  $password_require_nonalpha = $roundcube::params::password_require_nonalpha,
+  $password_db_dsn           = $roundcube::params::password_db_dsn,
+  $password_query            = $roundcube::params::password_query
 ) inherits roundcube::params {
   validate_string($version)
   validate_string($md5)
