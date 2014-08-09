@@ -2,6 +2,14 @@
 #
 # The Roundcube software package.
 #
+# === Authors
+#
+# Martin Meinhold <martin.meinhold@gmx.de>
+#
+# === Copyright
+#
+# Copyright 2013 Martin Meinhold, unless otherwise noted.
+#
 class roundcube::package($version, $md5, $package_dir, $install_dir, $process) {
   validate_string($version)
   validate_string($md5)

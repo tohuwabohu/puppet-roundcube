@@ -2,6 +2,14 @@
 #
 # Manage the Roundcube configuration files.
 #
+# === Authors
+#
+# Martin Meinhold <martin.meinhold@gmx.de>
+#
+# === Copyright
+#
+# Copyright 2013 Martin Meinhold, unless otherwise noted.
+#
 class roundcube::config($application_dir, $process) {
   validate_absolute_path($application_dir)
   validate_string($process)

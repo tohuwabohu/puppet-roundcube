@@ -2,6 +2,14 @@
 #
 # Manage Roundcube plugins.
 #
+# === Authors
+#
+# Martin Meinhold <martin.meinhold@gmx.de>
+#
+# === Copyright
+#
+# Copyright 2013 Martin Meinhold, unless otherwise noted.
+#
 class roundcube::plugins($package_dir, $install_dir) {
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
