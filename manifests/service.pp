@@ -15,7 +15,7 @@
 #
 class roundcube::service inherits roundcube {
 
-  file { $roundcube::application_dir:
+  file { $roundcube::document_root:
     ensure  => link,
     target  => $roundcube::install::target,
     owner   => 'root',

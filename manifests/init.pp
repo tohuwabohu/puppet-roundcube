@@ -119,7 +119,7 @@ class roundcube (
   validate_string($password_db_dsn)
   validate_string($password_query)
 
-  $application_dir = "${install_dir}/roundcubemail-current"
+  $document_root = "${install_dir}/roundcubemail-current"
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>
