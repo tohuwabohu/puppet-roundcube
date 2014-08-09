@@ -1,6 +1,6 @@
-# Class: roundcube::package
+# Class: roundcube::install
 #
-# The Roundcube software package.
+# Install the Roundcube software package.
 #
 # === Authors
 #
@@ -10,7 +10,7 @@
 #
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
 #
-class roundcube::package inherits roundcube {
+class roundcube::install inherits roundcube {
 
   $archive = "roundcubemail-${roundcube::version}"
   $target = "${roundcube::install_dir}/${archive}"
