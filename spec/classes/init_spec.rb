@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'roundcube' do
   let(:title) { 'roundcube' }
   let(:facts) { {:postgres_default_version => '9.2', :operatingsystem => 'Debian', :osfamily => 'Debian'} }
+  let(:archive_name) { 'roundcubemail-0.9.5' }
   let(:main_config_file) { '/opt/roundcubemail-0.9.5/config/main.inc.php' }
   let(:db_config_file) { '/opt/roundcubemail-0.9.5/config/db.inc.php' }
   let(:password_config_file) { '/opt/roundcubemail-0.9.5/plugins/password/config.inc.php' }
@@ -10,31 +11,31 @@ describe 'roundcube' do
   describe 'by default' do
     let(:params) { {} }
 
-    specify { should contain_class('roundcube::package').with_version('0.9.5') }
+    specify { should contain_archive(archive_name) }
   end
 
   describe 'installs custom version' do
     let(:params) { {:version => '1.2.3'} }
 
-    specify { should contain_class('roundcube::package').with_version('1.2.3') }
+    specify { should contain_archive('roundcubemail-1.2.3') }
   end
 
   describe 'uses custom archive hash' do
     let(:params) { {:md5 => '123'} }
 
-    specify { should contain_class('roundcube::package').with_md5('123') }
+    specify { should contain_archive(archive_name).with_digest_string('123') }
   end
 
   describe 'stores packages in custom directory' do
     let(:params) { {:package_dir => '/somewhere/else'} }
 
-    specify { should contain_class('roundcube::package').with_package_dir('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_src_target('/somewhere/else') }
   end
 
   describe 'installs application in custom directory' do
     let(:params) { {:install_dir => '/somewhere/else'} }
 
-    specify { should contain_class('roundcube::package').with_install_dir('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_target('/somewhere/else') }
   end
 
   describe 'creates symbolic link to current version' do

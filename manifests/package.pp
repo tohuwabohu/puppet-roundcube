@@ -10,28 +10,26 @@
 #
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
 #
-class roundcube::package($version, $md5, $package_dir, $install_dir, $process) {
-  validate_string($version)
-  validate_string($md5)
-  validate_absolute_path($package_dir)
-  validate_absolute_path($install_dir)
-  validate_string($process)
+class roundcube::package inherits roundcube {
 
-  $archive = "roundcubemail-${version}"
-  $target = "${install_dir}/${archive}"
-  $download_url = "http://netcologne.dl.sourceforge.net/project/roundcubemail/roundcubemail/${version}/${archive}.tar.gz"
+  $archive = "roundcubemail-${roundcube::version}"
+  $target = "${roundcube::install_dir}/${archive}"
+  $download_url = "http://netcologne.dl.sourceforge.net/project/roundcubemail/roundcubemail/${roundcube::version}/${archive}.tar.gz"
 
   archive { $archive:
     ensure        => present,
-    digest_string => $md5,
+    digest_string => $roundcube::md5,
     url           => $download_url,
-    target        => $install_dir,
-    src_target    => $package_dir,
+    target        => $roundcube::install_dir,
+    src_target    => $roundcube::package_dir,
     timeout       => 600,
-    require       => [File[$install_dir], File[$package_dir]],
+    require       => [
+      File[$roundcube::install_dir],
+      File[$roundcube::package_dir]
+    ],
   }
 
-  file { "${install_dir}/roundcubemail-current":
+  file { "${roundcube::install_dir}/roundcubemail-current":
     ensure  => link,
     target  => $target,
     owner   => 'root',
@@ -41,8 +39,8 @@ class roundcube::package($version, $md5, $package_dir, $install_dir, $process) {
 
   file { ["${target}/logs", "${target}/temp"]:
     ensure  => directory,
-    owner   => $process,
-    group   => $process,
+    owner   => $roundcube::process,
+    group   => $roundcube::process,
     mode    => '0644',
     require => Archive[$archive],
   }

@@ -121,13 +121,7 @@ class roundcube (
 
   $application_dir = "${install_dir}/roundcubemail-${version}"
 
-  class { 'roundcube::package':
-    version     => $version,
-    md5         => $md5,
-    package_dir => $package_dir,
-    install_dir => $install_dir,
-    process     => $process,
-  }
+  class { 'roundcube::package': }
 
   class { 'roundcube::plugins':
     package_dir => $package_dir,
