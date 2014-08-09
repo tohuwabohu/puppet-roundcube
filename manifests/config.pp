@@ -10,7 +10,7 @@
 #
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
 #
-class roundcube::config {
+class roundcube::config inherits roundcube {
 
   file { "${roundcube::application_dir}/config/db.inc.php":
     content => template('roundcube/db.inc.php.erb'),
