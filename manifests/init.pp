@@ -19,6 +19,9 @@
 # [*install_dir*]
 #   Set the directory where to install the web application.
 #
+# [*doucment_root*]
+#   Set the directory which should act as document root. It will be sym-linked to the current installation.
+#
 # [*db_type*]
 #   Set the type database (e.g. mysql or postgres).
 #
@@ -82,6 +85,7 @@ class roundcube (
 
   $package_dir               = $roundcube::params::package_dir,
   $install_dir               = $roundcube::params::install_dir,
+  $document_root             = $roundcube::params::document_root,
 
   $db_type                   = $roundcube::params::db_type,
   $db_name                   = $roundcube::params::db_name,
@@ -107,6 +111,7 @@ class roundcube (
   validate_string($process)
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
+  validate_absolute_path($document_root)
   validate_string($db_type)
   validate_string($db_name)
   validate_string($db_host)
@@ -118,8 +123,6 @@ class roundcube (
   validate_string($support_url)
   validate_string($password_db_dsn)
   validate_string($password_query)
-
-  $document_root = "${install_dir}/roundcubemail-current"
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>

@@ -13,15 +13,18 @@
 class roundcube::params {
   $version = '0.9.5'
   $md5 = '757f6ab3306d4abf8da6664ae65138d7'
-  $process = $::operatingsystem ? {
+  $process = $::osfamily ? {
     default => 'www-data',
   }
 
-  $package_dir = $::operatingsystem ? {
+  $package_dir = $::osfamily ? {
     default => '/var/cache/puppet/archives',
   }
-  $install_dir = $::operatingsystem ? {
+  $install_dir = $::osfamily ? {
     default => '/opt',
+  }
+  $document_root = $::osfamily ? {
+    default => '/var/www/roundcubemail',
   }
 
   # default configuration values

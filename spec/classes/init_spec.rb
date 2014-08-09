@@ -12,6 +12,11 @@ describe 'roundcube' do
     let(:params) { {} }
 
     specify { should contain_archive(archive_name) }
+    specify { should contain_file('/var/www/roundcubemail').with(
+        'ensure' => 'link',
+        'target' => '/opt/roundcubemail-0.9.5'
+      )
+    }
   end
 
   describe 'installs custom version' do
@@ -38,10 +43,14 @@ describe 'roundcube' do
     specify { should contain_archive(archive_name).with_target('/somewhere/else') }
   end
 
-  describe 'creates symbolic link to current version' do
-    let(:params) { {} }
+  describe 'should create symbolic link to specified document_root' do
+    let(:params) { { :document_root => '/path/to/document_root'} }
 
-    specify { should contain_file('/opt/roundcubemail-current').with_ensure('link').with_target('/opt/roundcubemail-0.9.5') }
+    specify { should contain_file('/path/to/document_root').with(
+        'ensure' => 'link',
+        'target' => '/opt/roundcubemail-0.9.5'
+      )
+    }
   end
 
   describe 'creates a database configuration file' do
