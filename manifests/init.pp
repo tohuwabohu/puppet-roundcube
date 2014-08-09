@@ -129,9 +129,5 @@ class roundcube (
     require     => Class['roundcube::package'],
   }
 
-  class { 'roundcube::config':
-    application_dir => $application_dir,
-    process         => $process,
-    require         => Class['roundcube::package'],
-  }
+  class { 'roundcube::config': }
 }
