@@ -14,7 +14,6 @@ class roundcube::install inherits roundcube {
 
   $archive = "roundcubemail-${roundcube::version}"
   $target = "${roundcube::install_dir}/${archive}"
-  $current = "${roundcube::install_dir}/roundcubemail-current"
   $download_url = "http://netcologne.dl.sourceforge.net/project/roundcubemail/roundcubemail/${roundcube::version}/${archive}.tar.gz"
 
   archive { $archive:
@@ -42,14 +41,6 @@ class roundcube::install inherits roundcube {
       Archive[$archive],
       File[$roundcube::package_dir],
     ],
-  }
-
-  file { $current:
-    ensure  => link,
-    target  => $target,
-    owner   => 'root',
-    group   => 'root',
-    require => Archive[$archive],
   }
 
   file { ["${target}/logs", "${target}/temp"]:
