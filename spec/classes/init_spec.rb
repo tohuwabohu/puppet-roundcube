@@ -44,13 +44,33 @@ describe 'roundcube' do
   end
 
   describe 'should create symbolic link to specified document_root' do
-    let(:params) { { :document_root => '/path/to/document_root'} }
+    let(:params) { {:document_root => '/path/to/document_root'} }
 
     specify { should contain_file('/path/to/document_root').with(
         'ensure' => 'link',
         'target' => '/opt/roundcubemail-0.9.5'
       )
     }
+  end
+
+  describe 'should not manage document_root if configured' do
+    let(:params) { {:document_root_manage => false} }
+
+    specify { should_not contain_file('/var/www/roundcubemail') }
+  end
+
+  describe 'should not manage document_root if configured (string version )' do
+    let(:params) { {:document_root_manage => 'false'} }
+
+    specify { should_not contain_file('/var/www/roundcubemail') }
+  end
+
+  describe 'should not accept invalid document_root_ensure' do
+    let(:params) { {:document_root_manage => 'invalid'} }
+
+    specify do
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /invalid/)
+    end
   end
 
   describe 'creates a database configuration file' do

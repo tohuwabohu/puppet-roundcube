@@ -19,8 +19,11 @@
 # [*install_dir*]
 #   Set the directory where to install the web application.
 #
-# [*doucment_root*]
+# [*document_root*]
 #   Set the directory which should act as document root. It will be sym-linked to the current installation.
+#
+# [*document_root_manage*]
+#   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
 # [*db_type*]
 #   Set the type database (e.g. mysql or postgres).
@@ -86,6 +89,7 @@ class roundcube (
   $package_dir               = $roundcube::params::package_dir,
   $install_dir               = $roundcube::params::install_dir,
   $document_root             = $roundcube::params::document_root,
+  $document_root_manage      = $roundcube::params::document_root_manage,
 
   $db_type                   = $roundcube::params::db_type,
   $db_name                   = $roundcube::params::db_name,
@@ -112,6 +116,9 @@ class roundcube (
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
   validate_absolute_path($document_root)
+  if $document_root_manage !~ /^true|false$/ {
+    fail("Class[Roundcube]: document_root_manage must be either true or false, got '${document_root_manage}'")
+  }
   validate_string($db_type)
   validate_string($db_name)
   validate_string($db_host)

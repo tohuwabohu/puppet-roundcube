@@ -23,6 +23,7 @@ class roundcube::params {
   $install_dir = $::osfamily ? {
     default => '/opt',
   }
+  $document_root_manage = true
   $document_root = $::osfamily ? {
     default => '/var/www/roundcubemail',
   }
