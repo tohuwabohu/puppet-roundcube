@@ -29,20 +29,6 @@ class roundcube::install inherits roundcube {
     ],
   }
 
-  # plugin version 1.6, 22nd October 2013
-  archive { 'markasjunk2':
-    ensure        => present,
-    digest_string => '96d6ded230ca1aaf9900036e67446bd3',
-    url           => 'http://www.tehinterweb.co.uk/roundcube/plugins/markasjunk2.tar.gz',
-    target        => "${target}/plugins",
-    src_target    => $roundcube::package_dir,
-    timeout       => 600,
-    require       => [
-      Archive[$archive],
-      File[$roundcube::package_dir],
-    ],
-  }
-
   file { ["${target}/logs", "${target}/temp"]:
     ensure  => directory,
     owner   => $roundcube::process,
