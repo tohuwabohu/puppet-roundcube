@@ -17,14 +17,14 @@ class roundcube::install inherits roundcube {
   $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}.tar.gz"
 
   archive { $archive:
-    ensure         => present,
-    digest_string  => $roundcube::md5,
-    url            => $download_url,
-    follow_remotes => true,
-    target         => $roundcube::install_dir,
-    src_target     => $roundcube::package_dir,
-    timeout        => 600,
-    require        => [
+    ensure           => present,
+    digest_string    => $roundcube::md5,
+    url              => $download_url,
+    follow_redirects => true,
+    target           => $roundcube::install_dir,
+    src_target       => $roundcube::package_dir,
+    timeout          => 600,
+    require          => [
       File[$roundcube::install_dir],
       File[$roundcube::package_dir]
     ],
