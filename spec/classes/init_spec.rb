@@ -25,10 +25,16 @@ describe 'roundcube' do
     specify { should contain_archive('roundcubemail-1.2.3') }
   end
 
-  describe 'uses custom archive hash' do
-    let(:params) { {:md5 => '123'} }
+  describe 'uses custom archive checksum' do
+    let(:params) { {:checksum => '123'} }
 
     specify { should contain_archive(archive_name).with_digest_string('123') }
+  end
+
+  describe 'uses custom archive checksum type' do
+    let(:params) { {:checksum_type => 'sha1'} }
+
+    specify { should contain_archive(archive_name).with_digest_type('sha1') }
   end
 
   describe 'stores packages in custom directory' do

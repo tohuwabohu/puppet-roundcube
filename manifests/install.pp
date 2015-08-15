@@ -18,7 +18,8 @@ class roundcube::install inherits roundcube {
 
   archive { $archive:
     ensure           => present,
-    digest_string    => $roundcube::md5,
+    digest_string    => $roundcube::checksum,
+    digest_type      => $roundcube::checksum_type,
     url              => $download_url,
     follow_redirects => true,
     target           => $roundcube::install_dir,

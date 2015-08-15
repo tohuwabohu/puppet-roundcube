@@ -83,7 +83,8 @@
 #
 class roundcube (
   $version                   = $roundcube::params::version,
-  $md5                       = $roundcube::params::md5,
+  $checksum                  = $roundcube::params::checksum,
+  $checksum_type             = $roundcube::params::checksum_type,
   $process                   = $roundcube::params::process,
 
   $package_dir               = $roundcube::params::package_dir,

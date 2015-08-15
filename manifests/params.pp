@@ -12,7 +12,9 @@
 #
 class roundcube::params {
   $version = '0.9.5'
-  $md5 = '757f6ab3306d4abf8da6664ae65138d7'
+  $checksum = 'f5fbb39f11ed5bfb130e130660dacc125c9ee3eaa0d45c506b82f89fa1808326'
+  $checksum_type = 'sha256'
+
   $process = $::osfamily ? {
     default => 'www-data',
   }
