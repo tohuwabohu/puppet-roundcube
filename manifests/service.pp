@@ -17,10 +17,10 @@ class roundcube::service inherits roundcube {
 
   if str2bool($roundcube::document_root_manage) {
     file { $roundcube::document_root:
-      ensure  => link,
-      target  => $roundcube::install::target,
-      owner   => 'root',
-      group   => 'root',
+      ensure => link,
+      target => $roundcube::install::target,
+      owner  => 'root',
+      group  => 'root',
     }
   }
 }
