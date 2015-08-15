@@ -1,2 +1,5 @@
-/spec/fixtures/
-/metadata.json
+/spec/fixtures/manifests
+/spec/fixtures/modules
+
+# https://tickets.puppetlabs.com/browse/PUP-3444
+vendor/**
