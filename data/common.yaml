@@ -1,0 +1,32 @@
+---
+roundcube::version: 0.9.5
+roundcube::checksum: f5fbb39f11ed5bfb130e130660dacc125c9ee3eaa0d45c506b82f89fa1808326
+roundcube::checksum_type: sha256
+
+roundcube::package_dir: /var/cache/puppet/archives
+roundcube::install_dir: /opt
+
+roundcube::document_root_manage: true
+roundcube::document_root: /var/www/roundcubemail
+roundcube::process: www-data
+
+
+# default configuration values
+roundcube::db_type: postgresql
+roundcube::db_name: roundcubemail
+roundcube::db_host: localhost
+roundcube::db_username: roundcube
+roundcube::db_password: pass
+
+roundcube::imap_host: ""
+roundcube::imap_port: 143
+roundcube::des_key: "rcmail-!24ByteDESkey*Str"
+roundcube::plugins: []
+roundcube::mime_param_folding: 1
+roundcube::language: ""
+roundcube::support_url: ""
+
+roundcube::password_minimum_length: 0
+roundcube::password_require_nonalpha: false
+roundcube::password_db_dsn: ""
+roundcube::password_query: "SELECT update_passwd(%c, %u)"

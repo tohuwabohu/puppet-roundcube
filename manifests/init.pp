@@ -82,35 +82,35 @@
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
 #
 class roundcube (
-  $version                   = $roundcube::params::version,
-  $checksum                  = $roundcube::params::checksum,
-  $checksum_type             = $roundcube::params::checksum_type,
-  $process                   = $roundcube::params::process,
+  $version,
+  $checksum,
+  $checksum_type,
+  $process,
 
-  $package_dir               = $roundcube::params::package_dir,
-  $install_dir               = $roundcube::params::install_dir,
-  $document_root             = $roundcube::params::document_root,
-  $document_root_manage      = $roundcube::params::document_root_manage,
+  $package_dir,
+  $install_dir,
+  $document_root,
+  $document_root_manage,
 
-  $db_type                   = $roundcube::params::db_type,
-  $db_name                   = $roundcube::params::db_name,
-  $db_host                   = $roundcube::params::db_host,
-  $db_username               = $roundcube::params::db_username,
-  $db_password               = $roundcube::params::db_password,
+  $db_type,
+  $db_name,
+  $db_host,
+  $db_username,
+  $db_password,
 
-  $imap_host                 = $roundcube::params::imap_host,
-  $imap_port                 = $roundcube::params::imap_port,
-  $des_key                   = $roundcube::params::des_key,
-  $plugins                   = $roundcube::params::plugins,
-  $mime_param_folding        = $roundcube::params::mime_param_folding,
-  $language                  = $roundcube::params::language,
-  $support_url               = $roundcube::params::support_url,
+  $imap_host,
+  $imap_port,
+  $des_key,
+  $plugins,
+  $mime_param_folding,
+  $language,
+  $support_url,
 
-  $password_minimum_length   = $roundcube::params::password_minimum_length,
-  $password_require_nonalpha = $roundcube::params::password_require_nonalpha,
-  $password_db_dsn           = $roundcube::params::password_db_dsn,
-  $password_query            = $roundcube::params::password_query
-) inherits roundcube::params {
+  $password_minimum_length,
+  $password_require_nonalpha,
+  $password_db_dsn,
+  $password_query
+) {
   validate_string($version)
   validate_string($md5)
   validate_string($process)

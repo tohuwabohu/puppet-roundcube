@@ -3,6 +3,9 @@ fixtures:
     archive:
       repo: "https://github.com/camptocamp/puppet-archive.git"
       ref: "0.3.1"
+    module_data:
+      repo: "https://github.com/ripienaar/puppet-module-data.git"
+      ref: "0.0.3"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
       ref: "4.1.0"
