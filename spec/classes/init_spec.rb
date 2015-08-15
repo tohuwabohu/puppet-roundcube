@@ -6,8 +6,7 @@ describe 'roundcube' do
   let(:current_version) { '1.1.2' }
   let(:archive_name) { "roundcubemail-#{current_version}-complete" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
-  let(:main_config_file) { "#{install_dir}/config/main.inc.php" }
-  let(:db_config_file) { "#{install_dir}/config/db.inc.php" }
+  let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:password_config_file) { "#{install_dir}/plugins/password/config.inc.php" }
 
   describe 'by default' do
@@ -84,55 +83,55 @@ describe 'roundcube' do
   describe 'creates a database configuration file' do
     let(:params) { {} }
 
-    specify { should contain_file(db_config_file) }
+    specify { should contain_file(config_file) }
   end
 
   describe 'creates database configuration file with proper database url' do
     let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_username => 'user', :db_password => 'foo<bar'} }
 
-    specify { should contain_file(db_config_file).with_content(/^\$rcmail_config\['db_dsnw'\] = 'pgsql:\/\/user:foo%3Cbar@example.com\/name';$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['db_dsnw'\] = 'pgsql:\/\/user:foo%3Cbar@example.com\/name';$/) }
   end
 
   describe 'creates configuration file with proper imap host' do
     let(:params) { {:imap_host => 'ssl://localhost'} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['default_host'\] = 'ssl:\/\/localhost';$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['default_host'\] = 'ssl:\/\/localhost';$/) }
   end
 
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['default_port'\] = 993;$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['default_port'\] = 993;$/) }
   end
 
   describe 'creates configuration file with salt' do
     let(:params) { {:des_key => 'some-salt'} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['des_key'\] = 'some-salt';$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['des_key'\] = 'some-salt';$/) }
   end
 
   describe 'creates configuration file with enabled plugins' do
     let(:params) { {:plugins => ['plugin1', 'plugin2']} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['plugins'\] = array\('plugin1', 'plugin2'\);$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['plugins'\] = array\('plugin1', 'plugin2'\);$/) }
   end
 
   describe 'creates configuration file with support url' do
     let(:params) { {:support_url => 'http://example.com'} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['support_url'\] = 'http:\/\/example.com';$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['support_url'\] = 'http:\/\/example.com';$/) }
   end
 
   describe 'create configuration file with language auto-detection' do
     let(:params) { {} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['language'\] = null;$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['language'\] = null;$/) }
   end
 
   describe 'create configuration file with custom language' do
     let(:params) { {:language => 'en_US'} }
 
-    specify { should contain_file(main_config_file).with_content(/^\$rcmail_config\['language'\] = 'en_US';$/) }
+    specify { should contain_file(config_file).with_content(/^\$config\['language'\] = 'en_US';$/) }
   end
 
   describe 'create password plugin configuration file with different minimal length' do

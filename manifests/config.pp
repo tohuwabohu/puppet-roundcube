@@ -14,15 +14,8 @@ class roundcube::config inherits roundcube {
 
   $application_dir = $roundcube::install::target
 
-  file { "${application_dir}/config/db.inc.php":
-    content => template('roundcube/db.inc.php.erb'),
-    owner   => $roundcube::process,
-    group   => $roundcube::process,
-    mode    => '0440',
-  }
-
-  file { "${application_dir}/config/main.inc.php":
-    content => template('roundcube/main.inc.php.erb'),
+  file { "${application_dir}/config/config.inc.php":
+    content => template('roundcube/config.inc.php.erb'),
     owner   => 'root',
     group   => 'root',
     mode    => '0644',

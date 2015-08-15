@@ -102,14 +102,15 @@ class roundcube (
   $imap_port,
   $des_key,
   $plugins,
-  $mime_param_folding,
+  $mime_param_folding, # Deprecated
   $language,
   $support_url,
 
   $password_minimum_length,
   $password_require_nonalpha,
   $password_db_dsn,
-  $password_query
+  $password_query,
+  $options_hash = { },
 ) {
   validate_string($version)
   validate_string($checksum)
