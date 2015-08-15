@@ -112,7 +112,8 @@ class roundcube (
   $password_query
 ) {
   validate_string($version)
-  validate_string($md5)
+  validate_string($checksum)
+  validate_string($checksum_type)
   validate_string($process)
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
