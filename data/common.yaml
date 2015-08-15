@@ -1,6 +1,6 @@
 ---
-roundcube::version: 0.9.5
-roundcube::checksum: f5fbb39f11ed5bfb130e130660dacc125c9ee3eaa0d45c506b82f89fa1808326
+roundcube::version: 1.1.2
+roundcube::checksum: 237afc9807291efd7c3550c83ca82677a9af72855b6f48733d9e55d6d84fdae1
 roundcube::checksum_type: sha256
 
 roundcube::package_dir: /var/cache/puppet/archives
