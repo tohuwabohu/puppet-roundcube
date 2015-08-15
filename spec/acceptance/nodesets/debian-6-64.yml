@@ -7,6 +7,6 @@ HOSTS:
     box: puppetlabs/debian-6.0.10-64-puppet
 
 CONFIG:
-  log_level: debug
+  log_level: info
   trace_limit: 100
   type: git

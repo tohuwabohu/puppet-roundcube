@@ -7,6 +7,6 @@ HOSTS:
     box: puppetlabs/ubuntu-14.04-64-puppet
 
 CONFIG:
-  log_level: debug
+  log_level: info
   trace_limit: 100
   type: git
