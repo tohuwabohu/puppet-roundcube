@@ -42,9 +42,6 @@ $config = array();
 // NOTE: for SQLite use absolute path: 'sqlite:////full/path/to/sqlite.db?mode=0646'
 $config['db_dsnw'] = '<%= dsn %>';
 
-// List of active plugins (in plugins/ directory)
-$config['plugins'] = array(<%= @plugins.map! { |p| "'#{p}'" }.join(', ') %>);
-
 // the default locale setting (leave empty for auto-detection)
 // RFC1766 formatted language name like en_US, de_DE, de_CH, fr_FR, pt_BR
 $config['language'] = <%=
@@ -53,5 +50,9 @@ $config['language'] = <%=
 
 <% @options.keys.sort.each do |key| -%>
 <% value = @options[key] -%>
+  <%- if value.is_a? Array -%>
+$config['<%= key %>'] = array(<%= value.map! { |element| "'#{element}'" }.join(', ') %>);
+  <%- else -%>
 $config['<%= key %>'] = <%= (value.is_a? String) ? "'#{value}'" : value %>;
+  <%- end -%>
 <% end -%>

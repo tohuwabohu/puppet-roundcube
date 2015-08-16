@@ -18,6 +18,7 @@ class roundcube::config inherits roundcube {
     'default_port' => $roundcube::imap_port,
     'des_key'      => $roundcube::des_key,
     'support_url'  => $roundcube::support_url,
+    'plugins'      => $roundcube::plugins,
   }
 
   $options = merge($options_defaults, $roundcube::options_hash)
