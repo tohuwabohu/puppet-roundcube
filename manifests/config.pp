@@ -28,7 +28,7 @@ class roundcube::config inherits roundcube {
     mode    => '0440',
   }
 
-  file { "/etc/cron.daily/roundcube-cleandb":
+  file { '/etc/cron.daily/roundcube-cleandb':
     ensure => link,
     target => "${application_dir}/bin/cleandb.sh"
   }
