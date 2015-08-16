@@ -12,7 +12,7 @@ roundcube::process: www-data
 
 
 # default configuration values
-roundcube::db_type: postgresql
+roundcube::db_type: pgsql
 roundcube::db_name: roundcubemail
 roundcube::db_host: localhost
 roundcube::db_username: roundcube

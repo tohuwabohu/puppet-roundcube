@@ -1,11 +1,7 @@
 <%
     require "erb"
 
-    db_type = case @db_type.to_s
-      when 'mysql' then 'mysql'
-      when 'postgresql' then 'pgsql'
-      else 'unknown'
-    end
+    db_type = @db_type.to_s
     db_name = @db_name.to_s
     db_host = @db_host.to_s
     db_username = @db_username.to_s
