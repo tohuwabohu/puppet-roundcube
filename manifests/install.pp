@@ -45,5 +45,6 @@ class roundcube::install inherits roundcube {
     recurse => true,
     force   => true,
     backup  => false,
+    require => Archive[$archive],
   }
 }
