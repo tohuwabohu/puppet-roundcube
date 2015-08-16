@@ -62,7 +62,8 @@
 #   Set the default locale setting (leave undef / empty for auto-detection).
 #
 # [*support_url*]
-#   Set an URL where a user can get support for this Roundcube installation.
+#   Set an URL where a user can get support for this Roundcube installation. PLEASE DO NOT LINK TO THE ROUNDCUBE.NET
+#   WEBSITE HERE!
 #
 # [*password_minimum_length*]
 #   Set minimum lenght a new password must have.
