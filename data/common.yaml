@@ -22,7 +22,6 @@ roundcube::imap_host: ""
 roundcube::imap_port: 143
 roundcube::des_key: "rcmail-!24ByteDESkey*Str"
 roundcube::plugins: []
-roundcube::mime_param_folding: 1
 roundcube::language: ""
 roundcube::support_url: ""
 

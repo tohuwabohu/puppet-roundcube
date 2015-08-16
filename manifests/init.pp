@@ -106,7 +106,6 @@ class roundcube (
   $imap_port,
   $des_key,
   $plugins,
-  $mime_param_folding, # Deprecated
   $language,
   $support_url,
 
