@@ -33,14 +33,14 @@ describe 'by default' do
     it { should be_directory }
     it { should be_owned_by 'www-data' }
     it { should be_grouped_into 'www-data' }
-    it { should be_mode 755 }
+    it { should be_mode 750 }
   end
 
   describe file('/var/www/roundcubemail/temp') do
     it { should be_directory }
     it { should be_owned_by 'www-data' }
     it { should be_grouped_into 'www-data' }
-    it { should be_mode 755 }
+    it { should be_mode 750 }
   end
 
   describe file('/etc/cron.daily/roundcube-cleandb') do

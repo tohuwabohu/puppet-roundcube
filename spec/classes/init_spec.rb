@@ -166,7 +166,7 @@ describe 'roundcube' do
         'ensure' => 'directory',
         'owner'  => 'webserver',
         'group'  => 'webserver',
-        'mode'   => '0644',
+        'mode'   => '0640',
       })
     }
   end
@@ -178,7 +178,7 @@ describe 'roundcube' do
         'ensure' => 'directory',
         'owner'  => 'webserver',
         'group'  => 'webserver',
-        'mode'   => '0644',
+        'mode'   => '0640',
       })
     }
   end

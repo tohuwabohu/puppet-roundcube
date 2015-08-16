@@ -35,7 +35,7 @@ class roundcube::install inherits roundcube {
     ensure  => directory,
     owner   => $roundcube::process,
     group   => $roundcube::process,
-    mode    => '0644',
+    mode    => '0640',
     require => Archive[$archive],
   }
 
