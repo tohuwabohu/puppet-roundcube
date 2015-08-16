@@ -25,6 +25,10 @@ describe 'by default' do
     apply_manifest(manifest, :catch_changes => true)
   end
 
+  describe file('/var/www/roundcubemail/installer') do
+    it { should_not be_directory }
+  end
+
   describe file('/var/www/roundcubemail/logs') do
     it { should be_directory }
     it { should be_owned_by 'www-data' }

@@ -38,4 +38,12 @@ class roundcube::install inherits roundcube {
     mode    => '0644',
     require => Archive[$archive],
   }
+
+  file { "${target}/installer":
+    ensure  => absent,
+    purge   => true,
+    recurse => true,
+    force   => true,
+    backup  => false,
+  }
 }
