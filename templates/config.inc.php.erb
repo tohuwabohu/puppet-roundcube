@@ -42,33 +42,6 @@ $config = array();
 // NOTE: for SQLite use absolute path: 'sqlite:////full/path/to/sqlite.db?mode=0646'
 $config['db_dsnw'] = '<%= dsn %>';
 
-// SMTP server host (for sending mails).
-// To use SSL/TLS connection, enter hostname with prefix ssl:// or tls://
-// If left blank, the PHP mail() function is used
-// Supported replacement variables:
-// %h - user's IMAP hostname
-// %n - hostname ($_SERVER['SERVER_NAME'])
-// %t - hostname without the first part
-// %d - domain (http hostname $_SERVER['HTTP_HOST'] without the first part)
-// %z - IMAP domain (IMAP hostname without the first part)
-// For example %n = mail.domain.tld, %t = domain.tld
-$config['smtp_server'] = '';
-
-// SMTP port (default is 25; use 587 for STARTTLS or 465 for the
-// deprecated SSL over SMTP (aka SMTPS))
-$config['smtp_port'] = 25;
-
-// SMTP username (if required) if you use %u as the username Roundcube
-// will use the current username for login
-$config['smtp_user'] = '';
-
-// SMTP password (if required) if you use %p as the password Roundcube
-// will use the current user's password for login
-$config['smtp_pass'] = '';
-
-// Name your service. This is displayed on the login screen and in the window title
-$config['product_name'] = 'Roundcube Webmail';
-
 // List of active plugins (in plugins/ directory)
 $config['plugins'] = array(<%= @plugins.map! { |p| "'#{p}'" }.join(', ') %>);
 
