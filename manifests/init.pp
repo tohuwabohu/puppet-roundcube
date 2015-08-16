@@ -7,8 +7,11 @@
 # [*version*]
 #   Set the version of the web application to be installed.
 #
-# [*md5*]
-#   Set the MD5 hash sum of the web application's archive file.
+# [*checksum*]
+#   Set the checksum of the web application's archive file.
+#
+# [*checksum_type*]
+#   Set the type of checksum.
 #
 # [*process*]
 #   Set the process user that is used to execute the application; in this case the php interpreter.
