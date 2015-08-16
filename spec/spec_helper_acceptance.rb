@@ -16,6 +16,9 @@ RSpec.configure do |c|
       on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version 4.3.2')
       on host, puppet('module', 'install', 'ripienaar-module_data', '--version 0.0.3')
       on host, puppet('module', 'install', 'camptocamp-archive', '--version 0.3.1')
+
+      # Install test dependencies
+      on host, puppet('module', 'install', 'puppetlabs-apache', '--version 1.6.0')
     end
   end
 end

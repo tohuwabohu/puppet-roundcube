@@ -7,7 +7,11 @@
     db_username = @db_username.to_s
     db_password = @db_password.to_s
 
-    dsn = db_type + '://' + db_username + ':' + ERB::Util.url_encode(db_password) + '@' + db_host + '/' + db_name
+    if db_username.empty? && db_password.empty?
+      dsn = db_type + '://' + db_host + '/' + db_name
+    else
+      dsn = db_type + '://' + db_username + ':' + ERB::Util.url_encode(db_password) + '@' + db_host + '/' + db_name
+    end
 -%>
 <?php /* This file is managed by Puppet. */ ?>
 <?php
