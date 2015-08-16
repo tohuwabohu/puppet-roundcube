@@ -42,4 +42,10 @@ describe 'by default' do
     it { should be_grouped_into 'www-data' }
     it { should be_mode 755 }
   end
+
+  describe file('/etc/cron.daily/roundcube-cleandb') do
+    it { should be_file }
+    it { should be_readable }
+    it { should be_executable }
+  end
 end
