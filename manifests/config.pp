@@ -13,6 +13,13 @@
 class roundcube::config inherits roundcube {
 
   $application_dir = $roundcube::install::target
+  $options_defaults = {
+    'default_host' => $roundcube::imap_host,
+    'default_port' => $roundcube::imap_port,
+    'des_key'      => $roundcube::des_key,
+  }
+
+  $options = merge($options_defaults, $roundcube::options_hash)
 
   file { "${application_dir}/config/config.inc.php":
     content => template('roundcube/config.inc.php.erb'),

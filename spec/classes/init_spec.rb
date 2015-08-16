@@ -101,7 +101,8 @@ describe 'roundcube' do
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['default_port'\] = 993;$/) }
+    # for some weird reason, the number is converted into a string ...
+    specify { should contain_file(config_file).with_content(/^\$config\['default_port'\] = '993';$/) }
   end
 
   describe 'creates configuration file with salt' do
