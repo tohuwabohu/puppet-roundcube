@@ -4,7 +4,7 @@ describe 'roundcube' do
   let(:title) { 'roundcube' }
   let(:facts) { {:postgres_default_version => '9.2', :operatingsystem => 'Debian', :osfamily => 'Debian'} }
   let(:current_version) { '1.1.2' }
-  let(:archive_name) { "roundcubemail-#{current_version}-complete" }
+  let(:archive_name) { "roundcubemail-#{current_version}" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:password_config_file) { "#{install_dir}/plugins/password/config.inc.php" }
@@ -23,7 +23,7 @@ describe 'roundcube' do
   describe 'installs custom version' do
     let(:params) { {:version => '1.2.3'} }
 
-    specify { should contain_archive('roundcubemail-1.2.3-complete') }
+    specify { should contain_archive('roundcubemail-1.2.3') }
   end
 
   describe 'uses custom archive checksum' do

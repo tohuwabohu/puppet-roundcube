@@ -12,9 +12,9 @@
 #
 class roundcube::install inherits roundcube {
 
-  $archive = "roundcubemail-${roundcube::version}-complete"
-  $target = "${roundcube::install_dir}/roundcubemail-${roundcube::version}"
-  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}.tar.gz"
+  $archive = "roundcubemail-${roundcube::version}"
+  $target = "${roundcube::install_dir}/${archive}"
+  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}-complete.tar.gz"
 
   archive { $archive:
     ensure           => present,
