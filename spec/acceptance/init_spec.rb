@@ -24,4 +24,18 @@ describe 'by default' do
   specify 'should be idempotent' do
     apply_manifest(manifest, :catch_changes => true)
   end
+
+  describe file('/var/www/roundcubemail/logs') do
+    it { should be_directory }
+    it { should be_owned_by 'www-data' }
+    it { should be_grouped_into 'www-data' }
+    it { should be_mode 755 }
+  end
+
+  describe file('/var/www/roundcubemail/temp') do
+    it { should be_directory }
+    it { should be_owned_by 'www-data' }
+    it { should be_grouped_into 'www-data' }
+    it { should be_mode 755 }
+  end
 end
