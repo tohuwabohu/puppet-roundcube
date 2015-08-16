@@ -25,9 +25,9 @@ class roundcube::config inherits roundcube {
 
   file { "${application_dir}/config/config.inc.php":
     content => template('roundcube/config.inc.php.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
+    owner   => $roundcube::process,
+    group   => $roundcube::process,
+    mode    => '0440',
   }
 
   file { "${application_dir}/plugins/password/config.inc.php":
