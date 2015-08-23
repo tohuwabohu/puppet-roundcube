@@ -9,6 +9,10 @@ RSpec.configure do |c|
 
   c.before :suite do
     hosts.each do |host|
+      if fact('operatingsystem') == 'Ubuntu'
+        on host, 'apt-get update' # Ubuntu removes outdated packages; this ensures the index is fresh
+      end
+
       # Install module
       copy_module_to(host, :source => proj_root, :module_name => 'roundcube', :ignore_list => ignore_list)
 
