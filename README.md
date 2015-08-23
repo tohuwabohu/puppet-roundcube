@@ -2,7 +2,7 @@
 
 ##Overview
 
-Puppet module to install and manage Roundcube, the web-base email client.
+Puppet module to install and manage [Roundcube](http://roundcube.net/), the web-base email client.
 
 ##Usage
 
