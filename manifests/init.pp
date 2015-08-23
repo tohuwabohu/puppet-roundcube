@@ -87,19 +87,19 @@ class roundcube (
   $document_root,
   $document_root_manage,
 
-  $db_dsn      = undef,
-  $db_type     = 'pgsql',
-  $db_name     = 'roundcubemail',
-  $db_host     = 'localhost',
-  $db_username = 'roundcube',
-  $db_password = 'pass',
+  $db_dsn       = undef,
+  $db_type      = 'pgsql',
+  $db_name      = 'roundcubemail',
+  $db_host      = 'localhost',
+  $db_username  = 'roundcube',
+  $db_password  = 'pass',
 
-  $imap_host   = 'localhost',
-  $imap_port   = 143,
-  $des_key     = 'rcmail-!24ByteDESkey*Str',
-  $plugins     = [],
+  $imap_host    = 'localhost',
+  $imap_port    = 143,
+  $des_key      = 'rcmail-!24ByteDESkey*Str',
+  $plugins      = [],
 
-  $options_hash = { },
+  $options_hash = {},
 ) {
   validate_string($version)
   validate_string($checksum)
