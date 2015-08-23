@@ -37,28 +37,33 @@
 #
 # [*db_type*]
 #   Set the type database (e.g. mysql or pgsql). See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php
-#   for a reference of supported types.
+#   for a reference of supported types. Defaults to `pgsql`.
 #
 # [*db_name*]
-#   Set the name of the database.
+#   Set the name of the database. Defaults to `roundcubemail`.
 #
 # [*db_host*]
-#   Set the hostname where the database is running. Puppet can only manage databases on the local host.
+#   Set the hostname where the database is running. Puppet can only manage databases on the local host. Defaults to
+#   `localhost`.
 #
 # [*db_username*]
-#   Set the username used to connect to the database.
+#   Set the username used to connect to the database. Defaults to `roundcube`.
 #
 # [*db_password*]
-#   Set the password used to authenticate the database user. The module will encode any special characters.
+#   Set the password used to authenticate the database user. The module will encode any special characters. Defaults to
+#   `pass`.
 #
 # [*imap_host*]
-#   Set the IMAP mail host chosen to perform the log-in (default_host configuration parameter).
+#   Set the IMAP mail host chosen to perform the log-in (`default_host` configuration parameter). Defaults to
+#   `localhost`.
 #
 # [*imap_port*]
-#   Set the TCP port used for IMAP connections. Defaults to 143.
+#   Set the TCP port used for IMAP connections. Defaults to `143`.
 #
 # [*des_key*]
-#   Set key used to encrypt the users imap password which is stored.
+#   Set key used to encrypt the users' IMAP password which is stored in the session record (and the client cookie if
+#   remember password is enabled). Please provide a string of exactly 24 chars. YOUR KEY MUST BE DIFFERENT THAN THE
+#   SAMPLE VALUE FOR SECURITY REASONS.
 #
 # [*plugins*]
 #   List of active plugins (in plugins/ directory).
@@ -86,18 +91,18 @@ class roundcube (
   $document_root,
   $document_root_manage,
 
-  $db_dsn = undef,
-  $db_type,
-  $db_name,
-  $db_host,
-  $db_username,
-  $db_password,
+  $db_dsn      = undef,
+  $db_type     = 'pgsql',
+  $db_name     = 'roundcubemail',
+  $db_host     = 'localhost',
+  $db_username = 'roundcube',
+  $db_password = 'pass',
 
-  $imap_host,
-  $imap_port,
-  $des_key,
-  $plugins,
-  $support_url,
+  $imap_host   = 'localhost',
+  $imap_port   = 143,
+  $des_key     = 'rcmail-!24ByteDESkey*Str',
+  $plugins     = [],
+  $support_url = '',
 
   $options_hash = { },
 ) {

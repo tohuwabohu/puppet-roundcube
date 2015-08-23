@@ -9,17 +9,3 @@ roundcube::install_dir: /opt
 roundcube::document_root_manage: true
 roundcube::document_root: /var/www/roundcubemail
 roundcube::process: www-data
-
-
-# default configuration values
-roundcube::db_type: pgsql
-roundcube::db_name: roundcubemail
-roundcube::db_host: localhost
-roundcube::db_username: roundcube
-roundcube::db_password: pass
-
-roundcube::imap_host: ""
-roundcube::imap_port: 143
-roundcube::des_key: "rcmail-!24ByteDESkey*Str"
-roundcube::plugins: []
-roundcube::support_url: ""
