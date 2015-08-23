@@ -64,7 +64,7 @@ class roundcube::plugins::password (
     }
 
     File_line {
-      path  => $config_file,
+      path => $config_file,
     }
 
     file_line { "${config_file}__password_minimum_length":
