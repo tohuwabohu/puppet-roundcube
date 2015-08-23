@@ -28,8 +28,16 @@
 # [*document_root_manage*]
 #   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
+# [*db_dsn*]
+#   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
+#   override the other `db_*` parameters. See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php for
+#   examples.
+#
+#   Note: please make sure any special characters are properly encoded (e.g. use stdlib's uriescape function).
+#
 # [*db_type*]
-#   Set the type database (e.g. mysql or postgres).
+#   Set the type database (e.g. mysql or pgsql). See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php
+#   for a reference of supported types.
 #
 # [*db_name*]
 #   Set the name of the database.
@@ -78,6 +86,7 @@ class roundcube (
   $document_root,
   $document_root_manage,
 
+  $db_dsn = undef,
   $db_type,
   $db_name,
   $db_host,

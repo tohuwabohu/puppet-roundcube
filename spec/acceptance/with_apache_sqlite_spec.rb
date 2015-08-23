@@ -37,11 +37,7 @@ describe 'with Apache + SQLite' do
       }
 
       class { 'roundcube':
-        db_type => 'sqlite',
-        db_host => '',
-        db_name => '/tmp/roundcube.db?mode=0646',
-        db_username => '',
-        db_password => '',
+        db_dsn => 'sqlite:////tmp/roundcube.db?mode=0646',
       }
     EOS
   }

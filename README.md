@@ -33,6 +33,14 @@ class { 'roundcube':
 }
 ```
 
+or specify the database DSN directly (e.g. when using SQLite)
+
+```
+class { 'roundcube':
+  db_dsn => 'sqlite:////var/lib/database/roundcube.db?mode=0646',
+}
+```
+
 Specify a couple of plugins to activate
 
 ```

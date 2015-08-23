@@ -13,7 +13,17 @@
 class roundcube::config inherits roundcube {
 
   $application_dir = $roundcube::install::target
+
+  if empty($roundcube::db_dsn) {
+    $password = uriescape($roundcube::db_password)
+    $db_dsnw = "${db_type}://${db_username}:${password}@${db_host}/${db_name}"
+  }
+  else {
+    $db_dsnw = $roundcube::db_dsn
+  }
+
   $options_defaults = {
+    'db_dsnw'      => $db_dsnw,
     'default_host' => $roundcube::imap_host,
     'default_port' => $roundcube::imap_port,
     'des_key'      => $roundcube::des_key,
