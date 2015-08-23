@@ -7,7 +7,6 @@ describe 'roundcube' do
   let(:archive_name) { "roundcubemail-#{current_version}" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
-  let(:password_config_file) { "#{install_dir}/plugins/password/config.inc.php" }
 
   describe 'by default' do
     let(:params) { {} }
