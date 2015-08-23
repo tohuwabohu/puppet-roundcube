@@ -33,6 +33,7 @@ describe 'with Apache + SQLite' do
       package { 'php5-sqlite':
         ensure  => installed,
         require => Class['apache'],
+        notify  => Service['httpd'],
       }
 
       class { 'roundcube':
