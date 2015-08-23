@@ -119,6 +119,7 @@ class roundcube (
   validate_string($imap_host)
   validate_string($des_key)
   validate_array($plugins)
+  validate_hash($options_hash)
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>
