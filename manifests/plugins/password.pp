@@ -60,7 +60,8 @@ class roundcube::plugins::password (
 
   if empty($config_file_template) {
     file { $config_file:
-      source => "${application_dir}/plugins/password/config.inc.php.dist",
+      source  => "${application_dir}/plugins/password/config.inc.php.dist",
+      replace => false,
     }
 
     File_line {
