@@ -68,10 +68,6 @@
 # [*plugins*]
 #   List of active plugins (in plugins/ directory).
 #
-# [*support_url*]
-#   Set an URL where a user can get support for this Roundcube installation. PLEASE DO NOT LINK TO THE ROUNDCUBE.NET
-#   WEBSITE HERE!
-#
 # === Authors
 #
 # Martin Meinhold <martin.meinhold@gmx.de>
@@ -102,7 +98,6 @@ class roundcube (
   $imap_port   = 143,
   $des_key     = 'rcmail-!24ByteDESkey*Str',
   $plugins     = [],
-  $support_url = '',
 
   $options_hash = { },
 ) {
@@ -124,7 +119,6 @@ class roundcube (
   validate_string($imap_host)
   validate_string($des_key)
   validate_array($plugins)
-  validate_string($support_url)
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>

@@ -27,7 +27,6 @@ class roundcube::config inherits roundcube {
     'default_host' => $roundcube::imap_host,
     'default_port' => $roundcube::imap_port,
     'des_key'      => $roundcube::des_key,
-    'support_url'  => $roundcube::support_url,
     'plugins'      => $roundcube::plugins,
   }
 

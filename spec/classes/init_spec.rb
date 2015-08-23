@@ -117,12 +117,6 @@ describe 'roundcube' do
     specify { should contain_file(config_file).with_content(/^\$config\['plugins'\] = array\('plugin1', 'plugin2'\);$/) }
   end
 
-  describe 'creates configuration file with support url' do
-    let(:params) { {:support_url => 'http://example.com'} }
-
-    specify { should contain_file(config_file).with_content(/^\$config\['support_url'\] = 'http:\/\/example.com';$/) }
-  end
-
   describe 'create configuration file with custom language' do
     let(:params) { {:options_hash => {'language' => 'en_US'}} }
 
