@@ -16,7 +16,7 @@ class roundcube::config inherits roundcube {
 
   if empty($roundcube::db_dsn) {
     $password = uriescape($roundcube::db_password)
-    $db_dsnw = "${db_type}://${db_username}:${password}@${db_host}/${db_name}"
+    $db_dsnw = "${roundcube::db_type}://${roundcube::db_username}:${password}@${roundcube::db_host}/${roundcube::db_name}"
   }
   else {
     $db_dsnw = $roundcube::db_dsn
