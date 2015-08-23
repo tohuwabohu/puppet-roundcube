@@ -42,12 +42,6 @@ $config = array();
 // NOTE: for SQLite use absolute path: 'sqlite:////full/path/to/sqlite.db?mode=0646'
 $config['db_dsnw'] = '<%= dsn %>';
 
-// the default locale setting (leave empty for auto-detection)
-// RFC1766 formatted language name like en_US, de_DE, de_CH, fr_FR, pt_BR
-$config['language'] = <%=
-    @language.empty? ? 'null' : "'#{@language}'"
-%>;
-
 <% @options.keys.sort.each do |key| -%>
 <% value = @options[key] -%>
   <%- if value.is_a? Array -%>

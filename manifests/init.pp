@@ -55,12 +55,6 @@
 # [*plugins*]
 #   List of active plugins (in plugins/ directory).
 #
-# [*mime_param_folding*]
-#   Set the encoding of long/non-ascii attachment names (see main.inc.php for possible values).
-#
-# [*language*]
-#   Set the default locale setting (leave undef / empty for auto-detection).
-#
 # [*support_url*]
 #   Set an URL where a user can get support for this Roundcube installation. PLEASE DO NOT LINK TO THE ROUNDCUBE.NET
 #   WEBSITE HERE!
@@ -94,7 +88,6 @@ class roundcube (
   $imap_port,
   $des_key,
   $plugins,
-  $language,
   $support_url,
 
   $options_hash = { },

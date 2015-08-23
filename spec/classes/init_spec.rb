@@ -123,14 +123,8 @@ describe 'roundcube' do
     specify { should contain_file(config_file).with_content(/^\$config\['support_url'\] = 'http:\/\/example.com';$/) }
   end
 
-  describe 'create configuration file with language auto-detection' do
-    let(:params) { {} }
-
-    specify { should contain_file(config_file).with_content(/^\$config\['language'\] = null;$/) }
-  end
-
   describe 'create configuration file with custom language' do
-    let(:params) { {:language => 'en_US'} }
+    let(:params) { {:options_hash => {'language' => 'en_US'}} }
 
     specify { should contain_file(config_file).with_content(/^\$config\['language'\] = 'en_US';$/) }
   end
