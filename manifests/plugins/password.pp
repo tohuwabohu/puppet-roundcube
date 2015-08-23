@@ -10,6 +10,9 @@
 # [*password_require_nonalpha*]
 #   Set to `true` to require the new password to contain a letter and punctuation character. By default `false`.
 #
+# [*password_force_new_user*]
+#   Set to `true` to require new users having to change the password at their first login. By default `false`.
+#
 # [*password_db_dsn*]
 #   Set PEAR database DSN for performing the query. By default the Roundcube DB settings are used.
 #
@@ -30,6 +33,7 @@
 class roundcube::plugins::password (
   $password_minimum_length   = 0,
   $password_require_nonalpha = false,
+  $password_force_new_user   = false,
   $password_db_dsn           = '',
   $password_query            = 'SELECT update_passwd(%c, %u)',
   # Support custom configuration file ...
@@ -38,6 +42,7 @@ class roundcube::plugins::password (
 ) {
   validate_integer($password_minimum_length)
   validate_bool($password_require_nonalpha)
+  validate_bool($password_force_new_user)
   validate_string($password_db_dsn)
   validate_string($password_query)
   validate_hash($options_hash)
@@ -70,6 +75,11 @@ class roundcube::plugins::password (
     file_line { "${config_file}__password_require_nonalpha":
       match => '^\$config\[\'password_require_nonalpha\'\]\s*=.*;$',
       line  => "\$config['password_require_nonalpha'] = ${password_require_nonalpha};",
+    }
+
+    file_line { "${config_file}__password_force_new_user":
+      match => '^\$config\[\'password_force_new_user\'\]\s*=.*;$',
+      line  => "\$config['password_force_new_user'] = ${password_force_new_user};",
     }
 
     file_line { "${config_file}__password_db_dsn":

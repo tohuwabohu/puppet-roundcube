@@ -28,6 +28,12 @@ describe 'roundcube::plugins::password' do
     specify { should contain_file_line("#{password_config_file}__password_require_nonalpha").with_line(/^\$config\['password_require_nonalpha'\] = true;$/) }
   end
 
+  describe 'create password plugin configuration file requiring new users to change their password' do
+    let(:params) { {:password_force_new_user => true} }
+
+    specify { should contain_file_line("#{password_config_file}__password_force_new_user").with_line(/^\$config\['password_force_new_user'\] = true;$/) }
+  end
+
   describe 'create password plugin configuration file with custom database connection' do
     let(:params) { {:password_db_dsn => 'psql://somewhere/else'} }
 
