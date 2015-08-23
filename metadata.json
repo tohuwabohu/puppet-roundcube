@@ -1,0 +1,50 @@
+{
+  "name": "tohuwabohu-roundcube",
+  "version": "2.0.0",
+  "author": "Martin Meinhold",
+  "license": "Apache-2.0",
+  "summary": "Install and manage the Roundcube web-based email client",
+  "source": "https://github.com/tohuwabohu/puppet-roundcube.git",
+  "project_page": "https://github.com/tohuwabohu/puppet-roundcube",
+  "issues_url": "https://github.com/tohuwabohu/puppet-roundcube/issues",
+  "tags": [
+    "roundcube",
+    "webmail"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "camptocamp/archive",
+      "version_requirement": "0.x"
+    },
+    {
+      "name": "ripienaar/module_data",
+      "version_requirement": "0.x"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.6.0 < 5.0.0"
+    }
+  ]
+}
