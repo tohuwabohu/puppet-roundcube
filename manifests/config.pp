@@ -30,13 +30,6 @@ class roundcube::config inherits roundcube {
     mode    => '0440',
   }
 
-  file { "${application_dir}/plugins/password/config.inc.php":
-    content => template('roundcube/plugins/password/config.inc.php.erb'),
-    owner   => $roundcube::process,
-    group   => $roundcube::process,
-    mode    => '0440',
-  }
-
   file { '/etc/cron.daily/roundcube-cleandb':
     ensure => link,
     target => "${application_dir}/bin/cleandb.sh"

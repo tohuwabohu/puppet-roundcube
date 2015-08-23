@@ -65,18 +65,6 @@
 #   Set an URL where a user can get support for this Roundcube installation. PLEASE DO NOT LINK TO THE ROUNDCUBE.NET
 #   WEBSITE HERE!
 #
-# [*password_minimum_length*]
-#   Set minimum lenght a new password must have.
-#
-# [*password_require_nonalpha*]
-#   Set to true to require the new password to contain a letter and punctuation character
-#
-# [*password_db_dsn*]
-#   Set PEAR database DSN for performing the query. By default the Roundcube DB settings are used.
-#
-# [*password_query*]
-#   Set the SQL query used to change the password.
-#
 # === Authors
 #
 # Martin Meinhold <martin.meinhold@gmx.de>
@@ -109,10 +97,6 @@ class roundcube (
   $language,
   $support_url,
 
-  $password_minimum_length,
-  $password_require_nonalpha,
-  $password_db_dsn,
-  $password_query,
   $options_hash = { },
 ) {
   validate_string($version)
@@ -134,8 +118,6 @@ class roundcube (
   validate_string($des_key)
   validate_array($plugins)
   validate_string($support_url)
-  validate_string($password_db_dsn)
-  validate_string($password_query)
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>

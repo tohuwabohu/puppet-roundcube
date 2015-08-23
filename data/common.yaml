@@ -24,8 +24,3 @@ roundcube::des_key: "rcmail-!24ByteDESkey*Str"
 roundcube::plugins: []
 roundcube::language: ""
 roundcube::support_url: ""
-
-roundcube::password_minimum_length: 0
-roundcube::password_require_nonalpha: false
-roundcube::password_db_dsn: ""
-roundcube::password_query: "SELECT update_passwd(%c, %u)"

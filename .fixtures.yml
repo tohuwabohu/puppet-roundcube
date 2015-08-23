@@ -8,7 +8,7 @@ fixtures:
       ref: "0.0.3"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "4.1.0"
+      ref: "4.6.0"
   symlinks:
     roundcube: "#{source_dir}"
 

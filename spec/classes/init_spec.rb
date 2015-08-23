@@ -135,30 +135,6 @@ describe 'roundcube' do
     specify { should contain_file(config_file).with_content(/^\$config\['language'\] = 'en_US';$/) }
   end
 
-  describe 'create password plugin configuration file with different minimal length' do
-    let(:params) { {:password_minimum_length => 16} }
-
-    specify { should contain_file(password_config_file).with_content(/^\$rcmail_config\['password_minimum_length'\] = 16;/) }
-  end
-
-  describe 'create password plugin configuration file with non-alpha characters required' do
-    let(:params) { {:password_require_nonalpha => true} }
-
-    specify { should contain_file(password_config_file).with_content(/^\$rcmail_config\['password_require_nonalpha'\] = true;$/) }
-  end
-
-  describe 'create password plugin configuration file with custom database connection' do
-    let(:params) { {:password_db_dsn => 'psql://somewhere/else'} }
-
-    specify { should contain_file(password_config_file).with_content(/^\$rcmail_config\['password_db_dsn'\] = 'psql:\/\/somewhere\/else';$/) }
-  end
-
-  describe 'create password plugin configuration file with custom password query' do
-    let(:params) { {:password_query => 'SELECT foobar'} }
-
-    specify { should contain_file(password_config_file).with_content(/^\$rcmail_config\['password_query'\] = 'SELECT foobar';$/) }
-  end
-
   describe 'ensures the logs directory is writable by the webserver' do
     let(:params) { {:version => '1.0.0', :process => 'webserver'} }
 
