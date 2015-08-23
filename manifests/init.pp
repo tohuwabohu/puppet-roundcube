@@ -41,7 +41,7 @@
 #   Set the username used to connect to the database.
 #
 # [*db_password*]
-#   Set the password used to authenticate the database user.
+#   Set the password used to authenticate the database user. The module will encode any special characters.
 #
 # [*imap_host*]
 #   Set the IMAP mail host chosen to perform the log-in (default_host configuration parameter).

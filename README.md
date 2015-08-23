@@ -6,7 +6,7 @@ Puppet module to install and manage Roundcube, the web-base email client.
 
 ##Usage
 
-To install Roundcube with all defaults simply use.
+To install Roundcube with all defaults simply use
 
 ```
 class { 'roundcube': ]
@@ -21,11 +21,11 @@ class { 'roundcube':
 }
 ```
 
-Specify the database to be used to store the Roundcube state
+Specify the database to be used by Roundcube
 
 ```
 class { 'roundcube':
-  db_type     => 'postgresql',
+  db_type     => 'pgsql',
   db_name     => 'roundcube',
   db_host     => 'localhost',
   db_username => 'roundcube',
@@ -44,6 +44,21 @@ class { 'roundcube':
   ],
 }
 ```
+
+##Advanced usage
+
+Specify advanced parameters
+
+```
+class { 'roundcube':
+  options_hash {
+    'language'    => 'en_US', # override auto-detection
+    'support_url' => 'http://example.com/helpdesk',
+  }
+}
+```
+
+See config/defaults.inc.php in the roundcube directory for a complete list of configuration arguments.
 
 ##Limitations
 
