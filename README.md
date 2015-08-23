@@ -72,7 +72,10 @@ See config/defaults.inc.php in the roundcube directory for a complete list of co
 
 The module has been tested on the following operating systems. Testing and patches for other platforms are welcome.
 
-* Debian Linux 6.0 (Squeeze)
+* Debian 6.0 (Squeeze)
+* Debian 7.0 (Wheezy)
+* Ubuntu 12.04 (Precise Pangolin)
+* Ubuntu 14.04 (Trusty Tahr)
 
 [![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.png?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
 
