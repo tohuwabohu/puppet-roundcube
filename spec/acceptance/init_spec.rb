@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'by default' do
+describe 'roundcube' do
   let(:manifest) { <<-EOS
       $required_directories = [
         '/opt',
