@@ -7,8 +7,11 @@
 # [*version*]
 #   Set the version of the web application to be installed.
 #
-# [*md5*]
-#   Set the MD5 hash sum of the web application's archive file.
+# [*checksum*]
+#   Set the checksum of the web application's archive file.
+#
+# [*checksum_type*]
+#   Set the type of checksum.
 #
 # [*process*]
 #   Set the process user that is used to execute the application; in this case the php interpreter.
@@ -25,53 +28,45 @@
 # [*document_root_manage*]
 #   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
+# [*db_dsn*]
+#   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
+#   override the other `db_*` parameters. See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php for
+#   examples.
+#
+#   Note: please make sure any special characters are properly encoded (e.g. use stdlib's uriescape function).
+#
 # [*db_type*]
-#   Set the type database (e.g. mysql or postgres).
+#   Set the type database (e.g. mysql or pgsql). See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php
+#   for a reference of supported types. Defaults to `pgsql`.
 #
 # [*db_name*]
-#   Set the name of the database.
+#   Set the name of the database. Defaults to `roundcubemail`.
 #
 # [*db_host*]
-#   Set the hostname where the database is running. Puppet can only manage databases on the local host.
+#   Set the hostname where the database is running. Puppet can only manage databases on the local host. Defaults to
+#   `localhost`.
 #
 # [*db_username*]
-#   Set the username used to connect to the database.
+#   Set the username used to connect to the database. Defaults to `roundcube`.
 #
 # [*db_password*]
-#   Set the password used to authenticate the database user.
+#   Set the password used to authenticate the database user. The module will encode any special characters. Defaults to
+#   `pass`.
 #
 # [*imap_host*]
-#   Set the IMAP mail host chosen to perform the log-in (default_host configuration parameter).
+#   Set the IMAP mail host chosen to perform the log-in (`default_host` configuration parameter). Defaults to
+#   `localhost`.
 #
 # [*imap_port*]
-#   Set the TCP port used for IMAP connections. Defaults to 143.
+#   Set the TCP port used for IMAP connections. Defaults to `143`.
 #
 # [*des_key*]
-#   Set key used to encrypt the users imap password which is stored.
+#   Set key used to encrypt the users' IMAP password which is stored in the session record (and the client cookie if
+#   remember password is enabled). Please provide a string of exactly 24 chars. YOUR KEY MUST BE DIFFERENT THAN THE
+#   SAMPLE VALUE FOR SECURITY REASONS.
 #
 # [*plugins*]
 #   List of active plugins (in plugins/ directory).
-#
-# [*mime_param_folding*]
-#   Set the encoding of long/non-ascii attachment names (see main.inc.php for possible values).
-#
-# [*language*]
-#   Set the default locale setting (leave undef / empty for auto-detection).
-#
-# [*support_url*]
-#   Set an URL where a user can get support for this Roundcube installation.
-#
-# [*password_minimum_length*]
-#   Set minimum lenght a new password must have.
-#
-# [*password_require_nonalpha*]
-#   Set to true to require the new password to contain a letter and punctuation character
-#
-# [*password_db_dsn*]
-#   Set PEAR database DSN for performing the query. By default the Roundcube DB settings are used.
-#
-# [*password_query*]
-#   Set the SQL query used to change the password.
 #
 # === Authors
 #
@@ -92,24 +87,19 @@ class roundcube (
   $document_root,
   $document_root_manage,
 
-  $db_type,
-  $db_name,
-  $db_host,
-  $db_username,
-  $db_password,
+  $db_dsn       = undef,
+  $db_type      = 'pgsql',
+  $db_name      = 'roundcubemail',
+  $db_host      = 'localhost',
+  $db_username  = 'roundcube',
+  $db_password  = 'pass',
 
-  $imap_host,
-  $imap_port,
-  $des_key,
-  $plugins,
-  $mime_param_folding,
-  $language,
-  $support_url,
+  $imap_host    = 'localhost',
+  $imap_port    = 143,
+  $des_key      = 'rcmail-!24ByteDESkey*Str',
+  $plugins      = [],
 
-  $password_minimum_length,
-  $password_require_nonalpha,
-  $password_db_dsn,
-  $password_query
+  $options_hash = {},
 ) {
   validate_string($version)
   validate_string($checksum)
@@ -129,9 +119,7 @@ class roundcube (
   validate_string($imap_host)
   validate_string($des_key)
   validate_array($plugins)
-  validate_string($support_url)
-  validate_string($password_db_dsn)
-  validate_string($password_query)
+  validate_hash($options_hash)
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>

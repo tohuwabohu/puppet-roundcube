@@ -14,24 +14,33 @@ class roundcube::config inherits roundcube {
 
   $application_dir = $roundcube::install::target
 
-  file { "${application_dir}/config/db.inc.php":
-    content => template('roundcube/db.inc.php.erb'),
+  if empty($roundcube::db_dsn) {
+    $password = uriescape($roundcube::db_password)
+    $db_dsnw = "${roundcube::db_type}://${roundcube::db_username}:${password}@${roundcube::db_host}/${roundcube::db_name}"
+  }
+  else {
+    $db_dsnw = $roundcube::db_dsn
+  }
+
+  $options_defaults = {
+    'db_dsnw'      => $db_dsnw,
+    'default_host' => $roundcube::imap_host,
+    'default_port' => $roundcube::imap_port,
+    'des_key'      => $roundcube::des_key,
+    'plugins'      => $roundcube::plugins,
+  }
+
+  $options = merge($options_defaults, $roundcube::options_hash)
+
+  file { "${application_dir}/config/config.inc.php":
+    content => template('roundcube/config.inc.php.erb'),
     owner   => $roundcube::process,
     group   => $roundcube::process,
     mode    => '0440',
   }
 
-  file { "${application_dir}/config/main.inc.php":
-    content => template('roundcube/main.inc.php.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-  }
-
-  file { "${application_dir}/plugins/password/config.inc.php":
-    content => template('roundcube/plugins/password/config.inc.php.erb'),
-    owner   => $roundcube::process,
-    group   => $roundcube::process,
-    mode    => '0440',
+  file { '/etc/cron.daily/roundcube-cleandb':
+    ensure => link,
+    target => "${application_dir}/bin/cleandb.sh"
   }
 }

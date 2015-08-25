@@ -1,14 +1,14 @@
 fixtures:
-  repositories:
+  forge_modules:
     archive:
-      repo: "https://github.com/camptocamp/puppet-archive.git"
+      repo: "camptocamp/archive"
       ref: "0.3.1"
     module_data:
-      repo: "https://github.com/ripienaar/puppet-module-data.git"
+      repo: "ripienaar/module_data"
       ref: "0.0.3"
     stdlib:
-      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "4.1.0"
+      repo: "puppetlabs/stdlib"
+      ref: "4.6.0"
   symlinks:
     roundcube: "#{source_dir}"
 

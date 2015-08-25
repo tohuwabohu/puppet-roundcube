@@ -14,7 +14,7 @@ class roundcube::install inherits roundcube {
 
   $archive = "roundcubemail-${roundcube::version}"
   $target = "${roundcube::install_dir}/${archive}"
-  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}.tar.gz"
+  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}-complete.tar.gz"
 
   archive { $archive:
     ensure           => present,
@@ -35,7 +35,16 @@ class roundcube::install inherits roundcube {
     ensure  => directory,
     owner   => $roundcube::process,
     group   => $roundcube::process,
-    mode    => '0644',
+    mode    => '0640',
+    require => Archive[$archive],
+  }
+
+  file { "${target}/installer":
+    ensure  => absent,
+    purge   => true,
+    recurse => true,
+    force   => true,
+    backup  => false,
     require => Archive[$archive],
   }
 }
