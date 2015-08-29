@@ -12,7 +12,7 @@ class roundcube::workarounds::broken_plugin_installer {
 
   $application_dir = $roundcube::install::target
   $composer_package_name = 'roundcube/plugin-installer'
-  $composer_package_version = 'dev-master'
+  $composer_package_version = 'dev-master#7320d96810f8644eb2b4afef60726198aed34011'
 
   exec { "${roundcube::composer_command_name} require ${composer_package_name}:${composer_package_version} --update-no-dev --ignore-platform-reqs":
     unless      => "${roundcube::composer_command_name} show --installed ${composer_package_name} ${composer_package_version}",
