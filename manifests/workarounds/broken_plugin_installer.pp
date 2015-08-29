@@ -11,21 +11,11 @@ class roundcube::workarounds::broken_plugin_installer {
   include roundcube
 
   $application_dir = $roundcube::install::target
-  $composer_update_cmd = "${roundcube::composer_command_name} update --no-dev --ignore-platform-reqs"
+  $composer_package_name = 'roundcube/plugin-installer'
+  $composer_package_version = 'dev-master'
 
-  augeas { "${application_dir}/composer.json__require_roundcube_plugin_installer":
-    lens    => 'Json.lns',
-    incl    => "${application_dir}/composer.json",
-    changes => [
-         "set dict/entry[. = 'require']/dict/entry[. = 'roundcube/plugin-installer']/string dev-master",
-    ],
-    require => Class['roundcube::install'],
-  }
-
-  ->
-
-  exec { $composer_update_cmd:
-    unless      => "${composer_update_cmd} --dry-run 2>&1 | grep -q -F 'Nothing to install or update'",
+  exec { "${roundcube::composer_command_name} require ${composer_package_name}:${composer_package_version} --update-no-dev --ignore-platform-reqs":
+    unless      => "${roundcube::composer_command_name} show --installed ${composer_package_name} ${composer_package_version}",
     cwd         => $application_dir,
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
