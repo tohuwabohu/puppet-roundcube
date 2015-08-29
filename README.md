@@ -47,11 +47,12 @@ Specify a couple of plugins to activate
 class { 'roundcube':
   plugins => [
     'emoticons',
-    'markasjunk2',
+    'markasjunk',
     'password',
   ],
 }
 ```
+(see below for more information)
 
 ##Advanced usage
 
