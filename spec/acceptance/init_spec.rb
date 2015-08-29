@@ -33,6 +33,13 @@ describe 'roundcube' do
     apply_manifest(manifest, :catch_changes => true)
   end
 
+  describe file('/var/www/roundcubemail/config/config.inc.php') do
+    it { should be_file }
+    it { should be_owned_by 'www-data' }
+    it { should be_grouped_into 'www-data' }
+    it { should be_mode 440 }
+  end
+
   describe file('/var/www/roundcubemail/installer') do
     it { should_not be_directory }
   end
