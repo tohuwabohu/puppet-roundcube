@@ -64,12 +64,12 @@ class roundcube::install inherits roundcube {
   ->
 
   augeas { "${target}/composer.json__prefer-stable":
-     lens    => 'Json.lns',
-     incl    => "${target}/composer.json",
-     changes => [
-         "set dict/entry[. = 'prefer-stable'] prefer-stable",
-         "set dict/entry[. = 'prefer-stable']/const true",
-     ],
+    lens    => 'Json.lns',
+    incl    => "${target}/composer.json",
+    changes => [
+      "set dict/entry[. = 'prefer-stable'] prefer-stable",
+      "set dict/entry[. = 'prefer-stable']/const true",
+    ],
   }
 
   ->
