@@ -80,10 +80,6 @@
 #   customize the configuration or to manage plugins from the plugin repository use the `roundcube::plugin` resource
 #   instead.
 #
-# === Authors
-#
-# Martin Meinhold <martin.meinhold@gmx.de>
-#
 # === Copyright
 #
 # Copyright 2013 Martin Meinhold, unless otherwise noted.
