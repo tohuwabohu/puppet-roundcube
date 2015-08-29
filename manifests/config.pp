@@ -47,9 +47,11 @@ class roundcube::config inherits roundcube {
     order   => '10',
   }
 
-  concat::fragment { "${config_file}__options":
-    content => template('roundcube/config/options.php.erb'),
-    order   => '20',
+  if !empty($options_hash) {
+    concat::fragment { "${config_file}__options":
+      content => template('roundcube/config/options.php.erb'),
+      order   => '20',
+    }
   }
 
   concat::fragment { "${config_file}__plugins_head":

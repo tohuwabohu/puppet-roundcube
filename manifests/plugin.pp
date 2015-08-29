@@ -51,10 +51,12 @@ define roundcube::plugin (
     order  => '10',
   }
 
-  concat::fragment { "${plugin_config_file}__custom_config":
-    target  => $plugin_config_file,
-    content => template('roundcube/config/options.php.erb'),
-    order   => '20',
+  if !empty($options_hash) {
+    concat::fragment { "${plugin_config_file}__custom_config":
+      target  => $plugin_config_file,
+      content => template('roundcube/config/options.php.erb'),
+      order   => '20',
+    }
   }
 
   concat::fragment { "${config_file}__plugins_${title}":
