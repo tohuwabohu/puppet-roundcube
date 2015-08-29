@@ -8,6 +8,11 @@
 #   Set the package state of the plugin. Should be `present` for bundled plugins and the version string for plugins
 #   sourced from the plugin repository.
 #
+# [*config_file_template*]
+#   Set the path to a custom template file. By default, the default configuration shipped by with plugin is used and
+#   only parameters listed in the `options_hash` are overriden. If this template file is set, default configuration is
+#   replace with the referenced template.
+#
 # [*options_hash*]
 #   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
 #   complete list of possible configuration arguments.
@@ -52,24 +57,35 @@ define roundcube::plugin (
     }
   }
 
-  concat { $plugin_config_file:
-    ensure => present,
-    owner  => $roundcube::process,
-    group  => $roundcube::process,
-    mode   => '0440',
-  }
+  if empty($config_file_template) {
+    concat { $plugin_config_file:
+      ensure => present,
+      owner  => $roundcube::process,
+      group  => $roundcube::process,
+      mode   => '0440',
+    }
 
-  concat::fragment { "${plugin_config_file}__default_config":
-    target => $plugin_config_file,
-    source => "${plugin_config_file}.dist",
-    order  => '10',
-  }
+    concat::fragment { "${plugin_config_file}__default_config":
+      target => $plugin_config_file,
+      source => "${plugin_config_file}.dist",
+      order  => '10',
+    }
 
-  if !empty($options_hash) {
-    concat::fragment { "${plugin_config_file}__custom_config":
-      target  => $plugin_config_file,
-      content => template('roundcube/config/options.php.erb'),
-      order   => '20',
+    if !empty($options_hash) {
+      concat::fragment { "${plugin_config_file}__custom_config":
+        target  => $plugin_config_file,
+        content => template('roundcube/config/options.php.erb'),
+        order   => '20',
+      }
+    }
+  }
+  else {
+    file { $config_file_template:
+      ensure  => file,
+      content => template($config_file_template),
+      owner   => $roundcube::process,
+      group   => $roundcube::process,
+      mode    => '0440',
     }
   }
 
