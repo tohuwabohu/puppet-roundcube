@@ -6,6 +6,9 @@ fixtures:
     composer:
       repo: "willdurand/composer"
       ref: "1.1.1"
+    concat:
+      repo: "puppetlabs/concat"
+      ref: "1.2.4"
     module_data:
       repo: "ripienaar/module_data"
       ref: "0.0.3"

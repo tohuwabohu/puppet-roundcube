@@ -13,6 +13,7 @@
 class roundcube::config inherits roundcube {
 
   $application_dir = $roundcube::install::target
+  $config_file = "${application_dir}/config/config.inc.php"
 
   if empty($roundcube::db_dsn) {
     $password = uriescape($roundcube::db_password)
@@ -32,11 +33,24 @@ class roundcube::config inherits roundcube {
 
   $options = merge($options_defaults, $roundcube::options_hash)
 
-  file { "${application_dir}/config/config.inc.php":
-    content => template('roundcube/config.inc.php.erb'),
-    owner   => $roundcube::process,
-    group   => $roundcube::process,
-    mode    => '0440',
+  concat { $config_file:
+    owner => $roundcube::process,
+    group => $roundcube::process,
+    mode  => '0440',
+  }
+
+  Concat::Fragment {
+    target  => $config_file,
+  }
+
+  concat::fragment { "${config_file}__header":
+    content => template('roundcube/config/header.php.erb'),
+    order   => '10',
+  }
+
+  concat::fragment { "${config_file}__options":
+    content => template('roundcube/config/options.php.erb'),
+    order   => '20',
   }
 
   file { '/etc/cron.daily/roundcube-cleandb':
