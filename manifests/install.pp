@@ -12,9 +12,12 @@
 #
 class roundcube::install inherits roundcube {
 
+  include composer
+
   $archive = "roundcubemail-${roundcube::version}"
   $target = "${roundcube::install_dir}/${archive}"
-  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}-complete.tar.gz"
+  $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}.tar.gz"
+  $composer_install_cmd = "${roundcube::composer_command_name} install --no-dev"
 
   archive { $archive:
     ensure           => present,
@@ -46,5 +49,35 @@ class roundcube::install inherits roundcube {
     force   => true,
     backup  => false,
     require => Archive[$archive],
+  }
+
+  file { "${target}/composer.json":
+    ensure  => file,
+    source  => "${target}/composer.json-dist",
+    replace => false,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => Archive[$archive],
+  }
+
+  ->
+
+  augeas { "${target}/composer.json__prefer-stable":
+     lens    => 'Json.lns',
+     incl    => "${target}/composer.json",
+     changes => [
+         "set dict/entry[. = 'prefer-stable'] prefer-stable",
+         "set dict/entry[. = 'prefer-stable']/const true",
+     ],
+  }
+
+  ->
+
+  exec { $composer_install_cmd:
+    unless      => "${composer_install_cmd} --dry-run 2>&1 | grep -q -F 'Nothing to install or update'",
+    cwd         => $target,
+    path        => $roundcube::exec_paths,
+    environment => $roundcube::composer_exec_environment,
   }
 }
