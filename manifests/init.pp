@@ -136,10 +136,7 @@ class roundcube (
   validate_array($plugins)
   validate_hash($options_hash)
 
-  $composer_git_ssl_no_verify = $composer_disable_git_ssl_verify ? {
-    true    => 1,
-    default => 0,
-  }
+  $composer_git_ssl_no_verify = bool2num($composer_disable_git_ssl_verify)
   $composer_exec_environment = [
     "HOME=${::root_home}",
     'COMPOSER_NO_INTERACTION=1',
