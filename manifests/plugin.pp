@@ -2,6 +2,16 @@
 #
 # Install and configure the given Roundcube plugin.
 #
+# === Parameters
+#
+# [*ensure*]
+#   Set the package state of the plugin. Should be `present` for bundled plugins and the version string for plugins
+#   sourced from the plugin repository.
+#
+# [*options_hash*]
+#   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
+#   complete list of possible configuration arguments.
+#
 # === Copyright
 #
 # Copyright 2015 Martin Meinhold, unless otherwise noted.

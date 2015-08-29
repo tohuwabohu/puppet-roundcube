@@ -80,6 +80,10 @@
 #   customize the configuration or to manage plugins from the plugin repository use the `roundcube::plugin` resource
 #   instead.
 #
+# [*options_hash*]
+#   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
+#   complete list of possible configuration arguments.
+#
 # === Copyright
 #
 # Copyright 2015 Martin Meinhold, unless otherwise noted.
