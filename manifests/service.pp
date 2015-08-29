@@ -7,7 +7,7 @@
 #
 # === Copyright
 #
-# Copyright 2013 Martin Meinhold, unless otherwise noted.
+# Copyright 2015 Martin Meinhold, unless otherwise noted.
 #
 class roundcube::service inherits roundcube {
 

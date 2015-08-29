@@ -2,6 +2,10 @@
 #
 # Install and configure the given Roundcube plugin.
 #
+# === Copyright
+#
+# Copyright 2015 Martin Meinhold, unless otherwise noted.
+#
 define roundcube::plugin (
   $ensure = present,
   $config_file_template = undef,
