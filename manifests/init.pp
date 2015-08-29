@@ -76,7 +76,8 @@
 #   SAMPLE VALUE FOR SECURITY REASONS.
 #
 # [*plugins*]
-#   List of active plugins (in plugins/ directory).
+#   List of plugins to be enabled. Only bundled plugins are supported. Enable plugin repository ones via the
+#   `roundcube::plugin` resource.
 #
 # === Authors
 #

@@ -28,7 +28,6 @@ class roundcube::config inherits roundcube {
     'default_host' => $roundcube::imap_host,
     'default_port' => $roundcube::imap_port,
     'des_key'      => $roundcube::des_key,
-    'plugins'      => $roundcube::plugins,
   }
 
   $options = merge($options_defaults, $roundcube::options_hash)
@@ -52,6 +51,19 @@ class roundcube::config inherits roundcube {
     content => template('roundcube/config/options.php.erb'),
     order   => '20',
   }
+
+  concat::fragment { "${config_file}__plugins_head":
+    content => '$config[\'plugins\'] = array(',
+    order   => '50',
+  }
+
+  concat::fragment { "${config_file}__plugins_tail":
+    content => ');',
+    order   => '60',
+  }
+
+#  TODO FIXME
+#  roundcube::plugin { $roundcube::plugins: }
 
   file { '/etc/cron.daily/roundcube-cleandb':
     ensure => link,
