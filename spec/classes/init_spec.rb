@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe 'roundcube' do
   let(:title) { 'roundcube' }
-  let(:facts) { {:postgres_default_version => '9.2', :operatingsystem => 'Debian', :osfamily => 'Debian'} }
+  let(:facts) { {:concat_basedir => '/path/to/dir'} }
   let(:current_version) { '1.1.2' }
   let(:archive_name) { "roundcubemail-#{current_version}" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
+  let(:config_file_options_fragment) { "#{config_file}__options" }
 
   describe 'by default' do
     let(:params) { {} }
@@ -79,47 +80,42 @@ describe 'roundcube' do
     end
   end
 
-  describe 'creates a database configuration file' do
-    let(:params) { {} }
-
-    specify { should contain_file(config_file) }
-  end
-
   describe 'creates database configuration file with proper database url' do
     let(:params) { {:db_host => 'example.com', :db_name => 'name', :db_username => 'user', :db_password => 'foo<bar'} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['db_dsnw'\] = 'pgsql:\/\/user:foo%3Cbar@example.com\/name';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['db_dsnw'\] = 'pgsql:\/\/user:foo%3Cbar@example.com\/name';$/) }
   end
 
   describe 'creates configuration file with proper imap host' do
     let(:params) { {:imap_host => 'ssl://localhost'} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['default_host'\] = 'ssl:\/\/localhost';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_host'\] = 'ssl:\/\/localhost';$/) }
   end
 
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
     # for some weird reason, the number is converted into a string ...
-    specify { should contain_file(config_file).with_content(/^\$config\['default_port'\] = '993';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = '993';$/) }
   end
 
   describe 'creates configuration file with salt' do
     let(:params) { {:des_key => 'some-salt'} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['des_key'\] = 'some-salt';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['des_key'\] = 'some-salt';$/) }
   end
 
   describe 'creates configuration file with enabled plugins' do
     let(:params) { {:plugins => ['plugin1', 'plugin2']} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['plugins'\] = array\('plugin1', 'plugin2'\);$/) }
+    specify { should contain_roundcube__plugin('plugin1') }
+    specify { should contain_roundcube__plugin('plugin2') }
   end
 
   describe 'create configuration file with custom language' do
     let(:params) { {:options_hash => {'language' => 'en_US'}} }
 
-    specify { should contain_file(config_file).with_content(/^\$config\['language'\] = 'en_US';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['language'\] = 'en_US';$/) }
   end
 
   describe 'ensures the logs directory is writable by the webserver' do
