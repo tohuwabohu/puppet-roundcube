@@ -13,6 +13,14 @@ describe 'roundcube' do
         ensure => directory,
       }
 
+      package { 'git':
+        ensure => installed,
+      }
+
+      package { 'php5-cli':
+        ensure => installed,
+      }
+
       class { 'roundcube': }
     EOS
   }

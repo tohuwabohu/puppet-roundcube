@@ -39,6 +39,10 @@
       "version_requirement": "0.x"
     },
     {
+      "name": "willdurand/composer",
+      "version_requirement": "1.x"
+    },
+    {
       "name": "ripienaar/module_data",
       "version_requirement": "0.x"
     },

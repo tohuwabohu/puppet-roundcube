@@ -22,6 +22,16 @@
 # [*install_dir*]
 #   Set the directory where to install the web application.
 #
+# [*exec_paths*]
+#   Set the paths used to search for executables when invoking exec resources.
+#
+# [*composer_command_name*]
+#   Set name of the composer executable. It is expected to find the executable via the `exec_paths`.
+#
+# [*composer_disable_git_ssl_verify*]
+#   Set to `true` to disable the SSL certificate check when cloning a git repository. Only required when the CA
+#   presented by the git server is not trusted by this host. See https://stackoverflow.com/q/21181231.
+#
 # [*document_root*]
 #   Set the directory which should act as document root. It will be sym-linked to the current installation.
 #
@@ -84,6 +94,9 @@ class roundcube (
 
   $package_dir,
   $install_dir,
+  $exec_paths,
+  $composer_command_name,
+  $composer_disable_git_ssl_verify,
   $document_root,
   $document_root_manage,
 
@@ -107,6 +120,8 @@ class roundcube (
   validate_string($process)
   validate_absolute_path($package_dir)
   validate_absolute_path($install_dir)
+  validate_string($composer_command_name)
+  validate_bool($composer_disable_git_ssl_verify)
   validate_absolute_path($document_root)
   if $document_root_manage !~ /^true|false$/ {
     fail("Class[Roundcube]: document_root_manage must be either true or false, got '${document_root_manage}'")
@@ -120,6 +135,13 @@ class roundcube (
   validate_string($des_key)
   validate_array($plugins)
   validate_hash($options_hash)
+
+  $composer_git_ssl_no_verify = bool2num($composer_disable_git_ssl_verify)
+  $composer_exec_environment = [
+    "HOME=${::root_home}",
+    'COMPOSER_NO_INTERACTION=1',
+    "GIT_SSL_NO_VERIFY=${composer_git_ssl_no_verify}",
+  ]
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>
