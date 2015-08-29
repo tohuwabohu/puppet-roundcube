@@ -34,6 +34,14 @@ describe 'roundcube' do
       apply_manifest(manifest, :catch_changes => true)
     end
 
+    describe file('/var/www/roundcubemail/composer.json') do
+      it { should be_file }
+      it { should be_owned_by 'root' }
+      it { should be_grouped_into 'root' }
+      it { should be_mode 644 }
+      its(:content) { should match /"prefer-stable":\s*true/ }
+    end
+
     describe file('/var/www/roundcubemail/config/config.inc.php') do
       it { should be_file }
       it { should be_owned_by 'www-data' }
