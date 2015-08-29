@@ -80,6 +80,11 @@
 #   customize the configuration or to manage plugins from the plugin repository use the `roundcube::plugin` resource
 #   instead.
 #
+# [*config_file_template*]
+#   Set the path to a custom template file. By default a configuration file is generated containing only the parameters
+#   listed in the `options_hash`. If this template file is set, the configuration is replace with the referenced
+#   template.
+#
 # [*options_hash*]
 #   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
 #   complete list of possible configuration arguments.
@@ -102,19 +107,20 @@ class roundcube (
   $document_root,
   $document_root_manage,
 
-  $db_dsn       = undef,
-  $db_type      = 'pgsql',
-  $db_name      = 'roundcubemail',
-  $db_host      = 'localhost',
-  $db_username  = 'roundcube',
-  $db_password  = 'pass',
+  $db_dsn               = undef,
+  $db_type              = 'pgsql',
+  $db_name              = 'roundcubemail',
+  $db_host              = 'localhost',
+  $db_username          = 'roundcube',
+  $db_password          = 'pass',
 
-  $imap_host    = 'localhost',
-  $imap_port    = 143,
-  $des_key      = 'rcmail-!24ByteDESkey*Str',
-  $plugins      = [],
+  $imap_host            = 'localhost',
+  $imap_port            = 143,
+  $des_key              = 'rcmail-!24ByteDESkey*Str',
+  $plugins              = [],
 
-  $options_hash = {},
+  $config_file_template = undef,
+  $options_hash         = {},
 ) {
   validate_string($version)
   validate_string($checksum)
