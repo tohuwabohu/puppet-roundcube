@@ -68,10 +68,10 @@ class { 'roundcube':
 
 See config/defaults.inc.php in the roundcube directory for a complete list of configuration arguments.
 
-##Manage password policy
+##Roundcube plugins
 
-Roundcube ships a nice plugin that allows the user to change his password from within Roundcube. In order to enable the
-plugin, just add it to the list of plugins and enable the configuration via
+Roundcube ships a couple of very useful plugins. If you're happy with the default settings, you can enable plugins by
+simply adding the plugin names to the `plugins` list:
 
 ```
 class { 'roundcube':
@@ -79,21 +79,32 @@ class { 'roundcube':
     'password',
   ],
 }
-class { 'roundcube::plugins::password': }
 ```
 
-Now the plugin would just use the default values. You can change the configuration by tweaking some of the default
-parameters like
+If you want to override the default configuration, you should declare a `roundcube::plugin` resource instead and provide
+the custom configuration values
 
 ```
-class { 'roundcube::plugins::password':
-  password_minimum_length   => 16,
-  password_require_nonalpha => true,
-  password_force_new_user   => true,
+roundcube::plugin { 'password':
+  options_hash => {
+    'password_minimum_length'   => 16,
+    'password_require_nonalpha' => true,
+    'password_force_new_user'   => true,
+  },
 }
 ```
 
-to your manifest.
+To install a plugin from the [Roundcube plugin repository](https://plugins.roundcube.net/), you only need to specify
+the package name and the desired version, e.g.
+
+```
+roundcube::plugin { 'johndoh/markasjunk2':
+  ensure => 'dev-release-1.9',
+  options_hash => {
+    # override the default options
+  },
+}
+```
 
 ##Limitations
 
