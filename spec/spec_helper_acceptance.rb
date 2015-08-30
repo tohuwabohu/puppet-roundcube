@@ -10,7 +10,12 @@ RSpec.configure do |c|
   c.before :suite do
     hosts.each do |host|
       if fact('operatingsystem') == 'Ubuntu'
-        on host, 'apt-get update' # Ubuntu removes outdated packages; this ensures the index is fresh
+        # Ubuntu removes outdated packages; this ensures the index is fresh
+        on host, 'apt-get update'
+      end
+      if fact('operatingsystem') == 'Ubuntu' and fact('operatingsystemmajrelease') == '12.04'
+        # Download of composer via wget fails due to too old version of openssl which doesn't support SNI
+        on host, 'curl -sS -o /usr/local/bin/composer  https://getcomposer.org/composer.phar'
       end
 
       # Install module
