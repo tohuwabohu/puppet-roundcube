@@ -86,11 +86,14 @@ If you want to override the default configuration, you should declare a `roundcu
 the custom configuration values
 
 ```
+$db_password_encoded = uriescape($db_password)
+
 roundcube::plugin { 'password':
   options_hash => {
     'password_minimum_length'   => 16,
     'password_require_nonalpha' => true,
     'password_force_new_user'   => true,
+    'password_db_dsn'           => "pgsql://${db_username}:${db_password_encoded}@localhost/${db_name}",
   },
 }
 ```
