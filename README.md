@@ -14,7 +14,7 @@ The module uses [composer](https://getcomposer.org/) to install 3rd party depend
 download additional plugins from the [Roundcube Plugin Repository](http://plugins.roundcube.net/).
 
 Note: At the moment, the module relies on `git` being installed without explicitly requiring it. Git is to checkout
-several pacakge repositories listed in in Roundcube's `composer.json`.
+several pacakge repositories listed in Roundcube's `composer.json`.
 
 To install Roundcube with all defaults simply use
 
