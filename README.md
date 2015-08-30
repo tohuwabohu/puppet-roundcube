@@ -88,7 +88,7 @@ class { 'roundcube':
 }
 ```
 
-You can then use `<% @options['some_param_1'] %>` in your template. See `config/defaults.inc.php` in the Roundcube
+You can then use `<%= @options['some_param_1'] %>` in your template. See `config/defaults.inc.php` in the Roundcube
 directory for a complete list of possible configuration arguments.
 
 ##Roundcube plugins
