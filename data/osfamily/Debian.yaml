@@ -1,0 +1,2 @@
+---
+roundcube::composer_disable_git_ssl_verify: true

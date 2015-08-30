@@ -30,7 +30,8 @@
 #
 # [*composer_disable_git_ssl_verify*]
 #   Set to `true` to disable the SSL certificate check when cloning a git repository. Only required when the CA
-#   presented by the git server is not trusted by this host. See https://stackoverflow.com/q/21181231.
+#   presented by the git server while installing the Roundcube dependencies is not trusted by this host.
+#   See https://stackoverflow.com/q/21181231.
 #
 # [*document_root*]
 #   Set the directory which should act as document root. It will be sym-linked to the current installation.
@@ -144,12 +145,16 @@ class roundcube (
   validate_array($plugins)
   validate_hash($options_hash)
 
-  $composer_git_ssl_no_verify = bool2num($composer_disable_git_ssl_verify)
-  $composer_exec_environment = [
+  $env_git_ssl_no_verify = $composer_disable_git_ssl_verify ? {
+    true    => ['GIT_SSL_NO_VERIFY=true'],
+    default => [],
+  }
+
+  $composer_exec_environment = flatten([
     "HOME=${::root_home}",
     'COMPOSER_NO_INTERACTION=1',
-    "GIT_SSL_NO_VERIFY=${composer_git_ssl_no_verify}",
-  ]
+    $env_git_ssl_no_verify,
+  ])
 
   class { 'roundcube::install': } ->
   class { 'roundcube::config': } ~>
