@@ -2,9 +2,18 @@
 
 ##Overview
 
-Puppet module to install and manage [Roundcube](http://roundcube.net/), the web-base email client.
+Puppet module to install and manage [Roundcube](http://roundcube.net/). Roundcube webmail...
+
+> is a browser-based multilingual IMAP client with an application-like user interface.
+([source}(https://roundcube.net/)).
 
 ##Usage
+
+The module uses [composer](https://getcomposer.org/) to install any 3rd party dependencies specified by Roundcube and
+also to download plugins from the [Roundcube Plugin Repository](http://plugins.roundcube.net/).
+
+Note: At the moment, the module relies on `git` being installed without explicitly requiring it. Git is to checkout
+several pacakge repositories listed in in Roundcube's `composer.json`.
 
 To install Roundcube with all defaults simply use
 
