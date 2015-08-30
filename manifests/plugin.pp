@@ -105,4 +105,7 @@ define roundcube::plugin (
     content => "  '${title}',",
     order   => '55',
   }
+
+  # ensure plugins are executed before the symlink is updated
+  Roundcube::Plugin[$title] ~> Class['roundcube::service']
 }
