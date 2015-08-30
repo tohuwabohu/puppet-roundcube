@@ -14,8 +14,8 @@
 #   replace with the referenced template.
 #
 # [*options_hash*]
-#   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
-#   complete list of possible configuration arguments.
+#   Specify custom configuration settings. Please check the plugin's default configuration file for available settings.
+#   Note: Some plugins do not offer any configuration settings at all.
 #
 # === Copyright
 #
@@ -54,16 +54,25 @@ define roundcube::plugin (
       path        => $roundcube::exec_paths,
       environment => $roundcube::composer_exec_environment,
       require     => Class['roundcube::install'],
-      before      => File_line[$plugin_config_template_file],
+      before      => File[$plugin_config_template_file],
     }
+  }
+
+  # Provide a default configuration file in case the plugin doesn't ship any
+  file { $plugin_config_template_file:
+    ensure  => file,
+    content => '<?php /* This file is just a placeholder; the plugin does not provide any configuration options. */',
+    replace => false,
+    require => Class['roundcube::install'],
   }
 
   # Some config files have a closing php tag; this would break the injection of our custom configuration options. Unable
   # to replace the line with a newline, an opening tag is added instead.
   file_line { $plugin_config_template_file:
-    path  => $plugin_config_template_file,
-    match => '^\?>\s*$',
-    line  => '?><?php',
+    path    => $plugin_config_template_file,
+    match   => '^\?>\s*$',
+    line    => '?><?php',
+    require => File[$plugin_config_template_file],
   }
 
   if empty($config_file_template) {

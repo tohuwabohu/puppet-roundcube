@@ -225,4 +225,32 @@ describe 'roundcube::plugin' do
       its(:content) { should match /^\$config\['markasjunk2_unread_ham'\] = true;$/ }
     end
   end
+
+  context 'plugin without default configuration' do
+    let(:manifest) { <<-EOS
+        $required_directories = [
+          '/opt',
+          '/var/cache/puppet',
+          '/var/cache/puppet/archives',
+          '/var/www',
+        ]
+
+        file { $required_directories:
+          ensure => directory,
+        }
+
+        class { 'roundcube':
+          plugins => [ 'emoticons' ],
+        }
+      EOS
+    }
+
+    specify 'should provision with no errors' do
+      apply_manifest(manifest, :catch_failures => true)
+    end
+
+    specify 'should be idempotent' do
+      apply_manifest(manifest, :catch_changes => true)
+    end
+  end
 end
