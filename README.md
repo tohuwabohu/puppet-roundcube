@@ -82,7 +82,7 @@ or even use your own configuration file template
 ```
 class { 'roundcube':
   config_file_template => 'path/to/config_file.erb.',
-  options_hash {
+  options_hash         => {
     'some_param_1' => '...',
   },
 }
