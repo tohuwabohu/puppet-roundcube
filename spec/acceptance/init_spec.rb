@@ -123,4 +123,47 @@ describe 'roundcube' do
       its(:content) { should match /^\$config\['support_url'\] = 'http:\/\/example\.com\/helpdesk';$/ }
     end
   end
+
+  context 'with custom template' do
+    let(:manifest) { <<-EOS
+        $required_directories = [
+          '/opt',
+          '/var/cache/puppet',
+          '/var/cache/puppet/archives',
+          '/var/www',
+        ]
+
+        file { $required_directories:
+          ensure => directory,
+        }
+
+        package { 'git':
+          ensure => installed,
+        }
+
+        package { 'php5-cli':
+          ensure => installed,
+        }
+
+        class { 'roundcube':
+          config_file_template => 'roundcube/config/options.php.erb',
+          options_hash         => {
+            'support_url' => 'http://example.com/',
+          },
+        }
+      EOS
+    }
+
+    specify 'should provision with no errors' do
+      apply_manifest(manifest, :catch_failures => true)
+    end
+
+    specify 'should be idempotent' do
+      apply_manifest(manifest, :catch_changes => true)
+    end
+
+    describe file('/var/www/roundcubemail/config/config.inc.php') do
+      its(:content) { should match /^\$config\['support_url'\] = 'http:\/\/example\.com\/';$/ }
+    end
+  end
 end
