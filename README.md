@@ -114,7 +114,6 @@ roundcube::plugin { 'johndoh/markasjunk2':
 
 The module has been tested on the following operating systems. Testing and patches for other platforms are welcome.
 
-* Debian 6.0 (Squeeze)
 * Debian 7.0 (Wheezy)
 * Ubuntu 12.04 (Precise Pangolin)
 * Ubuntu 14.04 (Trusty Tahr)
