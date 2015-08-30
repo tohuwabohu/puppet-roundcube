@@ -44,6 +44,7 @@ define roundcube::plugin (
   }
 
   $plugin_config_file = "${application_dir}/plugins/${plugin_name}/config.inc.php"
+  $plugin_config_template_file = "${plugin_config_file}.dist"
   $options = $options_hash
 
   if !$system_plugin {
@@ -53,8 +54,16 @@ define roundcube::plugin (
       path        => $roundcube::exec_paths,
       environment => $roundcube::composer_exec_environment,
       require     => Class['roundcube::install'],
-      before      => Concat[$plugin_config_file],
+      before      => File_line[$plugin_config_template_file],
     }
+  }
+
+  # Some config files have a closing php tag; this would break the injection of our custom configuration options. Unable
+  # to replace the line with a newline, an opening tag is added instead.
+  file_line { $plugin_config_template_file:
+    path  => $plugin_config_template_file,
+    match => '^\?>\s*$',
+    line  => '?><?php',
   }
 
   if empty($config_file_template) {
@@ -66,9 +75,10 @@ define roundcube::plugin (
     }
 
     concat::fragment { "${plugin_config_file}__default_config":
-      target => $plugin_config_file,
-      source => "${plugin_config_file}.dist",
-      order  => '10',
+      target  => $plugin_config_file,
+      source  => "${plugin_config_file}.dist",
+      order   => '10',
+      require => File_line[$plugin_config_template_file],
     }
 
     if !empty($options_hash) {
@@ -80,12 +90,13 @@ define roundcube::plugin (
     }
   }
   else {
-    file { $config_file_template:
+    file { $plugin_config_file:
       ensure  => file,
       content => template($config_file_template),
       owner   => $roundcube::process,
       group   => $roundcube::process,
       mode    => '0440',
+      require => File_line[$plugin_config_template_file],
     }
   }
 
