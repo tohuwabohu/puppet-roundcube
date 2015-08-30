@@ -36,6 +36,10 @@ describe 'roundcube::plugin' do
       it { should be_grouped_into 'www-data' }
       it { should be_mode 440 }
     end
+
+    describe file('/var/www/roundcubemail/config/config.inc.php') do
+      its(:content) { should match /^\s*'password',$/ }
+    end
   end
 
   context 'bundled plugin with configuration parameters' do
@@ -150,6 +154,10 @@ describe 'roundcube::plugin' do
       it { should be_owned_by 'www-data' }
       it { should be_grouped_into 'www-data' }
       it { should be_mode 440 }
+    end
+
+    describe file('/var/www/roundcubemail/config/config.inc.php') do
+      its(:content) { should match /^\s*'markasjunk2',$/ }
     end
   end
 

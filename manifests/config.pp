@@ -59,12 +59,12 @@ class roundcube::config inherits roundcube {
   }
 
   concat::fragment { "${config_file}__plugins_head":
-    content => '$config[\'plugins\'] = array(',
+    content => "\$config[\'plugins\'] = array(\n",
     order   => '50',
   }
 
   concat::fragment { "${config_file}__plugins_tail":
-    content => ');',
+    content => ");\n",
     order   => '60',
   }
 
