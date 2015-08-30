@@ -1,4 +1,4 @@
-##2015-08-30 - Release 2.0.1
+##2015-08-30 - Release 2.0.2
 ###Summary
 
 Fixes a bug which causes plugins from the plugin repository not being enabled as expected.
