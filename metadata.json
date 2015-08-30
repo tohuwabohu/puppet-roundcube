@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "author": "Martin Meinhold",
   "license": "Apache-2.0",
-  "summary": "Install and manage the Roundcube web-based email client",
+  "summary": "Install and manage the Roundcube webmail application",
   "source": "https://github.com/tohuwabohu/puppet-roundcube.git",
   "project_page": "https://github.com/tohuwabohu/puppet-roundcube",
   "issues_url": "https://github.com/tohuwabohu/puppet-roundcube/issues",
