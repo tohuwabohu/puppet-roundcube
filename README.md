@@ -10,8 +10,8 @@ Puppet module to install and manage Roundcube. Roundcube webmail...
 
 ##Usage
 
-The module uses [composer](https://getcomposer.org/) to install any 3rd party dependencies specified by Roundcube and
-also to download plugins from the [Roundcube Plugin Repository](http://plugins.roundcube.net/).
+The module uses [composer](https://getcomposer.org/) to install 3rd party dependencies specified by Roundcube and to
+download additional plugins from the [Roundcube Plugin Repository](http://plugins.roundcube.net/).
 
 Note: At the moment, the module relies on `git` being installed without explicitly requiring it. Git is to checkout
 several pacakge repositories listed in in Roundcube's `composer.json`.
@@ -19,7 +19,7 @@ several pacakge repositories listed in in Roundcube's `composer.json`.
 To install Roundcube with all defaults simply use
 
 ```
-class { 'roundcube': ]
+class { 'roundcube': }
 ```
 
 Specify a certain mail server
@@ -73,11 +73,23 @@ class { 'roundcube':
   options_hash {
     'language'    => 'en_US', # override auto-detection
     'support_url' => 'http://example.com/helpdesk',
-  }
+  },
 }
 ```
 
-See config/defaults.inc.php in the roundcube directory for a complete list of configuration arguments.
+or even use your own configuration file template
+
+```
+class { 'roundcube':
+  config_file_template => 'path/to/config_file.erb.',
+  options_hash {
+    'some_param_1' => '...',
+  },
+}
+```
+
+You can then use `<% @options['some_param_1'] %>` in your template. See `config/defaults.inc.php` in the Roundcube
+directory for a complete list of possible configuration arguments.
 
 ##Roundcube plugins
 
