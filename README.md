@@ -6,7 +6,7 @@ Puppet module to install and manage [Roundcube](http://roundcube.net/). Roundcub
 
 > is a browser-based multilingual IMAP client with an application-like user interface.
 
-([source](https://roundcube.net/)).
+(source: [Roundcube website](https://roundcube.net/)).
 
 ##Usage
 
