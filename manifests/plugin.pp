@@ -109,9 +109,9 @@ define roundcube::plugin (
     }
   }
 
-  concat::fragment { "${config_file}__plugins_${title}":
+  concat::fragment { "${config_file}__plugins_${plugin_name}":
     target  => $config_file,
-    content => "  '${title}',\n",
+    content => "  '${plugin_name}',\n",
     order   => '55',
   }
 
