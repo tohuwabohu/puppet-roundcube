@@ -1,6 +1,6 @@
 {
   "name": "tohuwabohu-roundcube",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "Martin Meinhold",
   "license": "Apache-2.0",
   "summary": "Install and manage the Roundcube webmail application",
