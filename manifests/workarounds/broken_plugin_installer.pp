@@ -19,5 +19,6 @@ class roundcube::workarounds::broken_plugin_installer {
     cwd         => $application_dir,
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
+    require     => Class['roundcube::install'],
   }
 }
