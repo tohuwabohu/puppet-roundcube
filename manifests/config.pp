@@ -71,7 +71,14 @@ class roundcube::config inherits roundcube {
   roundcube::plugin { $roundcube::plugins: }
 
   file { '/etc/cron.daily/roundcube-cleandb':
-    ensure => link,
-    target => "${application_dir}/bin/cleandb.sh"
+    ensure => absent,
+  }
+
+  cron { 'roundcube-cleandb':
+    ensure  => present,
+    command => "${application_dir}/bin/cleandb.sh > /dev/null",
+    user    => 'root',
+    hour    => fqdn_rand(24),
+    minute  => fqdn_rand(60),
   }
 }

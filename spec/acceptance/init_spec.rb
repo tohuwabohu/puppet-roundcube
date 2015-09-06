@@ -67,12 +67,6 @@ describe 'roundcube' do
       it { should be_mode 750 }
     end
 
-    describe file('/etc/cron.daily/roundcube-cleandb') do
-      it { should be_file }
-      it { should be_readable }
-      it { should be_executable }
-    end
-
     describe file('/var/www/roundcubemail/vendor/pear/pear-core-minimal') do
       # see https://github.com/tohuwabohu/puppet-roundcube/issues/2
       it { should_not be_directory }
