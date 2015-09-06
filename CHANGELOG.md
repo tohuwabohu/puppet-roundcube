@@ -1,3 +1,11 @@
+##2015-09-06 - Release 2.0.3
+###Summary
+
+This release fixes two issues with roundcube 1.1.2
+
+* #1: maintenance cron job is too verbose
+* #2: two conflicting pear dependencies installed by composer prevent the sending of emails
+
 ##2015-08-30 - Release 2.0.2
 ###Summary
 
