@@ -21,14 +21,21 @@ class roundcube::workarounds::conflicting_pear_dependency {
     cwd         => $application_dir,
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
-    require     => Class['roundcube::install'],
+    notify      => Exec["rm -rf ${application_dir}/vendor"],
   }
 
   exec { "${roundcube::composer_command_name} require ${composer_mail_mime_package_name}:${composer_mail_mime_package_version} --update-no-dev --update-with-dependencies":
+    alias       => 'downgrade-pear/mail_mime',
     unless      => "${roundcube::composer_command_name} show --installed ${composer_mail_mime_package_name} ${composer_mail_mime_package_version}",
     cwd         => $application_dir,
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
-    require     => Class['roundcube::install'],
+    notify      => Exec["rm -rf ${application_dir}/vendor"],
+  }
+
+  exec { "rm -rf ${application_dir}/vendor":
+    cwd         => $application_dir,
+    path        => $roundcube::exec_paths,
+    refreshonly => true,
   }
 }
