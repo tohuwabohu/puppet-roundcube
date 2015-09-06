@@ -72,6 +72,11 @@ describe 'roundcube' do
       it { should be_readable }
       it { should be_executable }
     end
+
+    describe file('/var/www/roundcubemail/vendor/pear/pear-core-minimal') do
+      # see https://github.com/tohuwabohu/puppet-roundcube/issues/2
+      it { should_not be_directory }
+    end
   end
 
   context 'with custom configuration' do
