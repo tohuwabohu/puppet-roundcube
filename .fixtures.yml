@@ -2,19 +2,20 @@ fixtures:
   repositories:
     archive:
       repo: "https://github.com/camptocamp/puppet-archive.git"
-      ref: "0.3.1"
+      ref: "0.8.1"
     composer:
       repo: "https://github.com/willdurand/puppet-composer.git"
       ref: "v1.1.1"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
-      ref: "1.2.4"
+      ref: "1.2.5"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "4.6.0"
+      ref: "4.11.0"
+    # transitive dependencies
     wget:
       repo: "https://github.com/maestrodev/puppet-wget.git"
-      ref: "v1.7.0"
+      ref: "v1.7.3"
   symlinks:
     roundcube: "#{source_dir}"
 

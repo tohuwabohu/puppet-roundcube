@@ -2,7 +2,7 @@ require 'beaker-rspec/spec_helper'
 require 'beaker-rspec/helpers/serverspec'
 
 unless ENV['BEAKER_PROVISION'] == 'no'
-  hosts.each do |host|
+  hosts.each do |_|
     install_puppet
   end
 end
@@ -19,13 +19,13 @@ RSpec.configure do |c|
       copy_module_to(host, :source => proj_root, :module_name => 'roundcube', :ignore_list => ignore_list)
 
       # Install dependencies
-      on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version 4.8.0')
-      on host, puppet('module', 'install', 'puppetlabs-concat', '--version 1.2.4')
+      on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version 4.11.0')
+      on host, puppet('module', 'install', 'puppetlabs-concat', '--version 1.2.5')
       on host, puppet('module', 'install', 'willdurand-composer', '--version 1.1.1')
-      on host, puppet('module', 'install', 'camptocamp-archive', '--version 0.3.1')
+      on host, puppet('module', 'install', 'camptocamp-archive', '--version 0.8.1')
 
       # Install test dependencies
-      on host, puppet('module', 'install', 'puppetlabs-apache', '--version 1.6.0')
+      on host, puppet('module', 'install', 'puppetlabs-apache', '--version 1.8.1')
     end
   end
 end
