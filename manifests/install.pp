@@ -10,8 +10,8 @@ class roundcube::install inherits roundcube {
 
   include composer
 
-  $archive = "roundcubemail-${roundcube::version}"
-  $target = "${roundcube::install_dir}/${archive}"
+  $archive = "roundcubemail-${roundcube::version}-complete"
+  $target = "${roundcube::install_dir}/roundcubemail-${roundcube::version}"
   $download_url = "http://downloads.sourceforge.net/roundcubemail/${archive}.tar.gz"
   $composer_install_cmd = "${roundcube::composer_command_name} install --no-dev"
 
@@ -23,6 +23,7 @@ class roundcube::install inherits roundcube {
     follow_redirects => true,
     target           => $roundcube::install_dir,
     src_target       => $roundcube::package_dir,
+    root_dir         => "roundcubemail-${roundcube::version}",
     timeout          => 600,
     require          => [
       File[$roundcube::install_dir],
