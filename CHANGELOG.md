@@ -5,7 +5,11 @@ Update the default roundcube version to 1.1.4 and remove the unnecessary workaro
 
 ####Improvements
 
-The test infrastructure has been overhauled:
+* Replace [ripienaar/module_data](https://forge.puppetlabs.com/ripienaar/module_data) with `params.pp`; the module is
+  unlikly to work with Puppet 4 (see [Native Puppet 4 Data in Modules](https://www.devco.net/archives/2016/01/08/native-puppet-4-data-in-modules.php))
+  and in order to not break Puppet 3 support it is easier to just stick with a simple `params.pp` for the moment
+
+Furthermore, the test infrastructure has been overhauled:
 
 * Bump gem dependencies to the latest version
 * Bump Puppet module dependencies to the latest version

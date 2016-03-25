@@ -95,34 +95,34 @@
 # Copyright 2015 Martin Meinhold, unless otherwise noted.
 #
 class roundcube (
-  $version,
-  $checksum,
-  $checksum_type,
-  $process,
+  $version                         = $roundcube::params::version,
+  $checksum                        = $roundcube::params::checksum,
+  $checksum_type                   = $roundcube::params::checksum_type,
+  $process                         = $roundcube::params::process,
 
-  $package_dir,
-  $install_dir,
-  $exec_paths,
-  $composer_command_name,
-  $composer_disable_git_ssl_verify,
-  $document_root,
-  $document_root_manage,
+  $package_dir                     = $roundcube::params::package_dir,
+  $install_dir                     = $roundcube::params::install_dir,
+  $exec_paths                      = $roundcube::params::exec_paths,
+  $composer_command_name           = $roundcube::params::composer_command_name,
+  $composer_disable_git_ssl_verify = $roundcube::params::composer_disable_git_ssl_verify,
+  $document_root                   = $roundcube::params::document_root,
+  $document_root_manage            = $roundcube::params::document_root_manage,
 
-  $db_dsn               = undef,
-  $db_type              = 'pgsql',
-  $db_name              = 'roundcubemail',
-  $db_host              = 'localhost',
-  $db_username          = 'roundcube',
-  $db_password          = 'pass',
+  $db_dsn                          = undef,
+  $db_type                         = 'pgsql',
+  $db_name                         = 'roundcubemail',
+  $db_host                         = 'localhost',
+  $db_username                     = 'roundcube',
+  $db_password                     = 'pass',
 
-  $imap_host            = 'localhost',
-  $imap_port            = 143,
-  $des_key              = 'rcmail-!24ByteDESkey*Str',
-  $plugins              = [],
+  $imap_host                       = 'localhost',
+  $imap_port                       = 143,
+  $des_key                         = 'rcmail-!24ByteDESkey*Str',
+  $plugins                         = [],
 
-  $config_file_template = undef,
-  $options_hash         = {},
-) {
+  $config_file_template            = undef,
+  $options_hash                    = {},
+) inherits roundcube::params {
   validate_string($version)
   validate_string($checksum)
   validate_string($checksum_type)
