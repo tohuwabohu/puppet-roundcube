@@ -138,6 +138,7 @@ roundcube::plugin { 'johndoh/markasjunk2':
 The module has been tested on the following operating systems. Testing and patches for other platforms are welcome.
 
 * Debian 7.0 (Wheezy)
+* Debian 8.0 (Jessie)
 * Ubuntu 12.04 (Precise Pangolin)
 * Ubuntu 14.04 (Trusty Tahr)
 
@@ -162,5 +163,5 @@ bundle install --path vendor
 bundle exec rake spec
 bundle exec rake beaker
 ```
-(note: see [Beaker - Supported ENV variables](https://github.com/puppetlabs/beaker/wiki/How-to-Write-a-Beaker-Test-for-a-Module#beaker-rspec-details)
-for a list of environment variables to control the default behaviour of Beaker)
+(note: see [Beaker - Supported ENV variables](https://github.com/puppetlabs/beaker-rspec/blob/master/README.md) for a
+list of environment variables to control the default behaviour of Beaker)
