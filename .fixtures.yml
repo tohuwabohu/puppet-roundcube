@@ -5,7 +5,7 @@ fixtures:
       ref: "0.3.1"
     composer:
       repo: "https://github.com/willdurand/puppet-composer.git"
-      ref: "1.1.1"
+      ref: "v1.1.1"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
       ref: "1.2.4"
@@ -17,7 +17,7 @@ fixtures:
       ref: "4.6.0"
     wget:
       repo: "https://github.com/maestrodev/puppet-wget.git"
-      ref: "1.7.0"
+      ref: "v1.7.0"
   symlinks:
     roundcube: "#{source_dir}"
 
