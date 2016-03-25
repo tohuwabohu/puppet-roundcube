@@ -28,7 +28,6 @@ define roundcube::plugin (
 ) {
   include composer
   include roundcube
-  require roundcube::workarounds::broken_plugin_installer
 
   $application_dir = $roundcube::install::target
   $config_file = $roundcube::config::config_file

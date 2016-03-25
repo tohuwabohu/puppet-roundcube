@@ -1,6 +1,8 @@
 ##2016-03-XX - Release 2.1.0
 ###Summary
 
+Update the default roundcube version to 1.1.4 and remove the unnecessary workarounds.
+
 ####Improvements
 
 The test infrastructure has been overhauled:

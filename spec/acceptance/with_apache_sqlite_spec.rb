@@ -20,16 +20,6 @@ describe 'with Apache + SQLite' do
 
       class { 'apache::mod::php': }
 
-      if $::lsbdistid == 'Debian' and $::lsbmajdistrelease == '6' {
-        file_line { '/etc/php5/apache2/conf.d/suhosin.ini__suhosin.session.encrypt':
-          path    => '/etc/php5/apache2/conf.d/suhosin.ini',
-          match   => '^;suhosin.session.encrypt.*$',
-          line    => 'suhosin.session.encrypt = off',
-          require => Class['Apache::Mod::Php'],
-          notify  => Service['httpd'],
-        }
-      }
-
       package { 'php5-sqlite':
         ensure  => installed,
         require => Class['apache'],

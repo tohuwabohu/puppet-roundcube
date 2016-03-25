@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'roundcube' do
   let(:title) { 'roundcube' }
   let(:facts) { {:concat_basedir => '/path/to/dir'} }
-  let(:current_version) { '1.1.2' }
-  let(:archive_name) { "roundcubemail-#{current_version}" }
+  let(:current_version) { '1.1.4' }
+  let(:archive_name) { "roundcubemail-#{current_version}-complete" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:config_file_options_fragment) { "#{config_file}__options" }
@@ -23,7 +23,7 @@ describe 'roundcube' do
   describe 'installs custom version' do
     let(:params) { {:version => '1.2.3'} }
 
-    specify { should contain_archive('roundcubemail-1.2.3') }
+    specify { should contain_archive('roundcubemail-1.2.3-complete') }
   end
 
   describe 'uses custom archive checksum' do
