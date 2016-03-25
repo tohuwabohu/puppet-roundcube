@@ -66,10 +66,12 @@ describe 'roundcube' do
     specify { should_not contain_file('/var/www/roundcubemail') }
   end
 
-  describe 'should not manage document_root if configured (string version )' do
+  describe 'should not accept document_root as a boolean string' do
     let(:params) { {:document_root_manage => 'false'} }
 
-    specify { should_not contain_file('/var/www/roundcubemail') }
+    specify do
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /is not a boolean/)
+    end
   end
 
   describe 'should not accept invalid document_root_ensure' do
@@ -95,8 +97,7 @@ describe 'roundcube' do
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
-    # for some weird reason, the number is converted into a string ...
-    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = '993';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = [']?993[']?;$/) }
   end
 
   describe 'creates configuration file with salt' do
