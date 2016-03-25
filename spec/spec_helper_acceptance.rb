@@ -20,7 +20,7 @@ RSpec.configure do |c|
 
       # Install dependencies
       on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version 4.11.0')
-      on host, puppet('module', 'install', 'puppetlabs-concat', '--version 1.2.5')
+      on host, puppet('module', 'install', 'puppetlabs-concat', '--version 2.1.0')
       on host, puppet('module', 'install', 'willdurand-composer', '--version 1.1.1')
       on host, puppet('module', 'install', 'camptocamp-archive', '--version 0.8.1')
 

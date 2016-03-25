@@ -8,7 +8,7 @@ fixtures:
       ref: "v1.1.1"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
-      ref: "1.2.5"
+      ref: "2.1.0"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
       ref: "4.11.0"
