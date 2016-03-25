@@ -77,11 +77,4 @@ class roundcube::install inherits roundcube {
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
   }
-
-  if versioncmp($roundcube::version, '1.1.2') == 0 {
-    class { 'roundcube::workarounds::conflicting_pear_dependency':
-      require => Augeas["${target}/composer.json__prefer-stable"],
-      before  => Exec[$composer_install_cmd],
-    }
-  }
 }
