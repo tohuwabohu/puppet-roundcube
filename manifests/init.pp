@@ -132,9 +132,7 @@ class roundcube (
   validate_string($composer_command_name)
   validate_bool($composer_disable_git_ssl_verify)
   validate_absolute_path($document_root)
-  if $document_root_manage !~ /^true|false$/ {
-    fail("Class[Roundcube]: document_root_manage must be either true or false, got '${document_root_manage}'")
-  }
+  validate_bool($document_root_manage)
   validate_string($db_type)
   validate_string($db_name)
   validate_string($db_host)
