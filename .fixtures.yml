@@ -1,23 +1,23 @@
 fixtures:
-  forge_modules:
+  repositories:
     archive:
-      repo: "camptocamp/archive"
+      repo: "https://github.com/camptocamp/puppet-archive.git"
       ref: "0.3.1"
     composer:
-      repo: "willdurand/composer"
-      ref: "1.1.1"
+      repo: "https://github.com/willdurand/puppet-composer.git"
+      ref: "v1.1.1"
     concat:
-      repo: "puppetlabs/concat"
+      repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
       ref: "1.2.4"
     module_data:
-      repo: "ripienaar/module_data"
+      repo: "https://github.com/ripienaar/puppet-module-data.git"
       ref: "0.0.3"
     stdlib:
-      repo: "puppetlabs/stdlib"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
       ref: "4.6.0"
     wget:
-      repo: "maestrodev/wget"
-      ref: "1.7.0"
+      repo: "https://github.com/maestrodev/puppet-wget.git"
+      ref: "v1.7.0"
   symlinks:
     roundcube: "#{source_dir}"
 

@@ -1,6 +1,12 @@
 require 'beaker-rspec/spec_helper'
 require 'beaker-rspec/helpers/serverspec'
 
+unless ENV['BEAKER_PROVISION'] == 'no'
+  hosts.each do |host|
+    install_puppet
+  end
+end
+
 RSpec.configure do |c|
   proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
   ignore_list = %w(junit log spec tests vendor)
@@ -9,15 +15,6 @@ RSpec.configure do |c|
 
   c.before :suite do
     hosts.each do |host|
-      if fact('operatingsystem') == 'Ubuntu'
-        # Ubuntu removes outdated packages; this ensures the index is fresh
-        on host, 'apt-get update'
-      end
-      if fact('operatingsystem') == 'Ubuntu' and fact('operatingsystemmajrelease') == '12.04'
-        # Download of composer via wget fails due to too old version of openssl which doesn't support SNI
-        on host, 'curl -sS -o /usr/local/bin/composer  https://getcomposer.org/composer.phar'
-      end
-
       # Install module
       copy_module_to(host, :source => proj_root, :module_name => 'roundcube', :ignore_list => ignore_list)
 

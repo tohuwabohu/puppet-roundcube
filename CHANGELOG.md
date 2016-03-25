@@ -1,3 +1,16 @@
+##2016-03-XX - Release 2.1.0
+###Summary
+
+####Improvements
+
+The test infrastructure has been overhauled:
+
+* Bump gem dependencies to the latest version
+* Bump Puppet module dependencies to the latest version
+* Update travis test matrix and add support for Puppet 4
+* Replace VirtualBox with Docker for acceptance tests
+* Add Debian 8
+
 ##2015-09-06 - Release 2.0.3
 ###Summary
 
