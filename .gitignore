@@ -4,3 +4,4 @@
 
 # https://tickets.puppetlabs.com/browse/PUP-3444
 vendor/**
+*.iml
