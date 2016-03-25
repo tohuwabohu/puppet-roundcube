@@ -15,3 +15,5 @@ env:
     - PUPPET_VERSION="~> 4.4.0"
 matrix:
   fast_finish: true
+  allow_failures:
+    - env: PUPPET_VERSION="~> 4.4.0"
