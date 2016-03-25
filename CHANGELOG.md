@@ -1,4 +1,4 @@
-##2016-03-XX - Release 2.1.0
+##2016-03-25 - Release 2.1.0
 ###Summary
 
 Update the default roundcube version to 1.1.4 and add support for Puppet 4.
@@ -10,7 +10,8 @@ Update the default roundcube version to 1.1.4 and add support for Puppet 4.
   and in order to not break Puppet 3 support it is easier to just stick with a simple `params.pp` for the moment.
 * Set `composer_disable_git_ssl_verify` parameter to `false` by default; previously it was set to `true` for all Debian
   systems to ensure the bootstrapping of the roundcube app would work even though one of the roundcube git repositories
-  was presenting a weird SSL certificate. The complete installer is used instead, so this flag is no longer required.
+  was presenting a SSL certificate not matching the domain. But now the complete installer is used instead, so this flag
+  is no longer required.
 
 Furthermore, the test infrastructure has been overhauled:
 
