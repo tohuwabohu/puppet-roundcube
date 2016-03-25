@@ -97,7 +97,7 @@ describe 'roundcube' do
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
-    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = 993;$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = [']?993[']?;$/) }
   end
 
   describe 'creates configuration file with salt' do
