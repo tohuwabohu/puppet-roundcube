@@ -1,5 +1,8 @@
 #roundcube
 
+[![Puppet Forge](https://img.shields.io/puppetforge/v/tohuwabohu/roundcube.svg)](https://forge.puppetlabs.com/tohuwabohu/roundcube)
+[![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.png?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
+
 ##Overview
 
 Puppet module to install and manage Roundcube. Roundcube webmail...
@@ -141,8 +144,7 @@ The module has been tested on the following operating systems. Testing and patch
 * Debian 8.0 (Jessie)
 * Ubuntu 12.04 (Precise Pangolin)
 * Ubuntu 14.04 (Trusty Tahr)
-
-[![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.png?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
+* Ubuntu 16.04 (Xenial Xerus)
 
 ##Contributing
 
