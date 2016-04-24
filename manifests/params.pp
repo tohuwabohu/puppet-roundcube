@@ -7,8 +7,8 @@
 # Copyright 2016 Martin Meinhold, unless otherwise noted.
 #
 class roundcube::params {
-  $version = '1.1.4'
-  $checksum = '9bfe88255d4ffc288f5776de1cead78352469b1766d5ebaebe6e28043affe181'
+  $version = '1.1.5'
+  $checksum = '476a1d45b0592b2ad43e3e08cbc72e69ef31e33ed8a8f071f02e5a1ae3e7f334'
   $checksum_type = 'sha256'
 
   $package_dir = '/var/cache/puppet/archives'

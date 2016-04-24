@@ -1,3 +1,9 @@
+##2016-04-24 - Release 2.2.0
+###Summary
+
+Update the default roundcube version to 1.1.5; packages are now sourced from [http://github.com] instead of
+[http://downloads.sourceforge.net].
+
 ##2016-03-25 - Release 2.1.0
 ###Summary
 
