@@ -1,8 +1,5 @@
-/spec/fixtures/manifests
-/spec/fixtures/modules
-
 # https://tickets.puppetlabs.com/browse/PUP-3444
-junit/
-log/
+junit/**
+log/**
+spec/fixtures/*
 vendor/**
-*.iml
