@@ -8,6 +8,9 @@ group :development, :test do
   gem 'puppet-blacksmith', '~> 3.3.1'
   gem 'puppet-lint', '~> 1.1.0'
   gem 'puppet-syntax', '~> 2.1.0'
+  # try to be compatible with ruby 1.9.3
+  gem 'json_pure', '< 2.0.0'
+  gem 'rest-client', '~> 1.8.0'
 end
 
 group :system_tests do
