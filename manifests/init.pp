@@ -39,6 +39,15 @@
 # [*document_root_manage*]
 #   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
+# [*archive_provider*]
+#   Select which `archive` type should be used to download RoundCube from the
+#   download site. There exist at least two modules that provide an `archive`
+#   type: "camptocamp/archive" and "nanliu/archive" (or "puppet/archive"
+#   since the module is now in the care of puppet-community). Defaults to
+#   'camptocamp'. If you set this to 'nanliu' (or 'puppet') make sure you have
+#   that module installed since both cannot be recorded as a dependency in
+#   metadata.json at the same time.
+#
 # [*db_dsn*]
 #   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
 #   override the other `db_*` parameters. See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php for
@@ -108,6 +117,8 @@ class roundcube (
   $document_root                   = $roundcube::params::document_root,
   $document_root_manage            = $roundcube::params::document_root_manage,
 
+  $archive_provider                = roundcube::params::archive_provider,
+
   $db_dsn                          = undef,
   $db_type                         = 'pgsql',
   $db_name                         = 'roundcubemail',
@@ -133,6 +144,7 @@ class roundcube (
   validate_bool($composer_disable_git_ssl_verify)
   validate_absolute_path($document_root)
   validate_bool($document_root_manage)
+  validate_string($archive_provider)
   validate_string($db_type)
   validate_string($db_name)
   validate_string($db_host)

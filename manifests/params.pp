@@ -11,6 +11,7 @@ class roundcube::params {
   $checksum = '476a1d45b0592b2ad43e3e08cbc72e69ef31e33ed8a8f071f02e5a1ae3e7f334'
   $checksum_type = 'sha256'
 
+  $archive_provider = 'camptocamp'
   $package_dir = '/var/cache/puppet/archives'
   $install_dir = '/opt'
 
