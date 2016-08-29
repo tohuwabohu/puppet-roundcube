@@ -10,12 +10,24 @@ describe 'roundcube::plugin' do
   describe 'by default' do
     let(:params) { {} }
 
+    let :pre_condition do
+      'class {"roundcube":
+         archive_provider => "camptocamp",
+       }'
+    end
+
     specify { should contain_concat(config_file) }
     specify { should contain_concat__fragment("#{config_file}__default_config").with_source("#{install_dir}/plugins/password/config.inc.php.dist") }
   end
 
   describe 'with custom configuration' do
     let(:params) { {:options_hash => {'password_db_dsn' => 'psql://somewhere/else'}} }
+
+    let :pre_condition do
+      'class {"roundcube":
+         archive_provider => "camptocamp",
+       }'
+    end
 
     specify { should contain_concat__fragment("#{config_file}__custom_config").with_content(/^\$config\['password_db_dsn'\] = 'psql:\/\/somewhere\/else';$/) }
   end
