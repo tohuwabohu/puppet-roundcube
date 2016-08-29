@@ -18,16 +18,16 @@ class roundcube::install inherits roundcube {
   case $roundcube::archive_provider {
     'nanliu', 'puppet': {
       archive { "${roundcube::package_dir}/${archive}.tar.gz":
-        ensure           => present,
-        checksum         => $roundcube::checksum,
-        checksum_type    => $roundcube::checksum_type,
-        source           => $download_url,
-        extract_path     => $roundcube::install_dir,
-        creates          => "${roundcube::package_dir}/${archive}.tar.gz",
-        extract          => true,
-        cleanup          => false,
-        extract_flags    => '-x --no-same-owner -f',
-        require          => [
+        ensure        => present,
+        checksum      => $roundcube::checksum,
+        checksum_type => $roundcube::checksum_type,
+        source        => $download_url,
+        extract_path  => $roundcube::install_dir,
+        creates       => "${roundcube::package_dir}/${archive}.tar.gz",
+        extract       => true,
+        cleanup       => false,
+        extract_flags => '-x --no-same-owner -f',
+        require       => [
           File[$roundcube::install_dir],
           File[$roundcube::package_dir]
         ],
