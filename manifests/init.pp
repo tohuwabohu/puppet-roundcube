@@ -117,7 +117,7 @@ class roundcube (
   $document_root                   = $roundcube::params::document_root,
   $document_root_manage            = $roundcube::params::document_root_manage,
 
-  $archive_provider                = roundcube::params::archive_provider,
+  $archive_provider                = $roundcube::params::archive_provider,
 
   $db_dsn                          = undef,
   $db_type                         = 'pgsql',
