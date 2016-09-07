@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'roundcube' do
+describe 'roundcube', :type => :class do
   let(:title) { 'roundcube' }
   let(:facts) { {:concat_basedir => '/path/to/dir'} }
   let(:current_version) { '1.1.5' }
@@ -10,8 +10,6 @@ describe 'roundcube' do
   let(:config_file_options_fragment) { "#{config_file}__options" }
 
   describe 'by default' do
-    let(:params) { {} }
-
     specify { should contain_archive(archive_name) }
     specify { should contain_file('/var/www/roundcubemail').with(
         'ensure' => 'link',

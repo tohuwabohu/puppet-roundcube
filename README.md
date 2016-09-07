@@ -67,6 +67,10 @@ class { 'roundcube':
 ```
 (see below for more information)
 
+##Archive Module
+This module supports both well-known `archive` modules. This allows you to use your favorite archive module (either https://github.com/voxpupuli/puppet-archive or https://github.com/camptocamp/puppet-archive). Please make sure that the required archive module is installed and that you have set the parameter `archive_provider` to either `camptocamp` (default) or `puppet`.
+
+
 ##Advanced usage
 
 Specify advanced parameters
