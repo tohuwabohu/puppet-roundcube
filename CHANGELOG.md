@@ -6,7 +6,7 @@ Add support for both well-known archive providers, [puppet-archive](https://forg
 ([#6](https://github.com/tohuwabohu/puppet-roundcube/pull/6)).
 
 **Note:** As part of this change, the dependency on `camptocamp-archive` has been dropped so anyone using
-librarian-puppet can freely select the archive provider of choice.
+librarian-puppet can freely select the archive provider of choice. By default this module will use `camptocamp-archive`.
 
 ##2016-04-24 - Release 2.2.0
 ###Summary
