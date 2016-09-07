@@ -1,3 +1,13 @@
+##2016-09-07 - Release 3.0.0
+###Summary
+
+Add support for both well-known archive providers - [puppet-archive](https://forge.puppetlabs.com/puppet/archive) and
+[camptocamp-archive](https://forge.puppetlabs.com/camptocamp/archive)
+([#6](https://github.com/tohuwabohu/puppet-roundcube/pull/6)).
+
+**Note:** As part of this change, the dependency on `camptocamp-archive` has been dropped so anyone using
+librarian-puppet can freely select the archive provider of choice.
+
 ##2016-04-24 - Release 2.2.0
 ###Summary
 
