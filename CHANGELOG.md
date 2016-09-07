@@ -1,7 +1,7 @@
 ##2016-09-07 - Release 3.0.0
 ###Summary
 
-Add support for both well-known archive providers - [puppet-archive](https://forge.puppetlabs.com/puppet/archive) and
+Add support for both well-known archive providers, [puppet-archive](https://forge.puppetlabs.com/puppet/archive) and
 [camptocamp-archive](https://forge.puppetlabs.com/camptocamp/archive)
 ([#6](https://github.com/tohuwabohu/puppet-roundcube/pull/6)).
 
