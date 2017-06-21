@@ -1,9 +1,9 @@
-#roundcube
+# roundcube
 
 [![Puppet Forge](https://img.shields.io/puppetforge/v/tohuwabohu/roundcube.svg)](https://forge.puppetlabs.com/tohuwabohu/roundcube)
 [![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.png?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
 
-##Overview
+## Overview
 
 Puppet module to install and manage Roundcube. Roundcube webmail...
 
@@ -11,7 +11,7 @@ Puppet module to install and manage Roundcube. Roundcube webmail...
 
 (source: [Roundcube website](https://roundcube.net/)).
 
-##Usage
+## Usage
 
 The module uses [composer](https://getcomposer.org/) to install 3rd party dependencies specified by Roundcube and to
 download additional plugins from the [Roundcube Plugin Repository](http://plugins.roundcube.net/).
@@ -67,11 +67,11 @@ class { 'roundcube':
 ```
 (see below for more information)
 
-##Archive Module
+## Archive Module
 This module supports both well-known `archive` modules. This allows you to use your favorite archive module (either https://github.com/voxpupuli/puppet-archive or https://github.com/camptocamp/puppet-archive). Please make sure that the required archive module is installed and that you have set the parameter `archive_provider` to either `camptocamp` (default) or `puppet`.
 
 
-##Advanced usage
+## Advanced usage
 
 Specify advanced parameters
 
@@ -98,7 +98,7 @@ class { 'roundcube':
 You can then use `<%= @options['some_param_1'] %>` in your template. See `config/defaults.inc.php` in the Roundcube
 directory for a complete list of possible configuration arguments.
 
-##Roundcube plugins
+## Roundcube plugins
 
 Roundcube ships a couple of very useful plugins. If you're happy with the default settings, you can enable plugins by
 simply adding the plugin names to the `plugins` list:
@@ -140,7 +140,7 @@ roundcube::plugin { 'johndoh/markasjunk2':
 }
 ```
 
-##Limitations
+## Limitations
 
 The module has been tested on the following operating systems. Testing and patches for other platforms are welcome.
 
@@ -150,7 +150,7 @@ The module has been tested on the following operating systems. Testing and patch
 * Ubuntu 14.04 (Trusty Tahr)
 * Ubuntu 16.04 (Xenial Xerus)
 
-##Contributing
+## Contributing
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -158,7 +158,7 @@ The module has been tested on the following operating systems. Testing and patch
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-###Development
+### Development
 
 This project uses rspec-puppet and beaker to ensure the module works as expected and to prevent regressions.
 
