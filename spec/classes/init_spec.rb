@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe 'roundcube', :type => :class do
   let(:title) { 'roundcube' }
-  let(:facts) { {:concat_basedir => '/path/to/dir'} }
   let(:current_version) { '1.1.5' }
   let(:archive_name) { "roundcubemail-#{current_version}-complete" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }

@@ -5,6 +5,9 @@ RSpec.configure do |c|
     # archive
     :path            => '/usr/bin',
 
+    # concat
+    :concat_basedir  => '/path/to/dir',
+
     # wget
     :kernel          => 'deadbeef',
     :operatingsystem => 'Debian',
