@@ -46,6 +46,7 @@ class roundcube::install inherits roundcube {
         root_dir         => "roundcubemail-${roundcube::version}",
         timeout          => 600,
         require          => [
+          # TODO consider using ensure_resources to avoid having to manage them explicitly
           File[$roundcube::install_dir],
           File[$roundcube::package_dir]
         ],

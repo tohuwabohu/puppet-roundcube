@@ -7,6 +7,12 @@ describe 'roundcube', :type => :class do
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:config_file_options_fragment) { "#{config_file}__options" }
+  let(:pre_condition) { <<-EOS
+      file { ['/opt', '/somewhere/else', '/var/cache/puppet/archives']: ensure => directory }
+      
+      package { 'wget': }
+    EOS
+  }
 
   describe 'by default' do
     specify { should contain_archive(archive_name) }
