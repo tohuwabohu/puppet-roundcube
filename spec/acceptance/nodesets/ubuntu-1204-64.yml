@@ -13,8 +13,7 @@ HOSTS:
       # Install a more recent version of PHP
       - 'echo "deb http://ppa.launchpad.net/ondrej/php5-oldstable/ubuntu precise main" >> /etc/apt/sources.list'
       - 'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C'
-      - 'apt-get update'
-      - 'apt-get -qqy install cron'
+      - 'apt-get update && apt-get -y install cron'
 
 CONFIG:
   type: foss
