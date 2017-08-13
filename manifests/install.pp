@@ -84,9 +84,7 @@ class roundcube::install inherits roundcube {
     require => $require_archive,
   }
 
-  ->
-
-  augeas { "${target}/composer.json__prefer-stable":
+  -> augeas { "${target}/composer.json__prefer-stable":
     lens    => 'Json.lns',
     incl    => "${target}/composer.json",
     changes => [
@@ -95,9 +93,7 @@ class roundcube::install inherits roundcube {
     ],
   }
 
-  ->
-
-  exec { $composer_install_cmd:
+  -> exec { $composer_install_cmd:
     unless      => "${composer_install_cmd} --dry-run 2>&1 | grep -q -F 'Nothing to install or update'",
     cwd         => $target,
     path        => $roundcube::exec_paths,
