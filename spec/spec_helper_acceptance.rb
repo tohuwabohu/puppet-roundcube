@@ -1,31 +1,20 @@
-require 'beaker-rspec/spec_helper'
-require 'beaker-rspec/helpers/serverspec'
+require 'beaker-rspec'
+require 'beaker/puppet_install_helper'
+require 'beaker/module_install_helper'
 
-unless ENV['BEAKER_PROVISION'] == 'no'
-  hosts.each do |_|
-    install_puppet
-  end
-end
+run_puppet_install_helper
+install_module_on(hosts)
+install_module_from_forge_on(hosts, 'puppetlabs-stdlib', '= 4.11.0')
+install_module_from_forge_on(hosts, 'puppetlabs-concat', '= 2.1.0')
+install_module_from_forge_on(hosts, 'willdurand-composer', '= 1.1.1')
+install_module_from_forge_on(hosts, 'camptocamp-archive', '= 0.8.1')
+# test dependencies
+install_module_from_forge_on(hosts, 'puppetlabs-apache', '= 1.8.1')
 
 RSpec.configure do |c|
-  proj_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-  ignore_list = %w(junit log spec tests vendor)
-
   c.formatter = :documentation
 
   c.before :suite do
-    hosts.each do |host|
-      # Install module
-      copy_module_to(host, :source => proj_root, :module_name => 'roundcube', :ignore_list => ignore_list)
-
-      # Install dependencies
-      on host, puppet('module', 'install', 'puppetlabs-stdlib', '--version 4.11.0')
-      on host, puppet('module', 'install', 'puppetlabs-concat', '--version 2.1.0')
-      on host, puppet('module', 'install', 'willdurand-composer', '--version 1.1.1')
-      on host, puppet('module', 'install', 'camptocamp-archive', '--version 0.8.1')
-
-      # Install test dependencies
-      on host, puppet('module', 'install', 'puppetlabs-apache', '--version 1.8.1')
-    end
+    logger.info("Using Puppet version #{(on default, 'puppet --version').stdout.chomp}")
   end
 end

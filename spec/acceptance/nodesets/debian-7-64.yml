@@ -5,7 +5,7 @@ HOSTS:
     image: debian:7
     docker_preserve_image: true
     docker_image_commands:
-      - 'apt-get update && apt-get -y install cron wget'
+      - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php5-cli'
 
 CONFIG:
   type: foss
