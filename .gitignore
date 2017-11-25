@@ -1,7 +1,9 @@
 # https://tickets.puppetlabs.com/browse/PUP-3444
 .idea
 *.iml
+.bundle
+Gemfile.lock
 junit/**
 log/**
-spec/fixtures/*
+spec/fixtures/**
 vendor/**

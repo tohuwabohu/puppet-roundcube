@@ -2,12 +2,17 @@ require 'spec_helper'
 
 describe 'roundcube', :type => :class do
   let(:title) { 'roundcube' }
-  let(:facts) { {:concat_basedir => '/path/to/dir'} }
   let(:current_version) { '1.1.5' }
   let(:archive_name) { "roundcubemail-#{current_version}-complete" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:config_file_options_fragment) { "#{config_file}__options" }
+  let(:pre_condition) { <<-EOS
+      file { ['/opt', '/somewhere/else', '/var/cache/puppet/archives']: ensure => directory }
+      
+      package { 'wget': }
+    EOS
+  }
 
   describe 'by default' do
     specify { should contain_archive(archive_name) }

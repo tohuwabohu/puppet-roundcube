@@ -1,26 +1,26 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 group :development, :test do
-  gem 'rake', '~> 11.1.1'
-  gem 'rspec', '~> 3.4.0'
-  gem 'rspec-puppet', '~> 2.4.0'
-  gem 'puppetlabs_spec_helper', '~> 1.1.1'
-  gem 'puppet-blacksmith', '~> 3.3.1'
-  gem 'puppet-lint', '~> 1.1.0'
-  gem 'puppet-syntax', '~> 2.1.0'
-  # try to be compatible with ruby 1.9.3
-  gem 'json_pure', '< 2.0.0'
-  gem 'rest-client', '~> 1.8.0'
+  gem 'rake', '~> 12.0'
+  gem 'rspec', '~> 3.5'
+  gem 'rspec-puppet', '~> 2.4'
+  gem 'puppetlabs_spec_helper', '~> 2.3'
+  gem 'puppet-blacksmith', '~> 3.4'
+  gem 'puppet-lint', '~> 2.0'
+  gem 'metadata-json-lint', '~> 2.0'
+  gem 'puppet-lint-unquoted_string-check', '~> 0.2'
+  gem 'puppet-syntax', '~> 2.1'
 end
 
 group :system_tests do
-  gem 'beaker', '~> 2.37.0'
-  gem 'beaker-rspec', '~> 5.3.0'
-  gem 'serverspec', '~> 2.31.0'
+  gem 'beaker', '~> 3.21'
+  gem 'beaker-rspec', '~> 6.1'
+  gem 'beaker-puppet_install_helper', '~> 0.7'
+  gem 'beaker-module_install_helper', '~> 0.1'
 end
 
 if puppetversion = ENV['PUPPET_VERSION']
   gem 'puppet', puppetversion
 else
-  gem 'puppet', '~> 4.4.0'
+  gem 'puppet', '~> 4.10'
 end

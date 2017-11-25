@@ -161,12 +161,12 @@ class roundcube (
   }
 
   $composer_exec_environment = flatten([
-    "HOME=${::root_home}",
+    "HOME=${::root_home}",  # root_home is provided by stdlib
     'COMPOSER_NO_INTERACTION=1',
     $env_git_ssl_no_verify,
   ])
 
-  class { 'roundcube::install': } ->
-  class { 'roundcube::config': } ~>
-  class { 'roundcube::service': }
+  class { 'roundcube::install': }
+  -> class { 'roundcube::config': }
+  ~> class { 'roundcube::service': }
 }

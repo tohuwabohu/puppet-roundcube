@@ -6,7 +6,13 @@ describe 'roundcube::plugin' do
   let(:current_version) { '1.1.5' }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/plugins/password/config.inc.php" }
-
+  let(:pre_condition) { <<-EOS
+      file { ['/opt', '/var/cache/puppet/archives']: ensure => directory }
+      
+      package { 'wget': }
+    EOS
+  }
+  
   describe 'by default' do
     let(:params) { {} }
 

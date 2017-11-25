@@ -75,7 +75,7 @@ describe 'roundcube::plugin' do
     end
 
     describe file('/var/www/roundcubemail/plugins/password/config.inc.php') do
-      its(:content) { should match /^\$config\['password_minimum_length'\] = '16';$/ }
+      its(:content) { should match /^\$config\['password_minimum_length'\] = 16;$/ }
     end
   end
 
@@ -113,7 +113,7 @@ describe 'roundcube::plugin' do
     end
 
     describe file('/var/www/roundcubemail/plugins/password/config.inc.php') do
-      its(:content) { should match /^\$config\['password_minimum_length'\] = '16';$/ }
+      its(:content) { should match /^\$config\['password_minimum_length'\] = 16;$/ }
     end
   end
 

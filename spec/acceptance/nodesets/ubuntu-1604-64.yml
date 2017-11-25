@@ -1,0 +1,13 @@
+HOSTS:
+  ubuntu-1604-x64:
+    platform: ubuntu-1604-x86_64
+    hypervisor: docker
+    image: ubuntu:16.04
+    docker_preserve_image: true
+    docker_image_commands:
+      - 'apt-get update && apt-get -y --no-install-recommends install git php7.0-cli'
+
+CONFIG:
+  type: foss
+  log_level: info
+  trace_limit: 100

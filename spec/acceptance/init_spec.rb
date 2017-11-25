@@ -14,14 +14,6 @@ describe 'roundcube' do
           ensure => directory,
         }
 
-        package { 'git':
-          ensure => installed,
-        }
-
-        package { 'php5-cli':
-          ensure => installed,
-        }
-
         class { 'roundcube': }
       EOS
     }
@@ -86,14 +78,6 @@ describe 'roundcube' do
           ensure => directory,
         }
 
-        package { 'git':
-          ensure => installed,
-        }
-
-        package { 'php5-cli':
-          ensure => installed,
-        }
-
         class { 'roundcube':
           imap_host    => 'ssl://localhost',
           imap_port    => 993,
@@ -116,7 +100,7 @@ describe 'roundcube' do
 
     describe file('/var/www/roundcubemail/config/config.inc.php') do
       its(:content) { should match /^\$config\['default_host'\] = 'ssl:\/\/localhost';$/ }
-      its(:content) { should match /^\$config\['default_port'\] = '993';$/ }
+      its(:content) { should match /^\$config\['default_port'\] = 993;$/ }
       its(:content) { should match /^\$config\['des_key'\] = 'beefbeefbeefbeefbeefbeef';$/ }
       its(:content) { should match /^\$config\['language'\] = 'en_US';$/ }
       its(:content) { should match /^\$config\['support_url'\] = 'http:\/\/example\.com\/helpdesk';$/ }
@@ -134,14 +118,6 @@ describe 'roundcube' do
 
         file { $required_directories:
           ensure => directory,
-        }
-
-        package { 'git':
-          ensure => installed,
-        }
-
-        package { 'php5-cli':
-          ensure => installed,
         }
 
         class { 'roundcube':
