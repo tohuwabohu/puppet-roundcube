@@ -5,7 +5,7 @@ HOSTS:
     image: debian:9
     docker_preserve_image: true
     docker_image_commands:
-      - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php7.0-cli php-pear'
+      - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php-cli php-gd php-mbstring php-pear php-zip'
 
 CONFIG:
   type: foss
