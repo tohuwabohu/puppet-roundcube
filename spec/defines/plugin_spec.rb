@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'roundcube::plugin' do
   let(:title) { 'password' }
   let(:facts) { {:concat_basedir => '/path/to/dir'} }
-  let(:current_version) { '1.1.5' }
+  let(:current_version) { '1.3.3' }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/plugins/password/config.inc.php" }
   let(:pre_condition) { <<-EOS

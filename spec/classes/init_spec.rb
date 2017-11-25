@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'roundcube', :type => :class do
   let(:title) { 'roundcube' }
-  let(:current_version) { '1.1.5' }
+  let(:current_version) { '1.3.3' }
   let(:archive_name) { "roundcubemail-#{current_version}-complete" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
