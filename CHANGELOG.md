@@ -1,3 +1,15 @@
+## 2017-11-XX - Release 3.1.0
+### Summary
+
+This update contains a couple of major improvements which should not break any backward compatibility
+
+* Update to roundcube 1.3.3 mainly because of security update
+* Update of the test infrastructure (gems and more test platforms)
+* Add support of Puppet 5; in turn support of Puppet 3 has been dropped
+* Add support of Debian 9 and Ubuntu 16.04
+
+**Note:** this will be the last release supporting `camptocamp-archive`, the next major release will drop the support.
+
 ## 2016-09-07 - Release 3.0.0
 ### Summary
 
