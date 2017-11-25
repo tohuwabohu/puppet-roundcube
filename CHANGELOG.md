@@ -1,5 +1,5 @@
-##2016-09-07 - Release 3.0.0
-###Summary
+## 2016-09-07 - Release 3.0.0
+### Summary
 
 Add support for both well-known archive providers, [puppet-archive](https://forge.puppetlabs.com/puppet/archive) and
 [camptocamp-archive](https://forge.puppetlabs.com/camptocamp/archive)
@@ -8,18 +8,18 @@ Add support for both well-known archive providers, [puppet-archive](https://forg
 **Note:** As part of this change, the dependency on `camptocamp-archive` has been dropped so anyone using
 librarian-puppet can freely select the archive provider of choice. By default this module will use `camptocamp-archive`.
 
-##2016-04-24 - Release 2.2.0
-###Summary
+## 2016-04-24 - Release 2.2.0
+### Summary
 
 Update the default roundcube version to 1.1.5; packages are now sourced from [http://github.com] instead of
 [http://downloads.sourceforge.net].
 
-##2016-03-25 - Release 2.1.0
-###Summary
+## 2016-03-25 - Release 2.1.0
+### Summary
 
 Update the default roundcube version to 1.1.4 and add support for Puppet 4.
 
-####Improvements
+#### Improvements
 
 * Replace [ripienaar/module_data](https://forge.puppetlabs.com/ripienaar/module_data) with `params.pp`; the module is
   unlikly to work with Puppet 4 (see [Native Puppet 4 Data in Modules](https://www.devco.net/archives/2016/01/08/native-puppet-4-data-in-modules.php))
@@ -37,20 +37,20 @@ Furthermore, the test infrastructure has been overhauled:
 * Replace VirtualBox with Docker for acceptance tests
 * Add Debian 8
 
-##2015-09-06 - Release 2.0.3
-###Summary
+## 2015-09-06 - Release 2.0.3
+### Summary
 
 This release fixes two issues with roundcube 1.1.2
 
 * [#1](https://github.com/tohuwabohu/puppet-roundcube/issues/1): maintenance cron job is too verbose
 * [#2](https://github.com/tohuwabohu/puppet-roundcube/issues/2): two conflicting pear dependencies installed by composer prevent the sending of emails
 
-##2015-08-30 - Release 2.0.2
-###Summary
+## 2015-08-30 - Release 2.0.2
+### Summary
 
 Fixes a bug which causes plugins from the plugin repository not being enabled as expected.
 
-##2015-08-30 - Release 2.0.0
-###Summary
+## 2015-08-30 - Release 2.0.0
+### Summary
 
 Major rewrite after upgrading from Roundcube 0.9.x to 1.0.0.
