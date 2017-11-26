@@ -1,4 +1,4 @@
-## 2017-11-XX - Release 3.1.0
+## 2017-11-26 - Release 3.1.0
 ### Summary
 
 This update contains a couple of major improvements which should not break any backward compatibility
