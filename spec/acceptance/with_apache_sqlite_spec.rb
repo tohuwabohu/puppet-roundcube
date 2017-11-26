@@ -14,7 +14,7 @@ describe 'with Apache + SQLite' do
       }
 
       class { 'apache':
-         mpm_module => 'itk',
+         mpm_module => 'prefork',
          docroot    => '/var/www/roundcubemail',
       }
 
