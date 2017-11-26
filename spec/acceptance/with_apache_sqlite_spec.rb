@@ -20,12 +20,6 @@ describe 'with Apache + SQLite' do
 
       class { 'apache::mod::php': }
 
-      package { 'php5-sqlite':
-        ensure  => installed,
-        require => Class['apache'],
-        notify  => Service['httpd'],
-      }
-
       class { 'roundcube':
         db_dsn => 'sqlite:////tmp/roundcube.db?mode=0646',
       }

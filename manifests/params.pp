@@ -7,8 +7,8 @@
 # Copyright 2016 Martin Meinhold, unless otherwise noted.
 #
 class roundcube::params {
-  $version = '1.1.5'
-  $checksum = '476a1d45b0592b2ad43e3e08cbc72e69ef31e33ed8a8f071f02e5a1ae3e7f334'
+  $version = '1.3.3'
+  $checksum = '05d9856c966c0d93accabf724e7ff2fd493bba1a57c44247ed0a2aacd617c879'  # complete edition
   $checksum_type = 'sha256'
 
   $archive_provider = 'camptocamp'

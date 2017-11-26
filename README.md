@@ -1,7 +1,7 @@
 # roundcube
 
 [![Puppet Forge](https://img.shields.io/puppetforge/v/tohuwabohu/roundcube.svg)](https://forge.puppetlabs.com/tohuwabohu/roundcube)
-[![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.png?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
+[![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.svg?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
 
 ## Overview
 

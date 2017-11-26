@@ -9,7 +9,7 @@ install_module_from_forge_on(hosts, 'puppetlabs-concat', '= 2.1.0')
 install_module_from_forge_on(hosts, 'willdurand-composer', '= 1.1.1')
 install_module_from_forge_on(hosts, 'camptocamp-archive', '= 0.8.1')
 # test dependencies
-install_module_from_forge_on(hosts, 'puppetlabs-apache', '= 1.8.1')
+install_module_from_forge_on(hosts, 'puppetlabs-apache', '= 2.3.0')
 
 RSpec.configure do |c|
   c.formatter = :documentation

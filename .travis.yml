@@ -21,6 +21,7 @@ matrix:
     dist: trusty
     services: docker
     sudo: required
+# Disabled due to https://github.com/puppetlabs/puppetlabs-apache/pull/1724
 #  - env: BEAKER_set=default  # Debian 9
 #    bundler_args: --without development
 #    script: bundle exec rake beaker
@@ -33,9 +34,9 @@ matrix:
     dist: trusty
     services: docker
     sudo: required
-#  - env: BEAKER_set=ubuntu-1604-64
-#    bundler_args: --without development
-#    script: bundle exec rake beaker
-#    dist: trusty
-#    services: docker
-#    sudo: required
+  - env: BEAKER_set=ubuntu-1604-64
+    bundler_args: --without development
+    script: bundle exec rake beaker
+    dist: trusty
+    services: docker
+    sudo: required
