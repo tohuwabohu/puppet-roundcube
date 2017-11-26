@@ -5,7 +5,7 @@ HOSTS:
     image: ubuntu:14.04
     docker_preserve_image: true
     docker_image_commands:
-      - 'apt-get update && apt-get -y --no-install-recommends install git php5-cli php5-gd'
+      - 'apt-get update && apt-get -y --no-install-recommends install git php5-cli php5-gd php5-sqlite'
 
 CONFIG:
   type: foss
