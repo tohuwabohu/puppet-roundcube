@@ -1,3 +1,7 @@
+## 2018-04-21 - Release 3.2.0
+
+Quick update to support the most recent 4.x concat version ([#8](https://github.com/tohuwabohu/puppet-roundcube/pull/8)).
+
 ## 2017-11-26 - Release 3.1.0
 ### Summary
 
