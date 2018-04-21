@@ -5,13 +5,13 @@ fixtures:
       ref: "0.8.1"
     composer:
       repo: "https://github.com/willdurand/puppet-composer.git"
-      ref: "v1.1.1"
+      ref: "v1.2.6"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
-      ref: "2.1.0"
+      ref: "4.2.1"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "4.11.0"
+      ref: "4.25.1"
     # transitive dependencies
     wget:
       repo: "https://github.com/maestrodev/puppet-wget.git"
