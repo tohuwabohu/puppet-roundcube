@@ -68,7 +68,9 @@ class roundcube::config inherits roundcube {
     order   => '60',
   }
 
-  roundcube::plugin { $roundcube::plugins: }
+  if $roundcube::plugins {
+    roundcube::plugin { $roundcube::plugins: }
+  }
 
   file { '/etc/cron.daily/roundcube-cleandb':
     ensure => absent,
