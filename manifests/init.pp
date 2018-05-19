@@ -48,6 +48,9 @@
 #   that module installed since both cannot be recorded as a dependency in
 #   metadata.json at the same time.
 #
+# [*archive_proxy_server*]
+#   Proxy server to use with archive module. Example: "https://proxy.example.com:8080"
+#
 # [*db_dsn*]
 #   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
 #   override the other `db_*` parameters. See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php for
@@ -118,6 +121,7 @@ class roundcube (
   $document_root_manage            = $roundcube::params::document_root_manage,
 
   $archive_provider                = $roundcube::params::archive_provider,
+  $archive_proxy_server            = undef,
 
   $db_dsn                          = undef,
   $db_type                         = 'pgsql',
