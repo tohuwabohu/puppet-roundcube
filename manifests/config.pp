@@ -58,14 +58,16 @@ class roundcube::config inherits roundcube {
     }
   }
 
-  concat::fragment { "${config_file}__plugins_head":
-    content => "\$config[\'plugins\'] = array(\n",
-    order   => '50',
-  }
+  if !empty($roundcube::plugins) {
+    concat::fragment { "${config_file}__plugins_head":
+      content => "\$config[\'plugins\'] = array(\n",
+      order   => '50',
+    }
 
-  concat::fragment { "${config_file}__plugins_tail":
-    content => ");\n",
-    order   => '60',
+    concat::fragment { "${config_file}__plugins_tail":
+      content => ");\n",
+      order   => '60',
+    }
   }
 
   roundcube::plugin { $roundcube::plugins: }
