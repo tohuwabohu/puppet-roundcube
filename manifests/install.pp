@@ -8,7 +8,7 @@
 #
 class roundcube::install inherits roundcube {
 
-  if ($composer_manage == true) {
+  if ($roundcube::composer_manage == true) {
     include composer
   }
 
