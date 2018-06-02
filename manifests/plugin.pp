@@ -26,10 +26,10 @@ define roundcube::plugin (
   $config_file_template = undef,
   $options_hash = {},
 ) {
+  include roundcube
   if ($roundcube::composer_manage == true) {
     include composer
   }
-  include roundcube
 
   $application_dir = $roundcube::install::target
   $config_file = $roundcube::config::config_file
