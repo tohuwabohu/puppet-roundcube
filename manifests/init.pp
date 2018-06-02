@@ -117,6 +117,7 @@ class roundcube (
   $exec_paths                      = $roundcube::params::exec_paths,
   $composer_command_name           = $roundcube::params::composer_command_name,
   $composer_disable_git_ssl_verify = $roundcube::params::composer_disable_git_ssl_verify,
+  $composer_manage                 = $roundcube::params::composer_manage,
   $document_root                   = $roundcube::params::document_root,
   $document_root_manage            = $roundcube::params::document_root_manage,
 
@@ -146,6 +147,7 @@ class roundcube (
   validate_absolute_path($install_dir)
   validate_string($composer_command_name)
   validate_bool($composer_disable_git_ssl_verify)
+  validate_bool($composer_manage)
   validate_absolute_path($document_root)
   validate_bool($document_root_manage)
   validate_string($archive_provider)
