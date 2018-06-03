@@ -1,9 +1,9 @@
-## 2018-05-27 - Release 3.2.1
+## 2018-06-03 - Release 3.3.0
 
 Two minor improvements
 
-* Added `archive_proxy_server` parameter to configure proxy server when archive module is being used ([#10](https://github.com/tohuwabohu/puppet-roundcube/pull/10))
-* Allow `plugins` configuration to be managed separately ([#12](https://github.com/tohuwabohu/puppet-roundcube/pull/12))
+* Add `archive_proxy_server` parameter to configure proxy server when archive module is being used ([#10](https://github.com/tohuwabohu/puppet-roundcube/pull/10))
+* Allow `plugins` configuration to be managed separately outside of this module ([#12](https://github.com/tohuwabohu/puppet-roundcube/pull/12))
 
 ## 2018-04-21 - Release 3.2.0
 
