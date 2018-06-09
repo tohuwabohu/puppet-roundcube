@@ -22,4 +22,5 @@ class roundcube::params {
   $exec_paths = ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin']
   $composer_command_name = 'composer'
   $composer_disable_git_ssl_verify = false
+  $composer_manage = true
 }
