@@ -1,3 +1,7 @@
+## 2018-06-10 - Release 3.4.0
+
+Allow to make puppet composer module optional ([#13](https://github.com/tohuwabohu/puppet-roundcube/pull/13)).
+
 ## 2018-06-03 - Release 3.3.0
 
 Two minor improvements
