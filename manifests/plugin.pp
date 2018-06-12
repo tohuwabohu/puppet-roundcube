@@ -27,6 +27,9 @@ define roundcube::plugin (
   $options_hash = {},
 ) {
   include roundcube
+  if $roundcube::plugins_manage == false {
+    fail("Roundcube::Plugin[${name}]: conflicting parameters - plugin configuration disabled but plugin resource defined")
+  }
   if ($roundcube::composer_manage == true) {
     include composer
   }

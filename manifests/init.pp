@@ -164,7 +164,7 @@ class roundcube (
   validate_hash($options_hash)
 
   if !empty($plugins) and $plugins_manage == false {
-    fail("Class[Roundcube]: conflicting configuration - plugin management disabled but plugins specified: ${plugins}")
+    fail("Class[Roundcube]: conflicting parameters - plugin configuration disabled but plugins specified: ${plugins}")
   }
 
   $env_git_ssl_no_verify = $composer_disable_git_ssl_verify ? {
