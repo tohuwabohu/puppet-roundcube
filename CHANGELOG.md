@@ -1,3 +1,16 @@
+## 2018-06-12 - Release 3.4.1
+
+This is a bugfix release to fix an unintended side-effect caused by ([#12](https://github.com/tohuwabohu/puppet-roundcube/pull/12)):
+defining at least one `roundcube::plugin` resource whilst leaving the `plugins` parameter untouched did result in a 
+broken php configuration file.
+
+This has been fixed by ...
+* Restoring the original behaviour wrt. the `plugins` parameter
+* Introducing a new `plugins_manage` parameter to explicitly control the plugin configuration. If this is set to `false` 
+  it is expected that the plugin list is managed separated and hence the module will bail out if there is any plugin 
+  configuration detected, either via the `plugins` parameter or via the `roundcube::plugin` resource. The parameter is 
+  set to `true` by default.
+
 ## 2018-06-10 - Release 3.4.0
 
 Allow to make puppet composer module optional ([#13](https://github.com/tohuwabohu/puppet-roundcube/pull/13)).
