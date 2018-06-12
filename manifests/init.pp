@@ -135,6 +135,7 @@ class roundcube (
   $imap_port                       = 143,
   $des_key                         = 'rcmail-!24ByteDESkey*Str',
   $plugins                         = [],
+  $plugins_manage                  = $roundcube::params::plugins_manage,
 
   $config_file_template            = undef,
   $options_hash                    = {},
@@ -159,6 +160,7 @@ class roundcube (
   validate_string($imap_host)
   validate_string($des_key)
   validate_array($plugins)
+  validate_bool($plugins_manage)
   validate_hash($options_hash)
 
   $env_git_ssl_no_verify = $composer_disable_git_ssl_verify ? {

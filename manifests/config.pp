@@ -58,7 +58,7 @@ class roundcube::config inherits roundcube {
     }
   }
 
-  if !empty($roundcube::plugins) {
+  if $roundcube::plugins_manage == true {
     concat::fragment { "${config_file}__plugins_head":
       content => "\$config[\'plugins\'] = array(\n",
       order   => '50',
