@@ -23,4 +23,6 @@ class roundcube::params {
   $composer_command_name = 'composer'
   $composer_disable_git_ssl_verify = false
   $composer_manage = true
+
+  $plugins_manage = true
 }

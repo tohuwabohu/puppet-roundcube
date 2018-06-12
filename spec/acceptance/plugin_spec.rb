@@ -40,6 +40,10 @@ describe 'roundcube::plugin' do
     describe file('/var/www/roundcubemail/config/config.inc.php') do
       its(:content) { should match /^\s*'password',$/ }
     end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
+    end
   end
 
   context 'bundled plugin with configuration parameters' do
@@ -76,6 +80,10 @@ describe 'roundcube::plugin' do
 
     describe file('/var/www/roundcubemail/plugins/password/config.inc.php') do
       its(:content) { should match /^\$config\['password_minimum_length'\] = 16;$/ }
+    end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
     end
   end
 
@@ -114,6 +122,10 @@ describe 'roundcube::plugin' do
 
     describe file('/var/www/roundcubemail/plugins/password/config.inc.php') do
       its(:content) { should match /^\$config\['password_minimum_length'\] = 16;$/ }
+    end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
     end
   end
 
@@ -159,6 +171,10 @@ describe 'roundcube::plugin' do
     describe file('/var/www/roundcubemail/config/config.inc.php') do
       its(:content) { should match /^\s*'markasjunk2',$/ }
     end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
+    end
   end
 
   context 'plugin from repository with configuration parameters' do
@@ -194,6 +210,10 @@ describe 'roundcube::plugin' do
 
     describe file('/var/www/roundcubemail/plugins/markasjunk2/config.inc.php') do
       its(:content) { should match /^\$config\['markasjunk2_read_spam'\] = false;$/ }
+    end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
     end
   end
 
@@ -232,6 +252,10 @@ describe 'roundcube::plugin' do
     describe file('/var/www/roundcubemail/plugins/markasjunk2/config.inc.php') do
       its(:content) { should match /^\$config\['markasjunk2_unread_ham'\] = true;$/ }
     end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
+    end
   end
 
   context 'plugin without default configuration' do
@@ -259,6 +283,10 @@ describe 'roundcube::plugin' do
 
     specify 'should be idempotent' do
       apply_manifest(manifest, :catch_changes => true)
+    end
+
+    describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
+      its(:stdout) { should match /No syntax errors/ }
     end
   end
 end

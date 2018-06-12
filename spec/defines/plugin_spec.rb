@@ -25,4 +25,21 @@ describe 'roundcube::plugin' do
 
     specify { should contain_concat__fragment("#{config_file}__custom_config").with_content(/^\$config\['password_db_dsn'\] = 'psql:\/\/somewhere\/else';$/) }
   end
+
+  describe 'should fail when plugin configuration is disabled' do
+    let(:pre_condition) { <<-EOS
+        file { ['/opt', '/var/cache/puppet/archives']: ensure => directory }
+        
+        package { 'wget': }
+
+        class { 'roundcube':
+          plugins_manage => false,
+        }
+      EOS
+    }
+
+    it do
+      expect { should contain_concat(config_file) }.to raise_error(Puppet::Error, /conflicting parameters/)
+    end
+  end
 end

@@ -21,6 +21,8 @@ describe 'roundcube', :type => :class do
         'target' => install_dir
       )
     }
+    specify { should contain_concat__fragment("#{config_file}__plugins_head") }
+    specify { should contain_concat__fragment("#{config_file}__plugins_tail") }
   end
 
   describe 'installs custom version' do
@@ -144,5 +146,20 @@ describe 'roundcube', :type => :class do
         'mode'   => '0640',
       })
     }
+  end
+
+  describe 'should not manage plugin configuration when disabled' do
+    let(:params) { {:plugins_manage => false} }
+
+    specify { should_not contain_concat__fragment("#{config_file}__plugins_head") }
+    specify { should_not contain_concat__fragment("#{config_file}__plugins_tail") }
+  end
+
+  describe 'should reject non-empty plugins list when plugin configuration is disabled' do
+    let(:params) { {:plugins => ['plugin1'], :plugins_manage => false} }
+
+    it do
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /conflicting parameters/)
+    end
   end
 end
