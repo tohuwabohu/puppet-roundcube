@@ -149,9 +149,17 @@ describe 'roundcube', :type => :class do
   end
 
   describe 'should not manage plugin configuration when disabled' do
-    let(:params) { {:plugins_manage => false } }
+    let(:params) { {:plugins_manage => false} }
 
     specify { should_not contain_concat__fragment("#{config_file}__plugins_head") }
     specify { should_not contain_concat__fragment("#{config_file}__plugins_tail") }
+  end
+
+  describe 'should not accept non-empty plugins list when plugins are not supposed to be managed' do
+    let(:params) { {:plugins => ['plugin1'], :plugins_manage => false} }
+
+    it do
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /conflicting configuration/)
+    end
   end
 end
