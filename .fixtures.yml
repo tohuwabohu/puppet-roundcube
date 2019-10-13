@@ -5,7 +5,7 @@ fixtures:
       ref: "0.8.1"
     composer:
       repo: "https://github.com/willdurand/puppet-composer.git"
-      ref: "v1.2.6"
+      ref: "1.2.6"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
       ref: "4.2.1"
