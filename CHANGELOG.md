@@ -1,3 +1,7 @@
+## 2019-10-13 - Release 3.4.2
+
+Add parameter `$cronjobs_manage` ([#15](https://github.com/tohuwabohu/puppet-roundcube/pull/15)).
+
 ## 2018-06-12 - Release 3.4.1
 
 This is a bugfix release to fix an unintended side-effect caused by ([#12](https://github.com/tohuwabohu/puppet-roundcube/pull/12)):
