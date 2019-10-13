@@ -25,4 +25,5 @@ class roundcube::params {
   $composer_manage = true
 
   $plugins_manage = true
+  $cronjobs_manage = true
 }

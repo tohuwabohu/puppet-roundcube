@@ -102,6 +102,9 @@
 #   Specify custom Roundcube configuration settings. See config/defaults.inc.php in the roundcube directory for a
 #   complete list of possible configuration arguments.
 #
+# [*cronjobs_manage*]
+#   Whether to manage cronjobs for Roundcube: either `true` or `false`.
+#
 # === Copyright
 #
 # Copyright 2015 Martin Meinhold, unless otherwise noted.
@@ -136,6 +139,7 @@ class roundcube (
   $des_key                         = 'rcmail-!24ByteDESkey*Str',
   $plugins                         = [],
   $plugins_manage                  = $roundcube::params::plugins_manage,
+  $cronjobs_manage                 = $roundcube::params::cronjobs_manage,
 
   $config_file_template            = undef,
   $options_hash                    = {},
@@ -161,6 +165,7 @@ class roundcube (
   validate_string($des_key)
   validate_array($plugins)
   validate_bool($plugins_manage)
+  validate_bool($cronjobs_manage)
   validate_hash($options_hash)
 
   if !empty($plugins) and $plugins_manage == false {
