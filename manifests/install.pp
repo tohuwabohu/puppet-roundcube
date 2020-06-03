@@ -84,7 +84,7 @@ class roundcube::install inherits roundcube {
     source  => "${target}/composer.json-dist",
     replace => false,
     owner   => 'root',
-    group   => 'root',
+    group   => 0,
     mode    => '0644',
     require => $require_archive,
   }

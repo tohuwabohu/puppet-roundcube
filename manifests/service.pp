@@ -16,7 +16,7 @@ class roundcube::service inherits roundcube {
       ensure => link,
       target => $roundcube::install::target,
       owner  => 'root',
-      group  => 'root',
+      group  => 0,
     }
   }
 }
