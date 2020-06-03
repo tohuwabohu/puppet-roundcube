@@ -1,8 +1,20 @@
-## 2019-10-13 - Release 3.4.2
+# Change log
 
-Add parameter `$cronjobs_manage` ([#15](https://github.com/tohuwabohu/puppet-roundcube/pull/15)).
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## 2018-06-12 - Release 3.4.1
+## [v3.4.3](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.4.3) (2020-06-03)
+
+### Added
+
+- Make compatible with FreeBSD ([#16](https://github.com/tohuwabohu/puppet-roundcube/pull/16)).
+
+## [v3.4.2](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.4.2) (2019-10-13)
+
+### Added
+
+- Add parameter `$cronjobs_manage` ([#15](https://github.com/tohuwabohu/puppet-roundcube/pull/15)).
+
+## [v3.4.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.4.1) (2018-06-12) 
 
 This is a bugfix release to fix an unintended side-effect caused by ([#12](https://github.com/tohuwabohu/puppet-roundcube/pull/12)):
 defining at least one `roundcube::plugin` resource whilst leaving the `plugins` parameter untouched did result in a 
@@ -15,7 +27,7 @@ This has been fixed by ...
   configuration detected, either via the `plugins` parameter or via the `roundcube::plugin` resource. The parameter is 
   set to `true` by default.
 
-## 2018-06-10 - Release 3.4.0
+## [v3.4.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.4.0) (2018-06-10)
 
 Allow to make puppet composer module optional ([#13](https://github.com/tohuwabohu/puppet-roundcube/pull/13)).
 
