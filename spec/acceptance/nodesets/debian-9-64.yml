@@ -1,8 +1,8 @@
 HOSTS:
-  debian-10-64:
-    platform: debian-10-amd64
+  debian-9-64:
+    platform: debian-9-amd64
     hypervisor: docker
-    image: debian:10
+    image: debian:9
     docker_preserve_image: true
     docker_image_commands:
       - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php-cli php-dom php-gd php-ldap php-mbstring php-sqlite3 php-zip'
@@ -10,4 +10,4 @@ HOSTS:
 CONFIG:
   type: aio
   log_level: info
-  trace_limit: 500
+  trace_limit: 100

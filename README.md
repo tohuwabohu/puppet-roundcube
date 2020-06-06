@@ -146,10 +146,10 @@ roundcube::plugin { 'johndoh/markasjunk2':
 
 The module has been tested on the following operating systems. Testing and patches for other platforms are welcome.
 
-* Debian 8.0 (Jessie)
 * Debian 9.0 (Stretch)
-* Ubuntu 14.04 (Trusty Tahr)
+* Debian 10.0 (Buster)
 * Ubuntu 16.04 (Xenial Xerus)
+* Ubuntu 18.04 (Bionic Beaver)
 
 ## Contributing
 
