@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. The format 
 ### Changed
 
 - Update the default version of roundcube from 1.3.3 to 1.4.4
-- Update the test matrix to run agains Puppet 5 and 6
+- Update the test matrix to run agains Puppet 5 and 6; mark module as compatible with Puppet 6 
 - Update the acceptance test matrix: replaced Debian 7/8 with Debian 9/10 and replaced Ubuntu 12.04/14.04 with 16.04/18.04
 
 ### Added
