@@ -1,8 +1,8 @@
 HOSTS:
-  ubuntu-1604-x64:
-    platform: ubuntu-1604-x86_64
+  ubuntu-1804-x64:
+    platform: ubuntu-1804-x86_64
     hypervisor: docker
-    image: ubuntu:16.04
+    image: ubuntu:18.04
     docker_preserve_image: true
     docker_image_commands:
       - 'apt-get update && apt-get -y --no-install-recommends install cron git php-cli php-dom php-gd php-mbstring php-sqlite3 php-zip'

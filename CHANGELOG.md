@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v3.4.3](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.4.3) (2020-06-03)
+## [v3.5.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.0) (2020-06-06)
+
+### Changed
+
+- Update the default version of roundcube from 1.3.3 to 1.4.4
+- Update the test matrix to run agains Puppet 5 and 6
+- Update the acceptance test matrix: replaced Debian 7/8 with Debian 9/10 and replaced Ubuntu 12.04/14.04 with 16.04/18.04
 
 ### Added
 

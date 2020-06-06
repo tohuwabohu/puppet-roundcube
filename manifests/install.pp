@@ -99,7 +99,7 @@ class roundcube::install inherits roundcube {
   }
 
   -> exec { $composer_install_cmd:
-    unless      => "${composer_install_cmd} --dry-run 2>&1 | grep -q -F 'Nothing to install or update'",
+    unless      => "${composer_install_cmd} --dry-run 2>&1 | grep -q -F 'Nothing to install'",
     cwd         => $target,
     path        => $roundcube::exec_paths,
     environment => $roundcube::composer_exec_environment,
