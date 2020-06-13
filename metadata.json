@@ -1,7 +1,7 @@
 {
   "name": "tohuwabohu-roundcube",
   "version": "3.5.0",
-  "author": "Martin Meinhold",
+  "author": "tohuwabohu",
   "license": "Apache-2.0",
   "summary": "Install and manage the Roundcube webmail application",
   "source": "https://github.com/tohuwabohu/puppet-roundcube.git",
