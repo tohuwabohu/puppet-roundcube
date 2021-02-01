@@ -1,0 +1,23 @@
+name: build-and-test
+on: [push]
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - ruby-version: 2.4
+            puppet-version: ~> 5
+          - ruby-version: 2.5
+            puppet-version: ~> 6
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        env:
+          PUPPET_VERSION: ${{ matrix.puppet-version}}
+        with:
+          ruby-version: ${{matrix.ruby-version}}
+      - run: bundle install
+      - run: bundle exec rake test
+        env:
+          SPEC_OPTS: '--format documentation'

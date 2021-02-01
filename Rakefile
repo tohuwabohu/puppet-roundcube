@@ -6,6 +6,8 @@ require 'puppet-syntax/tasks/puppet-syntax'
 require 'metadata-json-lint/rake_task'
 
 exclude_paths = [
+  '.bundle/**/*',
+  '.github/**/*',
   'pkg/**/*',
   'spec/**/*',
   'vendor/**/*',
