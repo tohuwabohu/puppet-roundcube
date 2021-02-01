@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file. The format 
 ## [unrelease]
 
 ### Changed
-
+                  
+- Default branch has been renamed to `main`
 - Migrate from travis-ci.org to Github Actions due to pending shutdown :sob: 
 
 ## [v3.5.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.0) (2020-06-13)
