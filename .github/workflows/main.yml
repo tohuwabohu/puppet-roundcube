@@ -21,3 +21,15 @@ jobs:
       - run: bundle exec rake test
         env:
           SPEC_OPTS: '--format documentation'
+
+  acceptance-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - beaker-set: debian-9-64
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+      - run: bundle install
+      - run: bundle exec rake beaker
