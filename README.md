@@ -1,7 +1,7 @@
 # roundcube
 
 [![License](https://img.shields.io/github/license/tohuwabohu/puppet-roundcube.svg)](https://github.com/tohuwabohu/puppet-roundcube/blob/master/LICENSE.txt)
-[![Build Status](https://travis-ci.org/tohuwabohu/puppet-roundcube.svg?branch=master)](https://travis-ci.org/tohuwabohu/puppet-roundcube)
+![Build Status](https://github.com/tohuwabohu/puppet-roundcube/workflows/build-and-test/badge.svg)
 [![Puppet Forge](https://img.shields.io/puppetforge/v/tohuwabohu/roundcube.svg)](https://forge.puppetlabs.com/tohuwabohu/roundcube)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/tohuwabohu/roundcube.svg)](https://forge.puppetlabs.com/tohuwabohu/roundcube)
 
