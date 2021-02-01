@@ -165,7 +165,7 @@ This project uses rspec-puppet and beaker to ensure the module works as expected
 
 ```
 gem install bundler
-bundle install --path vendor
+bundle install
 
 bundle exec rake spec
 bundle exec rake beaker
