@@ -17,7 +17,7 @@ jobs:
           PUPPET_VERSION: ${{ matrix.puppet-version}}
         with:
           ruby-version: ${{matrix.ruby-version}}
-      - run: bundle install --without development system_tests
+      - run: bundle install
       - run: bundle exec rake test
         env:
           SPEC_OPTS: '--format documentation'
