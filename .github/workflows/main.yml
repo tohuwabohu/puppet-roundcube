@@ -23,6 +23,7 @@ jobs:
           PUPPET_VERSION: "~> ${{ matrix.puppet-version }}"
       - run: bundle exec rake test
         env:
+          PUPPET_VERSION: "~> ${{ matrix.puppet-version }}"
           SPEC_OPTS: '--format documentation'
 
   acceptance-tests:
