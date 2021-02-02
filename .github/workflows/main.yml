@@ -11,6 +11,8 @@ jobs:
             puppet-version: 5
           - ruby-version: 2.5
             puppet-version: 6
+          - ruby-version: 2.7
+            puppet-version: 7
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1

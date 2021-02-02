@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. The format 
                
 - Rename default branch to `main`
 - Migrate from travis-ci.org to Github Actions due to pending shutdown :sob:
+- Add Puppet 7 unit tests
 - Replace Ubuntu 16.04 with Ubuntu 20.04 in acceptance tests
 
 ## [v3.5.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.0) (2020-06-13)
