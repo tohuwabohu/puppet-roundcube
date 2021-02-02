@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Changed
                
-- Default branch has been renamed to `main`
+- Rename default branch to `main`
 - Migrate from travis-ci.org to Github Actions due to pending shutdown :sob:
 - Replace Ubuntu 16.04 with Ubuntu 20.04 in acceptance tests
 
