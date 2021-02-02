@@ -16,11 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
-        env:
-          PUPPET_VERSION: "~> ${{ matrix.puppet-version }}"
         with:
           ruby-version: ${{matrix.ruby-version}}
       - run: bundle install
+        env:
+          PUPPET_VERSION: "~> ${{ matrix.puppet-version }}"
       - run: bundle exec rake test
         env:
           SPEC_OPTS: '--format documentation'
