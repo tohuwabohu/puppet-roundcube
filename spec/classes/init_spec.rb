@@ -9,8 +9,6 @@ describe 'roundcube', :type => :class do
   let(:config_file_options_fragment) { "#{config_file}__options" }
   let(:pre_condition) { <<-EOS
       file { ['/opt', '/somewhere/else', '/var/cache/puppet/archives']: ensure => directory }
-      
-      package { 'wget': }
     EOS
   }
 

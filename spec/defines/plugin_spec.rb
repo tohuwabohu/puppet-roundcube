@@ -8,8 +8,6 @@ describe 'roundcube::plugin' do
   let(:config_file) { "#{install_dir}/plugins/password/config.inc.php" }
   let(:pre_condition) { <<-EOS
       file { ['/opt', '/var/cache/puppet/archives']: ensure => directory }
-      
-      package { 'wget': }
     EOS
   }
   
@@ -30,8 +28,6 @@ describe 'roundcube::plugin' do
     let(:pre_condition) { <<-EOS
         file { ['/opt', '/var/cache/puppet/archives']: ensure => directory }
         
-        package { 'wget': }
-
         class { 'roundcube':
           plugins_manage => false,
         }
