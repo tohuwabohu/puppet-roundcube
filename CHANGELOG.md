@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
 ## [v3.5.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.1) (2021-02-13)
+           
+### Deprecated
+
+- `camptocamp` as default for `archive_provider`; will be replaced with `puppet` as per deprecation notice on 
+  [camptocamp/archive](https://forge.puppet.com/modules/camptocamp/archive)  
 
 ### Changed
                
