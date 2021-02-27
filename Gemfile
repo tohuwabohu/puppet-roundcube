@@ -4,7 +4,7 @@ group :development, :test do
   gem 'rake', '~> 13.0'
   gem 'rspec', '~> 3.10'
   gem 'rspec-puppet', '~> 2.8'
-  gem 'pdk', '~> 1.18'
+  gem 'pdk', '~> 2.0'
   gem 'puppetlabs_spec_helper', '~> 3.0'
   gem 'puppet-blacksmith', '~> 6.1'
   gem 'puppet-lint', '~> 2.0'
