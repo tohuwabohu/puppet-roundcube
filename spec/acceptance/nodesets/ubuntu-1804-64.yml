@@ -5,7 +5,7 @@ HOSTS:
     image: ubuntu:18.04
     docker_preserve_image: true
     docker_image_commands:
-      - 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cron git php-cli php-dom php-gd php-ldap php-mbstring php-sqlite3 php-zip'
+      - 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install cron git php-cli php-dom php-gd php-ldap php-mbstring php-sqlite3 unzip'
 
 CONFIG:
   type: aio
