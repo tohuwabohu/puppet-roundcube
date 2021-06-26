@@ -5,7 +5,8 @@ HOSTS:
     image: debian:10
     docker_preserve_image: true
     docker_image_commands:
-      - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php-cli php-dom php-gd php-ldap php-mbstring php-sqlite3 php-zip'
+      # unzip used to unpack plugins
+      - 'apt-get update && apt-get -y --no-install-recommends install wget cron git php-cli php-dom php-gd php-ldap php-mbstring php-sqlite3 unzip'
 
 CONFIG:
   type: aio
