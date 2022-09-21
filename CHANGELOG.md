@@ -6,8 +6,9 @@ All notable changes to this project will be documented in this file. The format 
          
 ### Changed
 
-- Update roundcube version to 1.5.2 from 1.4.4
-- Replace discontinued plugin johndoh/markasjunk2 in acceptance tests with supported one roundcube/carddav 
+- Update roundcube version to 1.6.0 from 1.4.4; this also fixed the composer error complaining about missing plugins in 
+  allow-plugins list
+- Replace discontinued plugin johndoh/markasjunk2 in acceptance tests with roundcube/rcsample 
 
 ## [v3.5.2](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.2) (2021-02-13)
                                                                       

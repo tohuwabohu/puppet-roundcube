@@ -7,8 +7,8 @@
 # Copyright 2016 Martin Meinhold, unless otherwise noted.
 #
 class roundcube::params {
-  $version = '1.5.2'
-  $checksum = 'f03968381156fe790d858af7e069c5550a8577fb964f96624434895272053838'  # complete edition
+  $version = '1.6.0'
+  $checksum = '2409ccdfe2e465f086cb9fc18c88dfe0aaf6ccc23924564975061209921694ba'  # complete edition
   $checksum_type = 'sha256'
 
   # deprecated: 'camptocamp' will be replaced with 'puppet' in the next major release

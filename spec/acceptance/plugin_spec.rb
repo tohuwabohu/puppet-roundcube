@@ -143,8 +143,8 @@ describe 'roundcube::plugin' do
         }
 
         class { 'roundcube': }
-        roundcube::plugin { 'roundcube/carddav':
-          ensure => 'v4.1.2',
+        roundcube::plugin { 'roundcube/rcsample':
+          ensure => 'v0.2.3',
         }
       EOS
     }
@@ -157,11 +157,11 @@ describe 'roundcube::plugin' do
       apply_manifest(manifest, :catch_changes => true)
     end
 
-    describe file('/var/www/roundcubemail/plugins/carddav') do
+    describe file('/var/www/roundcubemail/plugins/rcsample') do
       it { should be_directory }
     end
 
-    describe file('/var/www/roundcubemail/plugins/carddav/config.inc.php') do
+    describe file('/var/www/roundcubemail/plugins/rcsample/config.inc.php') do
       it { should be_file }
       it { should be_owned_by 'www-data' }
       it { should be_grouped_into 'www-data' }
@@ -169,7 +169,7 @@ describe 'roundcube::plugin' do
     end
 
     describe file('/var/www/roundcubemail/config/config.inc.php') do
-      its(:content) { should match /^\s*'carddav',$/ }
+      its(:content) { should match /^\s*'rcsample',$/ }
     end
 
     describe command('php -l /var/www/roundcubemail/config/config.inc.php') do
