@@ -8,7 +8,8 @@ All notable changes to this project will be documented in this file. The format 
 
 - Update roundcube version to 1.6.0 from 1.4.4; this also fixed the composer error complaining about missing plugins in 
   allow-plugins list
-- Replace discontinued plugin johndoh/markasjunk2 in acceptance tests with roundcube/rcsample 
+- Replace discontinued plugin johndoh/markasjunk2 in acceptance tests with roundcube/rcsample
+- Mark latest versions of stdlib and concat dependencies as compatible
 
 ## [v3.5.2](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.2) (2021-02-13)
                                                                       
