@@ -34,6 +34,13 @@ class roundcube::config inherits roundcube {
     $imap_defaults = {
       'imap_host' => "${$roundcube::imap_host}:${$roundcube::imap_port}",
     }
+
+    if 'smtp_server' in $roundcube::options_hash {
+      fail('As of 1.6, the \'smtp_server\' configuration option has been renamed to \'smtp_host\'. Please update your resource.')
+    }
+    if 'smtp_port' in $roundcube::options_hash {
+      fail('As of 1.6, the \'smtp_port\' configuration option has merged into \'smtp_host\'. Please update your resource.')
+    }
   }
 
   $options = merge($options_defaults, $imap_defaults, $roundcube::options_hash)

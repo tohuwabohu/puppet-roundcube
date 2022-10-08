@@ -134,6 +134,14 @@ describe 'roundcube', :type => :class do
     specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['language'\] = 'en_US';$/) }
   end
 
+  describe 'raises an error about changed configuration options' do
+    let(:params) { {:options_hash => {'smtp_server' => 'localhost'}} }
+
+    it do
+      expect { should contain_archive(config_file_options_fragment) }.to raise_error(Puppet::Error, /configuration option has been renamed/)
+    end
+  end
+
   describe 'ensures the logs directory is writable by the webserver' do
     let(:params) { {:version => '1.0.0', :process => 'webserver'} }
 
