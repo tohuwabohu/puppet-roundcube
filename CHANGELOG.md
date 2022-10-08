@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file. The format 
 
 Add support for [roundcube 1.6](https://github.com/roundcube/roundcubemail/releases/tag/1.6.0). As there are breaking 
 changes, please make sure you've read the changelog.
+                    
+### Added
+
+- Allow to configure the user that is used to execute the composer install command ([#38](https://github.com/tohuwabohu/puppet-roundcube/issues/38))
 
 ### Changed
 
