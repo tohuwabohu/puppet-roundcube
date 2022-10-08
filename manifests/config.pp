@@ -20,13 +20,23 @@ class roundcube::config inherits roundcube {
   }
 
   $options_defaults = {
-    'db_dsnw'      => $db_dsnw,
-    'default_host' => $roundcube::imap_host,
-    'default_port' => $roundcube::imap_port,
-    'des_key'      => $roundcube::des_key,
+    'db_dsnw' => $db_dsnw,
+    'des_key' => $roundcube::des_key,
   }
 
-  $options = merge($options_defaults, $roundcube::options_hash)
+  if versioncmp($roundcube::version, '1.6.0') < 0 {
+    $imap_defaults = {
+      'default_host' => $roundcube::imap_host,
+      'default_port' => $roundcube::imap_port,
+    }
+  } else {
+    # see https://github.com/roundcube/roundcubemail/releases/tag/1.6.0
+    $imap_defaults = {
+      'imap_host' => "${$roundcube::imap_host}:${$roundcube::imap_port}",
+    }
+  }
+
+  $options = merge($options_defaults, $imap_defaults, $roundcube::options_hash)
 
   concat { $config_file:
     owner => $roundcube::process,

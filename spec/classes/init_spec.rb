@@ -92,15 +92,27 @@ describe 'roundcube', :type => :class do
   end
 
   describe 'creates configuration file with proper imap host' do
-    let(:params) { {:imap_host => 'ssl://localhost'} }
+    let(:params) { {:imap_host => 'ssl://example.com'} }
 
-    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_host'\] = 'ssl:\/\/localhost';$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['imap_host'\] = 'ssl:\/\/example.com:143';$/) }
   end
 
   describe 'creates configuration file with proper imap port' do
     let(:params) { {:imap_port => 993} }
 
-    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['default_port'\] = [']?993[']?;$/) }
+    specify { should contain_concat__fragment(config_file_options_fragment).with_content(/^\$config\['imap_host'\] = 'localhost:993'?;$/) }
+  end
+
+  describe 'creates configuration file with proper imap host (1.5.x compatibility)' do
+    let(:params) { {:version => '1.5.0', :imap_host => 'ssl://example.com'} }
+
+    specify { should contain_concat__fragment('/opt/roundcubemail-1.5.0/config/config.inc.php__options').with_content(/^\$config\['default_host'\] = 'ssl:\/\/example.com';$/) }
+  end
+
+  describe 'creates configuration file with proper imap port (1.5.x compatibility)' do
+    let(:params) { {:version => '1.5.0', :imap_port => 993} }
+
+    specify { should contain_concat__fragment('/opt/roundcubemail-1.5.0/config/config.inc.php__options').with_content(/^\$config\['default_port'\] = '?993'?;$/) }
   end
 
   describe 'creates configuration file with salt' do
