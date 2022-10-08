@@ -21,6 +21,9 @@ describe 'roundcube', :type => :class do
     }
     specify { should contain_concat__fragment("#{config_file}__plugins_head") }
     specify { should contain_concat__fragment("#{config_file}__plugins_tail") }
+    specify { should contain_exec('composer install --no-dev').with(
+        'user' => 'root'
+    )}
   end
 
   describe 'installs custom version' do
@@ -179,5 +182,13 @@ describe 'roundcube', :type => :class do
     it do
       expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /conflicting parameters/)
     end
+  end
+
+  describe 'runs composer install command as the specified user' do
+    let(:params) { {:composer_user => 'nobody'} }
+
+    specify { should contain_exec('composer install --no-dev').with(
+        'user' => 'nobody'
+    )}
   end
 end

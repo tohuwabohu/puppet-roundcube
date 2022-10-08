@@ -28,6 +28,9 @@
 # [*composer_command_name*]
 #   Set name of the composer executable. It is expected to find the executable via the `exec_paths`.
 #
+# [*composer_user*]
+#   Set name of the user used to execute the composer commands.
+#
 # [*composer_disable_git_ssl_verify*]
 #   Set to `true` to disable the SSL certificate check when cloning a git repository. Only required when the CA
 #   presented by the git server while installing the Roundcube dependencies is not trusted by this host.
@@ -119,6 +122,7 @@ class roundcube (
   $install_dir                     = $roundcube::params::install_dir,
   $exec_paths                      = $roundcube::params::exec_paths,
   $composer_command_name           = $roundcube::params::composer_command_name,
+  $composer_user                   = $roundcube::params::composer_user,
   $composer_disable_git_ssl_verify = $roundcube::params::composer_disable_git_ssl_verify,
   $composer_manage                 = $roundcube::params::composer_manage,
   $document_root                   = $roundcube::params::document_root,
