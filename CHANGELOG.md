@@ -2,10 +2,23 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [unreleased]
+## [v3.6.0]
+           
+### Summary
+
+Add support for [roundcube 1.6](https://github.com/roundcube/roundcubemail/releases/tag/1.6.0). As there are breaking 
+changes, please make sure you've read the changelog.
+
+### Changed
+
+- Make module compatible with roundcube 1.6 by renaming `default_host` to `imap_host` and merging `default_port` into 
+  `imap_host`.
+- Fail Puppet run if 1.6 is used with outdated parameters (e.g. `smtp_server`)
 
 ## [v3.5.3](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.5.3) (2022-09-21)
-         
+              
+Note: this release has been removed from the forge as it was incompatible with version 1.6 of roundcube.
+
 ### Changed
 
 - Update roundcube version to 1.6.0 from 1.4.4; this also fixed the composer error complaining about missing plugins in 
