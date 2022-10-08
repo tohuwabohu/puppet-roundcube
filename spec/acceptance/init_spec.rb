@@ -98,8 +98,7 @@ describe 'roundcube' do
     end
 
     describe file('/var/www/roundcubemail/config/config.inc.php') do
-      its(:content) { should match /^\$config\['default_host'\] = 'ssl:\/\/localhost';$/ }
-      its(:content) { should match /^\$config\['default_port'\] = 993;$/ }
+      its(:content) { should match /^\$config\['imap_host'\] = 'ssl:\/\/localhost:993';$/ }
       its(:content) { should match /^\$config\['des_key'\] = 'beefbeefbeefbeefbeefbeef';$/ }
       its(:content) { should match /^\$config\['language'\] = 'en_US';$/ }
       its(:content) { should match /^\$config\['support_url'\] = 'http:\/\/example\.com\/helpdesk';$/ }
