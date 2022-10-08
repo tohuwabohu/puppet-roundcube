@@ -2,16 +2,16 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v3.6.0]
+## [v3.6.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.6.0) (2022-10-08)
            
 ### Summary
 
 Add support for [roundcube 1.6](https://github.com/roundcube/roundcubemail/releases/tag/1.6.0). As there are breaking 
-changes, please make sure you've read the changelog.
+changes, please make sure you've read the changelog. Also don't forget to apply the database changes.
                     
 ### Added
 
-- Allow to configure the user that is used to execute the composer install command ([#38](https://github.com/tohuwabohu/puppet-roundcube/issues/38))
+- Allow to configure the user used to execute the composer command; defaults to `root` ([#38](https://github.com/tohuwabohu/puppet-roundcube/issues/38))
 
 ### Changed
 
