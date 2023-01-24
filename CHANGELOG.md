@@ -6,7 +6,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Improved
 
-- Removed EOL'd Puppet 5 from test matrix
+- unit-tests: Removed EOL'd Puppet 5 from test matrix
+- unit-tests: Bumped Puppet 6 Ruby version to 2.7 
 
 ## [v3.6.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.6.0) (2022-10-08)
            
