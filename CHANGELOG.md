@@ -1,6 +1,13 @@
 # Change log
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
+                
+## [Unreleased]
+
+### Improved
+
+- unit-tests: Removed EOL'd Puppet 5 from test matrix
+- unit-tests: Bumped Puppet 6 Ruby version to 2.7 
 
 ## [v3.6.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.6.0) (2022-10-08)
            
