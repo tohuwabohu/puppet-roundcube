@@ -8,10 +8,10 @@ fixtures:
       ref: "1.2.10"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
-      ref: "v7.2.0"
+      ref: "v9.0.0"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "v8.4.0"
+      ref: "v8.6.0"
     # provided by puppet-agent
     augeas:
       repo: "https://github.com/puppetlabs/puppetlabs-augeas_core"
