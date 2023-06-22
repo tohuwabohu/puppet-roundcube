@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v4.0.0) (2023-06-2)
+
+### Changed
+
+- Replace deprecated [camptocamp/archive](https://forge.puppet.com/modules/camptocamp/archive) with [puppet/archive](https://forge.puppet.com/modules/puppet/archive)
+
+### Removed
+
+- Redundant `archive_provider` parameter; if you have used `nanliu` or `camptocamp` before, please migrate to [puppet/archive](https://forge.puppet.com/modules/puppet/archive) 
+
 ## [v3.6.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.6.1) (2023-06-19)
 
 ### Improved

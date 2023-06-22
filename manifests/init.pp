@@ -128,7 +128,7 @@ class roundcube (
   $document_root                   = $roundcube::params::document_root,
   $document_root_manage            = $roundcube::params::document_root_manage,
 
-  $archive_provider                = $roundcube::params::archive_provider,
+  $archive_provider                = undef,
   $archive_proxy_server            = undef,
 
   $db_dsn                          = undef,
@@ -186,6 +186,10 @@ class roundcube (
     'COMPOSER_NO_INTERACTION=1',
     $env_git_ssl_no_verify,
   ])
+
+  if !empty($archive_provider) {
+    warning("Class[Roundcube]: archive_provider has been removed")
+  }
 
   class { 'roundcube::install': }
   -> class { 'roundcube::config': }

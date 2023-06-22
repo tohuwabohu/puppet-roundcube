@@ -35,25 +35,25 @@ describe 'roundcube', :type => :class do
   describe 'uses custom archive checksum' do
     let(:params) { {:checksum => '123'} }
 
-    specify { should contain_archive(archive_name).with_digest_string('123') }
+    specify { should contain_archive(archive_name).with_checksum('123') }
   end
 
   describe 'uses custom archive checksum type' do
     let(:params) { {:checksum_type => 'sha1'} }
 
-    specify { should contain_archive(archive_name).with_digest_type('sha1') }
+    specify { should contain_archive(archive_name).with_checksum_type('sha1') }
   end
 
   describe 'stores packages in custom directory' do
     let(:params) { {:package_dir => '/somewhere/else'} }
 
-    specify { should contain_archive(archive_name).with_src_target('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_path("/somewhere/else/#{archive_name}.tar.gz") }
   end
 
   describe 'installs application in custom directory' do
     let(:params) { {:install_dir => '/somewhere/else'} }
 
-    specify { should contain_archive(archive_name).with_target('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_extract_path('/somewhere/else') }
   end
 
   describe 'should create symbolic link to specified document_root' do
