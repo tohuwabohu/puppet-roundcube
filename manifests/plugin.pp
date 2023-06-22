@@ -22,7 +22,7 @@
 # Copyright 2015 Martin Meinhold, unless otherwise noted.
 #
 define roundcube::plugin (
-  Enum['present', 'absent'] $ensure = present,
+  Variant[String, Enum['present', 'absent']] $ensure = present,
   Optional[String] $config_file_template = undef,
   Hash $options_hash = {},
 ) {
