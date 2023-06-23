@@ -22,9 +22,9 @@
 # Copyright 2015 Martin Meinhold, unless otherwise noted.
 #
 define roundcube::plugin (
-  $ensure = present,
-  $config_file_template = undef,
-  $options_hash = {},
+  Variant[String, Enum['present', 'absent']] $ensure = present,
+  Optional[String] $config_file_template = undef,
+  Hash $options_hash = {},
 ) {
   include roundcube
   if $roundcube::plugins_manage == false {

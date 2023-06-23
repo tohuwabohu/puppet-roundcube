@@ -76,7 +76,7 @@ describe 'roundcube', :type => :class do
     let(:params) { {:document_root_manage => 'false'} }
 
     specify do
-      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /is not a boolean/)
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /expects a Boolean value/)
     end
   end
 
@@ -84,7 +84,7 @@ describe 'roundcube', :type => :class do
     let(:params) { {:document_root_manage => 'invalid'} }
 
     specify do
-      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /invalid/)
+      expect { should contain_archive(archive_name) }.to raise_error(Puppet::Error, /expects a Boolean value/)
     end
   end
 
