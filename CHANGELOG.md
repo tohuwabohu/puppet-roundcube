@@ -6,7 +6,8 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Updated
 
-- Replace deprecated `is_` and `validate_` puppetlabs/stdlib functions with Puppet data types
+- Replace deprecated `is_` and `validate_` puppetlabs/stdlib functions with Puppet data types; as data types are 
+  available since Puppet 5, this is considered a backward-compatible change
 
 ## [v3.6.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.6.1) (2023-06-19)
 
