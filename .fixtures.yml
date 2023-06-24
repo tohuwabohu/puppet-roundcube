@@ -19,10 +19,6 @@ fixtures:
     cron:
       repo: "https://github.com/puppetlabs/puppetlabs-cron_core"
       ref: "v1.1.0"
-    # transitive dependencies
-    wget:
-      repo: "https://github.com/maestrodev/puppet-wget.git"
-      ref: "v1.7.3"
   symlinks:
     roundcube: "#{source_dir}"
 
