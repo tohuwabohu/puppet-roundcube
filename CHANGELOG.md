@@ -2,11 +2,11 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
               
-## [Unreleased](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.1) (2023-XX-XX)
+## [v3.7.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.1) (2023-06-24)
 
 ### Updated
 
-- acceptance-tests: remove Debian 9, add Debian 11, remove Ubuntu 18.04, add Ubuntu 22.04
+- OS compatibility: remove Debian 9, add Debian 11, remove Ubuntu 18.04, add Ubuntu 22.04
 
 ## [v3.7.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.0) (2023-06-22)
 
