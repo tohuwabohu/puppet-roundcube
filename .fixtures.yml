@@ -8,17 +8,17 @@ fixtures:
       ref: "1.2.10"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
-      ref: "v9.0.0"
+      ref: "v9.0.2"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "v8.6.0"
+      ref: "v9.4.1"
     # provided by puppet-agent
     augeas:
       repo: "https://github.com/puppetlabs/puppetlabs-augeas_core"
       ref: "v1.2.0"
     cron:
       repo: "https://github.com/puppetlabs/puppetlabs-cron_core"
-      ref: "v1.1.0"
+      ref: "v1.2.0"
   symlinks:
     roundcube: "#{source_dir}"
 
