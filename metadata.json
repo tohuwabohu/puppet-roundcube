@@ -1,6 +1,6 @@
 {
   "name": "tohuwabohu-roundcube",
-  "version": "3.8.0",
+  "version": "3.8.1",
   "author": "tohuwabohu",
   "license": "Apache-2.0",
   "summary": "Install and manage the Roundcube webmail application",
