@@ -5,9 +5,10 @@ All notable changes to this project will be documented in this file. The format 
 ## [v3.8.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.8.0) (2024-04-20)
 
 ### Changed
-
-- Support Puppet 8
-- Remove EOL'ed Puppet 6 from test matrix
+             
+- Dependency: Replace deprecated `uriescape` function provided by puppetlabs/stdlib
+- CI: Support Puppet 8
+- CI: Remove EOL'ed Puppet 6 from test matrix
 
 ## [v3.7.2](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.2) (2024-02-18)
 
