@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Changed
              
-- Dependency: Replace deprecated `uriescape` function provided by puppetlabs/stdlib
+- Dependency puppetlabs/stdlib: replace deprecated `uriescape` function 
 - CI: Support Puppet 8
 - CI: Remove EOL'ed Puppet 6 from test matrix
 
