@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file. The format 
 This release contains a major change by dropping dependency on `willdurand/composer` and standardizing on `puppet/archive`
 for downloading roundcube.
 
+This version is still compatible with `puppetlabs/stdlib` < 9.x.
+
 ### Added
 
 - Parameter `archive_cleanup` to control if the downloaded file should be removed after extraction. By default `false`
