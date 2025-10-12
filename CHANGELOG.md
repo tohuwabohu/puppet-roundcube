@@ -2,10 +2,16 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v5.0.0) (2025-10-12)
+
+### Changed
+
+- Fix `puppetlabs/stdlib` deprecation warnings; this requires to bump the minimum version to 9.x 
+
 ## [v4.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v4.0.0) (2025-10-12)
       
-This release contains a major change by dropping the dependency on `willdurand/composer` and standardizing on 
-`puppet/archive` for downloading roundcube.
+This release contains a major change by dropping the dependency on the archived `willdurand/composer` and standardizing
+on `puppet/archive` for downloading roundcube.
 
 This version still supports `puppetlabs/stdlib` down to 4.6.0.
 

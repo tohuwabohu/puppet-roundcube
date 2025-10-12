@@ -28,7 +28,6 @@ jobs:
         env:
           PUPPET_VERSION: "~> ${{ matrix.puppet-version }}"
           SPEC_OPTS: '--format documentation'
-          RUBYOPT: "-W0"
 
   acceptance-tests:
     name: "${{ matrix.label }} Acceptance Tests"
