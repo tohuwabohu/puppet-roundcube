@@ -11,8 +11,6 @@ class roundcube::params {
   $checksum = '2409ccdfe2e465f086cb9fc18c88dfe0aaf6ccc23924564975061209921694ba'  # complete edition
   $checksum_type = 'sha256'
 
-  # deprecated: 'camptocamp' will be replaced with 'puppet' in the next major release
-  $archive_provider = 'camptocamp'
   $package_dir = '/var/cache/puppet/archives'
   $install_dir = '/opt'
   $archive_cleanup = false

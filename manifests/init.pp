@@ -121,7 +121,6 @@ class roundcube (
   Stdlib::Absolutepath $document_root       = $roundcube::params::document_root,
   Boolean $document_root_manage             = $roundcube::params::document_root_manage,
 
-  String $archive_provider                  = $roundcube::params::archive_provider,
   Optional[String] $archive_proxy_server    = undef,
   Boolean $archive_cleanup                  = $roundcube::params::archive_cleanup,
 
