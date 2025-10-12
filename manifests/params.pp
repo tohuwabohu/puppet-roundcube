@@ -15,6 +15,7 @@ class roundcube::params {
   $archive_provider = 'camptocamp'
   $package_dir = '/var/cache/puppet/archives'
   $install_dir = '/opt'
+  $archive_cleanup = false
 
   $document_root_manage = true
   $document_root = '/var/www/roundcubemail'

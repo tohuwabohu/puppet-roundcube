@@ -17,7 +17,8 @@ describe 'roundcube', :type => :class do
         'path'         => "/var/cache/puppet/archives/#{archive_name}",
         'source'       => "https://github.com/roundcube/roundcubemail/releases/download/#{current_version}/#{archive_name}",
         'extract_path' => '/opt',
-        'creates'      => "/opt/roundcubemail-#{current_version}"
+        'creates'      => "/opt/roundcubemail-#{current_version}",
+        'cleanup'      => 'false',
       )
     }
     specify { should contain_file('/var/www/roundcubemail').with(

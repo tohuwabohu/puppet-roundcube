@@ -45,6 +45,9 @@
 # [*archive_proxy_server*]
 #   Proxy server to use with archive module. Example: "https://proxy.example.com:8080"
 #
+# [*archive_cleanup*]
+#   Set to `true` to remove the downloaded tarball after extraction. `false` by default.
+#
 # [*db_dsn*]
 #   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
 #   override the other `db_*` parameters. See http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php for
@@ -120,6 +123,7 @@ class roundcube (
 
   String $archive_provider                  = $roundcube::params::archive_provider,
   Optional[String] $archive_proxy_server    = undef,
+  Boolean $archive_cleanup                  = $roundcube::params::archive_cleanup,
 
   Optional[String] $db_dsn                  = undef,
   String $db_type                           = 'pgsql',

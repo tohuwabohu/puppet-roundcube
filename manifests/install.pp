@@ -24,7 +24,7 @@ class roundcube::install inherits roundcube {
     creates       => "${roundcube::install_dir}/roundcubemail-${roundcube::version}",
     checksum      => $roundcube::checksum,
     checksum_type => $roundcube::checksum_type,
-    cleanup       => false,
+    cleanup       => $roundcube::archive_cleanup,
     require       => [
       File[$roundcube::install_dir],
       File[$roundcube::package_dir]
