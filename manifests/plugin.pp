@@ -30,9 +30,6 @@ define roundcube::plugin (
   if $roundcube::plugins_manage == false {
     fail("Roundcube::Plugin[${name}]: conflicting parameters - plugin configuration disabled but plugin resource defined")
   }
-  if ($roundcube::composer_manage == true) {
-    include composer
-  }
 
   $application_dir = $roundcube::install::target
   $config_file = $roundcube::config::config_file

@@ -13,8 +13,9 @@ describe 'roundcube::plugin' do
         file { $required_directories:
           ensure => directory,
         }
-
-        class { 'roundcube':
+                      
+        class { 'php': }
+        -> class { 'roundcube':
           plugins => [
             'password',
           ],
@@ -59,7 +60,8 @@ describe 'roundcube::plugin' do
           ensure => directory,
         }
 
-        class { 'roundcube': }
+        class { 'php': }
+        -> class { 'roundcube': }
         roundcube::plugin { 'password':
           options_hash => {
             'password_minimum_length'   => 16,
@@ -100,7 +102,8 @@ describe 'roundcube::plugin' do
           ensure => directory,
         }
 
-        class { 'roundcube': }
+        class { 'php': }
+        -> class { 'roundcube': }
         roundcube::plugin { 'password':
           config_file_template => 'roundcube/config/options.php.erb',
           options_hash         => {
@@ -142,7 +145,8 @@ describe 'roundcube::plugin' do
           ensure => directory,
         }
 
-        class { 'roundcube': }
+        class { 'php': }
+        -> class { 'roundcube': }
         roundcube::plugin { 'roundcube/rcsample':
           ensure => 'v0.2.3',
         }

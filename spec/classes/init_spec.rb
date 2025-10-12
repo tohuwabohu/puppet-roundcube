@@ -3,17 +3,24 @@ require 'spec_helper'
 describe 'roundcube', :type => :class do
   let(:title) { 'roundcube' }
   let(:current_version) { '1.6.0' }
-  let(:archive_name) { "roundcubemail-#{current_version}-complete" }
+  let(:archive_name) { "roundcubemail-#{current_version}-complete.tar.gz" }
   let(:install_dir) { "/opt/roundcubemail-#{current_version}" }
   let(:config_file) { "#{install_dir}/config/config.inc.php" }
   let(:config_file_options_fragment) { "#{config_file}__options" }
   let(:pre_condition) { <<-EOS
-      file { ['/opt', '/somewhere/else', '/var/cache/puppet/archives']: ensure => directory }
+      file { ['/opt', '/somewhere/else', '/var/cache/puppet/archives', '/tmp']: ensure => directory }
     EOS
   }
 
   describe 'by default' do
-    specify { should contain_archive(archive_name) }
+    specify { should contain_archive(archive_name).with(
+        'path'         => "/var/cache/puppet/archives/#{archive_name}",
+        'source'       => "https://github.com/roundcube/roundcubemail/releases/download/#{current_version}/#{archive_name}",
+        'extract_path' => '/opt',
+        'creates'      => "/opt/roundcubemail-#{current_version}",
+        'cleanup'      => 'false',
+      )
+    }
     specify { should contain_file('/var/www/roundcubemail').with(
         'ensure' => 'link',
         'target' => install_dir
@@ -29,31 +36,31 @@ describe 'roundcube', :type => :class do
   describe 'installs custom version' do
     let(:params) { {:version => '1.2.3'} }
 
-    specify { should contain_archive('roundcubemail-1.2.3-complete') }
+    specify { should contain_archive('roundcubemail-1.2.3-complete.tar.gz') }
   end
 
   describe 'uses custom archive checksum' do
     let(:params) { {:checksum => '123'} }
 
-    specify { should contain_archive(archive_name).with_digest_string('123') }
+    specify { should contain_archive(archive_name).with_checksum('123') }
   end
 
   describe 'uses custom archive checksum type' do
     let(:params) { {:checksum_type => 'sha1'} }
 
-    specify { should contain_archive(archive_name).with_digest_type('sha1') }
+    specify { should contain_archive(archive_name).with_checksum_type('sha1') }
   end
 
   describe 'stores packages in custom directory' do
-    let(:params) { {:package_dir => '/somewhere/else'} }
+    let(:params) { {:package_dir => '/tmp'} }
 
-    specify { should contain_archive(archive_name).with_src_target('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_path("/tmp/#{archive_name}") }
   end
 
   describe 'installs application in custom directory' do
     let(:params) { {:install_dir => '/somewhere/else'} }
 
-    specify { should contain_archive(archive_name).with_target('/somewhere/else') }
+    specify { should contain_archive(archive_name).with_creates("/somewhere/else/roundcubemail-#{current_version}") }
   end
 
   describe 'should create symbolic link to specified document_root' do

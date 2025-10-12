@@ -1,11 +1,8 @@
 fixtures:
   repositories:
     archive:
-      repo: "https://github.com/camptocamp/puppet-archive.git"
-      ref: "0.8.1"
-    composer:
-      repo: "https://github.com/willdurand/puppet-composer.git"
-      ref: "1.2.10"
+      repo: "https://github.com/voxpupuli/puppet-archive.git"
+      ref: "v8.1.0"
     concat:
       repo: "https://github.com/puppetlabs/puppetlabs-concat.git"
       ref: "v9.1.0"

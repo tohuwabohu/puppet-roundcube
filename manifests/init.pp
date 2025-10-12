@@ -42,17 +42,11 @@
 # [*document_root_manage*]
 #   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
-# [*archive_provider*]
-#   Select which `archive` type should be used to download RoundCube from the
-#   download site. There exist at least two modules that provide an `archive`
-#   type: "camptocamp/archive" and "nanliu/archive" (or "puppet/archive"
-#   since the module is now in the care of puppet-community). Defaults to
-#   'camptocamp'. If you set this to 'nanliu' (or 'puppet') make sure you have
-#   that module installed since both cannot be recorded as a dependency in
-#   metadata.json at the same time.
-#
 # [*archive_proxy_server*]
 #   Proxy server to use with archive module. Example: "https://proxy.example.com:8080"
+#
+# [*archive_cleanup*]
+#   Set to `true` to remove the downloaded tarball after extraction. `false` by default.
 #
 # [*db_dsn*]
 #   Set the database data source name (DSN) to be used when connecting to the database. Setting this parameter will
@@ -124,12 +118,11 @@ class roundcube (
   String $composer_command_name             = $roundcube::params::composer_command_name,
   String $composer_user                     = $roundcube::params::composer_user,
   Boolean $composer_disable_git_ssl_verify  = $roundcube::params::composer_disable_git_ssl_verify,
-  Boolean $composer_manage                  = $roundcube::params::composer_manage,
   Stdlib::Absolutepath $document_root       = $roundcube::params::document_root,
   Boolean $document_root_manage             = $roundcube::params::document_root_manage,
 
-  String $archive_provider                  = $roundcube::params::archive_provider,
   Optional[String] $archive_proxy_server    = undef,
+  Boolean $archive_cleanup                  = $roundcube::params::archive_cleanup,
 
   Optional[String] $db_dsn                  = undef,
   String $db_type                           = 'pgsql',
