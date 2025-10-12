@@ -2,9 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v4.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v4.0.0) (2025-10-12)
+
+### Removed
+
+- Dependency on archived `willdurand/composer`; it's expected to by provided        
+
 ## [v3.8.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.8.1) (2025-10-12)
 
-### Updated
+### Added
 
 - OS compatibility: add Debian 12 and Ubuntu 24.04
                         
@@ -22,13 +28,13 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [v3.7.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.1) (2023-06-24)
 
-### Updated
+### Changed
 
 - OS compatibility: remove Debian 9, add Debian 11, remove Ubuntu 18.04, add Ubuntu 22.04
 
 ## [v3.7.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.7.0) (2023-06-22)
 
-### Updated
+### Changed
 
 - Replace deprecated `is_` and `validate_` puppetlabs/stdlib functions with Puppet data types; as data types are 
   available since Puppet 5, this is considered a backward-compatible change

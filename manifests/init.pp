@@ -124,7 +124,6 @@ class roundcube (
   String $composer_command_name             = $roundcube::params::composer_command_name,
   String $composer_user                     = $roundcube::params::composer_user,
   Boolean $composer_disable_git_ssl_verify  = $roundcube::params::composer_disable_git_ssl_verify,
-  Boolean $composer_manage                  = $roundcube::params::composer_manage,
   Stdlib::Absolutepath $document_root       = $roundcube::params::document_root,
   Boolean $document_root_manage             = $roundcube::params::document_root_manage,
 
