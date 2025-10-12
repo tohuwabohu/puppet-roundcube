@@ -4,25 +4,26 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [v4.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v4.0.0) (2025-10-12)
       
-This release contains a major change by dropping dependency on `willdurand/composer` and standardizing on `puppet/archive`
-for downloading roundcube.
+This release contains a major change by dropping the dependency on `willdurand/composer` and standardizing on 
+`puppet/archive` for downloading roundcube.
 
-This version is still compatible with `puppetlabs/stdlib` < 9.x.
+This version still supports `puppetlabs/stdlib` down to 4.6.0.
+
+### Changed
+
+- Standardize on `puppet/archive` for downloading roundcube; new explicit dependency 
 
 ### Added
 
 - Parameter `archive_cleanup` to control if the downloaded file should be removed after extraction. By default `false`
   to stay consistent with the existing behaviour.
 
-### Changed
-
-- Standardize on `puppet/archive` for downloading roundcube; new explicit dependency 
-
 ### Removed
 
 - Support for `camptocamp/archive` and `nanliu/archive` for downloading roundcube
 - Parameter `archive_provider` due to standardization on `puppet/archive`
 - Dependency on archived `willdurand/composer`; it's expected to be provided, for instance by `puppet/php`
+- Parameter `composer_manage` due to removed support for `willdurand/composer`
 
 ## [v3.8.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.8.1) (2025-10-12)
 
