@@ -12,9 +12,10 @@ describe 'roundcube' do
 
         file { $required_directories:
           ensure => directory,
-        }
+        }                            
 
-        class { 'roundcube': }
+        class { 'php': }
+        -> class { 'roundcube': }
       EOS
     }
 
@@ -76,8 +77,9 @@ describe 'roundcube' do
         file { $required_directories:
           ensure => directory,
         }
-
-        class { 'roundcube':
+                                 
+        class { 'php': }
+        -> class { 'roundcube':
           imap_host    => 'ssl://localhost',
           imap_port    => 993,
           des_key      => 'beefbeefbeefbeefbeefbeef',
@@ -122,7 +124,8 @@ describe 'roundcube' do
           ensure => directory,
         }
 
-        class { 'roundcube':
+        class { 'php': }
+        -> class { 'roundcube':
           config_file_template => 'roundcube/config/options.php.erb',
           options_hash         => {
             'support_url' => 'http://example.com/',

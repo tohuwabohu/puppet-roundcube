@@ -19,8 +19,9 @@ describe 'with Apache + SQLite' do
       }
 
       class { 'apache::mod::php': }
-
-      class { 'roundcube':
+                   
+      class { 'php': }
+      -> class { 'roundcube':
         db_dsn => 'sqlite:////tmp/roundcube.db?mode=0646',
       }
     EOS

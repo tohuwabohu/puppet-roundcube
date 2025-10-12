@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file. The format 
 
 - Support for `camptocamp/archive` and `nanliu/archive` for downloading roundcube
 - Parameter `archive_provider` due to standardization on `puppet/archive`
-- Dependency on archived `willdurand/composer`; it's expected to be provided
+- Dependency on archived `willdurand/composer`; it's expected to be provided, for instance by `puppet/php`
 
 ## [v3.8.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.8.1) (2025-10-12)
 

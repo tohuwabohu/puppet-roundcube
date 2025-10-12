@@ -6,11 +6,12 @@ require 'beaker/module_install_helper'
 # collection: puppet - latest, puppet6 is the current version
 install_puppet_agent_on(hosts, {:puppet_collection => 'puppet' } )
 install_module_on(hosts)
-install_module_from_forge_on(hosts, 'puppetlabs-stdlib', '= 6.6.0')
-install_module_from_forge_on(hosts, 'puppetlabs-concat', '= 8.0.1')       # 9.x blocked by stdlib
-install_module_from_forge_on(hosts, 'puppet-archive', '= 8.1.0')
+install_module_from_forge_on(hosts, 'puppetlabs-stdlib', '= 8.6.0')
+install_module_from_forge_on(hosts, 'puppetlabs-concat', '= 9.1.0')
+install_module_from_forge_on(hosts, 'puppet-archive', '= 7.1.0')        # 8.x blocked by php
 # test dependencies
 install_module_from_forge_on(hosts, 'puppetlabs-apache', '= 12.0.2')
+install_module_from_forge_on(hosts, 'puppet-php', '= 11.0.0')
 
 RSpec.configure do |c|
   c.formatter = :documentation
