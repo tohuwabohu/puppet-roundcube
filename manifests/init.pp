@@ -42,15 +42,6 @@
 # [*document_root_manage*]
 #   Whether to manage the `document_root` file resource or not: either `true` or `false`.
 #
-# [*archive_provider*]
-#   Select which `archive` type should be used to download RoundCube from the
-#   download site. There exist at least two modules that provide an `archive`
-#   type: "camptocamp/archive" and "nanliu/archive" (or "puppet/archive"
-#   since the module is now in the care of puppet-community). Defaults to
-#   'camptocamp'. If you set this to 'nanliu' (or 'puppet') make sure you have
-#   that module installed since both cannot be recorded as a dependency in
-#   metadata.json at the same time.
-#
 # [*archive_proxy_server*]
 #   Proxy server to use with archive module. Example: "https://proxy.example.com:8080"
 #

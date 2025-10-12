@@ -8,54 +8,27 @@
 #
 class roundcube::install inherits roundcube {
 
-  $archive = "roundcubemail-${roundcube::version}-complete"
+  $archive_name = "roundcubemail-${roundcube::version}-complete.tar.gz"
   $target = "${roundcube::install_dir}/roundcubemail-${roundcube::version}"
-  $download_url = "https://github.com/roundcube/roundcubemail/releases/download/${roundcube::version}/${archive}.tar.gz"
+  $download_url = "https://github.com/roundcube/roundcubemail/releases/download/${roundcube::version}/${archive_name}"
   $composer_install_cmd = "${roundcube::composer_command_name} install --no-dev"
 
-  case $roundcube::archive_provider {
-    'nanliu', 'puppet': {
-      archive { "${roundcube::package_dir}/${archive}.tar.gz":
-        ensure        => present,
-        checksum      => $roundcube::checksum,
-        checksum_type => $roundcube::checksum_type,
-        source        => $download_url,
-        proxy_server  => $roundcube::archive_proxy_server,
-        extract_path  => $roundcube::install_dir,
-        creates       => "${roundcube::package_dir}/${archive}.tar.gz",
-        extract       => true,
-        cleanup       => false,
-        extract_flags => '-x --no-same-owner -f',
-        require       => [
-          File[$roundcube::install_dir],
-          File[$roundcube::package_dir]
-        ],
-      }
-      $require_archive = Archive["${roundcube::package_dir}/${archive}.tar.gz"]
-    }
-    'camptocamp': {
-      archive { $archive:
-        ensure           => present,
-        digest_string    => $roundcube::checksum,
-        digest_type      => $roundcube::checksum_type,
-        url              => $download_url,
-        proxy_server     => $roundcube::archive_proxy_server,
-        follow_redirects => true,
-        target           => $roundcube::install_dir,
-        src_target       => $roundcube::package_dir,
-        root_dir         => "roundcubemail-${roundcube::version}",
-        timeout          => 600,
-        require          => [
-          # TODO consider using ensure_resources to avoid having to manage them explicitly
-          File[$roundcube::install_dir],
-          File[$roundcube::package_dir]
-        ],
-      }
-      $require_archive = Archive[$archive]
-    }
-    default: {
-      fail("Unsupported \$archive_provider '${roundcube::archive_provider}'. Should be 'camptocamp' or 'nanliu' (aka 'puppet').")
-    }
+  archive { $archive_name:
+    ensure        => present,
+    path          => "${roundcube::package_dir}/${archive_name}",
+    source        => $download_url,
+    proxy_server  => $roundcube::archive_proxy_server,
+    extract       => true,
+    extract_path  => $roundcube::install_dir,
+    extract_flags => '-x --no-same-owner -f',
+    creates       => "${roundcube::install_dir}/roundcubemail-${roundcube::version}",
+    checksum      => $roundcube::checksum,
+    checksum_type => $roundcube::checksum_type,
+    cleanup       => false,
+    require       => [
+      File[$roundcube::install_dir],
+      File[$roundcube::package_dir]
+    ],
   }
 
   file { ["${target}/logs", "${target}/temp"]:
@@ -63,7 +36,7 @@ class roundcube::install inherits roundcube {
     owner   => $roundcube::process,
     group   => $roundcube::process,
     mode    => '0640',
-    require => $require_archive,
+    require => Archive[$archive_name],
   }
 
   file { "${target}/installer":
@@ -72,7 +45,7 @@ class roundcube::install inherits roundcube {
     recurse => true,
     force   => true,
     backup  => false,
-    require => $require_archive,
+    require => Archive[$archive_name],
   }
 
   file { "${target}/composer.json":
@@ -82,7 +55,7 @@ class roundcube::install inherits roundcube {
     owner   => 'root',
     group   => 0,
     mode    => '0644',
-    require => $require_archive,
+    require => Archive[$archive_name],
   }
 
   -> augeas { "${target}/composer.json__prefer-stable":

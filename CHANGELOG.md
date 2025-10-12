@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [v4.0.0](https://github.com/tohuwabohu/puppet-roundcube/tree/v4.0.0) (2025-10-12)
 
+### Changed
+
+- Standardize on `puppet/archive` for downloading roundcube; new explicit dependency 
+
 ### Removed
 
-- Dependency on archived `willdurand/composer`; it's expected to by provided        
+- Support for `camptocamp/archive` and `nanliu/archive` for downloading roundcube
+- Parameter `archive_provider` due to standardization on `puppet/archive`
+- Dependency on archived `willdurand/composer`; it's expected to be provided
 
 ## [v3.8.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v3.8.1) (2025-10-12)
 
