@@ -44,7 +44,7 @@ class roundcube::config inherits roundcube {
     }
   }
 
-  $options = merge($options_defaults, $imap_defaults, $roundcube::options_hash)
+  $options = stdlib::merge($options_defaults, $imap_defaults, $roundcube::options_hash)
 
   concat { $config_file:
     owner => $roundcube::process,
