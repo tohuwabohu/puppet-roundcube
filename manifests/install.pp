@@ -48,17 +48,20 @@ class roundcube::install inherits roundcube {
     require => Archive[$archive_name],
   }
 
-  file { "${target}/composer.json":
-    ensure  => file,
-    source  => "${target}/composer.json-dist",
-    replace => false,
-    owner   => 'root',
-    group   => 0,
-    mode    => '0644',
-    require => Archive[$archive_name],
+  if versioncmp($roundcube::version, '1.7.0') < 0 {
+    file { "${target}/composer.json":
+      ensure  => file,
+      source  => "${target}/composer.json-dist",
+      replace => false,
+      owner   => 'root',
+      group   => 0,
+      mode    => '0644',
+      require => Archive[$archive_name],
+      before  => Augeas["${target}/composer.json__prefer-stable"],
+    }
   }
 
-  -> augeas { "${target}/composer.json__prefer-stable":
+  augeas { "${target}/composer.json__prefer-stable":
     lens    => 'Json.lns',
     incl    => "${target}/composer.json",
     changes => [

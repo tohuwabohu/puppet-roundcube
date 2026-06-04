@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v5.0.2](https://github.com/tohuwabohu/puppet-roundcube/tree/v5.0.2) (2026-06-04)
+
+### Changed
+
+- Add support for roundcubemail 1.7.x ([#81](https://github.com/tohuwabohu/puppet-roundcube/pull/81)): the `$document_root`
+  will now point to `/path/to/roundcubemail-1.7.1/public_html` following the [upgrade notes](https://github.com/roundcube/roundcubemail/wiki/Upgrade#updating-to-17-or-higher)
+
 ## [v5.0.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v5.0.1) (2025-10-17)
 
 ### Changed
