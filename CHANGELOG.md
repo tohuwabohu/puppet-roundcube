@@ -6,8 +6,9 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Changed
 
-- Add support for roundcubemail 1.7.x ([#81](https://github.com/tohuwabohu/puppet-roundcube/pull/81)): the `$document_root`
-  will now point to `/path/to/roundcubemail-1.7.1/public_html` following the [upgrade notes](https://github.com/roundcube/roundcubemail/wiki/Upgrade#updating-to-17-or-higher)
+- Add support for roundcubemail 1.7.x ([#81](https://github.com/tohuwabohu/puppet-roundcube/pull/81)): for version 1.7.0
+  or greater, the `$document_root` will now point to `/path/to/roundcubemail-1.7.1/public_html` following the 
+  [upgrade notes](https://github.com/roundcube/roundcubemail/wiki/Upgrade#updating-to-17-or-higher)
 
 ## [v5.0.1](https://github.com/tohuwabohu/puppet-roundcube/tree/v5.0.1) (2025-10-17)
 
