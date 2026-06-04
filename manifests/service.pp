@@ -12,9 +12,15 @@
 class roundcube::service inherits roundcube {
 
   if $roundcube::document_root_manage {
+    if versioncmp($roundcube::version, '1.7.0') < 0 {
+      $real_target = $roundcube::install::target
+    } else {
+      $real_target = "${$roundcube::install::target}/public_html"
+    }
+
     file { $roundcube::document_root:
       ensure => link,
-      target => $roundcube::install::target,
+      target => $real_target,
       owner  => 'root',
       group  => 0,
     }
