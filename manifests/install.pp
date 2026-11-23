@@ -68,6 +68,7 @@ class roundcube::install inherits roundcube {
       "set dict/entry[. = 'prefer-stable'] prefer-stable",
       "set dict/entry[. = 'prefer-stable']/const true",
     ],
+    require => Archive[$archive_name],
   }
 
   -> exec { $composer_install_cmd:
